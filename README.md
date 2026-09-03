@@ -6,22 +6,33 @@ ATHAR is a UAE-born, child-safe AI literacy and readiness concept for children a
 
 > The child remains the thinker. AI remains the tool.
 
-## Demo
+## Live demo
 
-This repository currently contains a bilingual Arabic/English concept website demonstrating the approved ATHAR brand direction, RTL/LTR switching, Young Explorer/Parent/Educator views, the SUPER learning method, and Safety/Skills Passport concepts.
+GitHub Pages: https://ahmedyyya.github.io/Athar/
+
+## v2.0 demo
+
+The current build is a bilingual Arabic/English interactive concept demonstrating:
+
+- ATHAR fingerprint/trace-inspired visual identity
+- English/LTR and Arabic/RTL switching
+- responsive desktop, tablet and mobile layouts
+- mobile navigation
+- SUPER learning method
+- interactive Young Explorer, Parent and Educator environments
+- mission progress simulation
+- Safety Passport and Skills Passport concepts
+- age-appropriate supervised learning framing
+- UAE-first product positioning
 
 ## Safety boundary
 
-This is a front-end concept demo only. It does not connect to a live AI model, collect child data, implement authentication, perform payments, or provide unrestricted child chat.
+This is a front-end concept demo only. It does not connect to a live AI model, collect real child data, implement authentication, perform payments, or provide unrestricted child chat.
 
 ## Run locally
 
-Open `index.html` in a modern browser. No build process is required for this demo.
-
-## Deployment
-
-The site is static and compatible with GitHub Pages. Enable Pages for the repository's `main` branch if it is not already enabled.
+Open `index.html` in a modern browser. No build process is required.
 
 ## Status
 
-Demo / design-validation stage. Production implementation should follow the approved product, safety, curriculum, UX, architecture and pilot specifications.
+Design-validation / interactive product-concept stage. Production implementation should follow the approved product, safety, curriculum, UX, architecture and controlled-pilot specifications.
