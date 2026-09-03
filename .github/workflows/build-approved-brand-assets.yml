@@ -58,16 +58,34 @@ jobs:
           </svg>
           EOF
 
+      - name: Bind website to approved SVG assets
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          replacements = {
+              '<img class="lockup" src="" data-approved-logo': '<img class="lockup" src="assets/athar-lockup.svg"',
+              '<img class="hero-symbol" src="" data-approved-logo': '<img class="hero-symbol" src="assets/athar-symbol.svg"',
+              '<img class="mini-logo" src="" data-approved-logo': '<img class="mini-logo" src="assets/athar-lockup.svg"',
+              '<img class="footlock" src="" data-approved-logo': '<img class="footlock" src="assets/athar-lockup.svg"',
+          }
+          for old, new in replacements.items():
+              s = s.replace(old, new)
+          p.write_text(s, encoding='utf-8')
+          PY
+
       - name: Commit controlled assets
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/athar-approved-logo.jpg assets/athar-approved-logo.sha256 assets/athar-lockup.svg assets/athar-symbol.svg
+          git add assets/athar-approved-logo.jpg assets/athar-approved-logo.sha256 assets/athar-lockup.svg assets/athar-symbol.svg index.html
           if git diff --cached --quiet; then
             echo "No asset changes to commit"
           else
-            git commit -m "Use exact approved ATHAR artwork for SVG wrappers"
+            git commit -m "Bind website to exact approved ATHAR SVG identity"
             git push
           fi
