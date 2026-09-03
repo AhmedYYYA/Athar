@@ -22,14 +22,25 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          base64 -d assets/athar-approved-logo-base64.txt > assets/athar-approved-logo.jpg
+          python - <<'PY'
+          from pathlib import Path
+          import base64, re
+          src = Path('assets/athar-approved-logo-base64.txt').read_text(encoding='utf-8', errors='ignore')
+          runs = re.findall(r'[A-Za-z0-9+/=]{1000,}', src)
+          if not runs:
+              raise SystemExit('No valid base64 payload found')
+          payload = max(runs, key=len)
+          data = base64.b64decode(payload + '===', validate=False)
+          Path('assets/athar-approved-logo.jpg').write_bytes(data)
+          print(f'Decoded {len(data)} bytes')
+          PY
 
       - name: Verify decoded artwork
         shell: bash
         run: |
           set -euo pipefail
           test -s assets/athar-approved-logo.jpg
-          file assets/athar-approved-logo.jpg
+          file assets/athar-approved-logo.jpg | grep -qi 'JPEG image data'
           sha256sum assets/athar-approved-logo.jpg > assets/athar-approved-logo.sha256
 
       - name: Generate exact-reference SVG wrappers
