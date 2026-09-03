@@ -14,8 +14,11 @@ https://ahmedyyya.github.io/Athar/
 
 The current build is a complete bilingual front-end product demonstration built around the approved ATHAR brand identity and product baseline. It includes:
 
-- approved `ATHAR | أثر` lockup and symbol assets
+- approved `ATHAR | أثر` bilingual lockup and approved symbol artwork
+- Safari-safe direct raster rendering for the visible master identity
 - controlled ATHAR colour system and bilingual typography
+- true standalone SVG UI iconography for Explore, Learn, Create, Impact, Safety Passport and Skills Passport
+- SVG favicon and PWA identity support
 - English/LTR and Arabic/RTL switching
 - responsive desktop, tablet and mobile layouts
 - mobile navigation
@@ -28,8 +31,18 @@ The current build is a complete bilingual front-end product demonstration built 
 - Safety Passport state model
 - Skills progression indicators
 - recent-activity and intervention signals
-- PWA manifest and SVG favicon/app identity
 - safety-first demo boundary
+
+## Controlled asset architecture
+
+- `assets/athar-approved-lockup.jpg` — approved bilingual visual master used by the live UI
+- `assets/athar-approved-symbol.jpg` — approved symbol visual master used by the live UI
+- `assets/athar-lockup.svg` — SVG reference wrapper to the approved lockup artwork
+- `assets/athar-symbol.svg` — SVG reference wrapper to the approved symbol artwork
+- `assets/favicon.svg` — standalone browser/PWA SVG mark
+- `assets/ui/*.svg` — standalone ATHAR UI icon family
+
+The reference SVG wrappers preserve the approved visual artwork but are **not** a substitute for a final manually engineered Bézier production master. A future production-vector release must be optically checked against the approved artwork and must preserve the exact Arabic `أثر` spelling, including the hamza and the three dots of `ث`.
 
 ## Structure
 
@@ -37,8 +50,7 @@ The current build is a complete bilingual front-end product demonstration built 
 - `styles.css` — ATHAR design system and responsive UI
 - `app.js` — bilingual role-based demo state and interactions
 - `manifest.webmanifest` — PWA metadata
-- `assets/athar-lockup.svg` — approved ATHAR identity wrapper
-- `assets/athar-symbol.svg` — approved ATHAR symbol wrapper
+- `.github/workflows/build-approved-brand-assets.yml` — validation-only quality gate; it does not regenerate or overwrite approved brand artwork
 
 ## Safety boundary
 
