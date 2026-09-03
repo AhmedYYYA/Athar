@@ -10,7 +10,7 @@
   "lang":"en",
   "dir":"auto",
   "icons":[
-    {"src":"assets/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"},
+    {"src":"assets/athar-symbol.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"},
     {"src":"assets/athar-approved-symbol.jpg","sizes":"450x649","type":"image/jpeg","purpose":"any"}
   ]
 }
