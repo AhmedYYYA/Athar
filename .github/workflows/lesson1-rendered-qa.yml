@@ -6,7 +6,10 @@ on:
       - 'lesson1.html'
       - 'lesson1.css'
       - 'lesson1.js'
+      - 'lesson1-character-loader.js'
       - 'lesson1-hardening.js'
+      - 'assets/hamdan/**'
+      - 'assets/hessa/**'
       - 'tests/lesson1.spec.js'
       - '.github/workflows/lesson1-rendered-qa.yml'
   pull_request:
@@ -15,7 +18,10 @@ on:
       - 'lesson1.html'
       - 'lesson1.css'
       - 'lesson1.js'
+      - 'lesson1-character-loader.js'
       - 'lesson1-hardening.js'
+      - 'assets/hamdan/**'
+      - 'assets/hessa/**'
       - 'tests/lesson1.spec.js'
       - '.github/workflows/lesson1-rendered-qa.yml'
 permissions:
