@@ -3,8 +3,8 @@ const BASE = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:4173';
 const URL = `${BASE}/lesson1.html`;
 
 async function reset(page){await page.goto(URL);await page.evaluate(()=>localStorage.clear());await page.reload();}
-async function chooseAge(page,age){const visible=age==='10-12'?'10–12':'7–9';await page.getByRole('button',{name:/Age/}).click();await page.getByRole('button',{name:`Age ${visible}`}).click();}
-async function chooseCompanion(page,name){await page.getByRole('button',{name:'Companion'}).click();await page.getByRole('button',{name:new RegExp(name,'i')}).click();}
+async function chooseAge(page,age){const visible=age==='10-12'?'10–12':'7–9';await page.locator('#ageBtn').click();await page.locator('#ageMenu').getByRole('button',{name:`Age ${visible}`,exact:true}).click();}
+async function chooseCompanion(page,name){await page.locator('#companionBtn').click();await page.locator('#companionMenu').getByRole('button',{name:new RegExp(name,'i')}).click();}
 async function seedState(page,data){await page.evaluate(data=>{localStorage.clear();localStorage.setItem('athar.lesson.lang',data.lang||'en');localStorage.setItem('athar.lesson.age',data.age||'7-9');localStorage.setItem('athar.companion',data.companion||'none');localStorage.setItem('athar.lesson1.v2',JSON.stringify(data));},data);await page.reload();}
 async function clickSingle(page,key,i=0){await page.locator(`[data-single="${key}"][data-i="${i}"]`).click();}
 async function mastery(page,action){await page.locator(`[data-action="${action}"]`).click();await expect(page.locator('[data-action="next"]')).toBeVisible();await page.locator('[data-action="next"]').click();}
@@ -61,8 +61,8 @@ for(const p of [
 test('no external runtime requests and no page errors',async({page})=>{const external=[],errors=[];page.on('request',r=>{try{const u=new URL(r.url());if(u.protocol.startsWith('http')&&u.host!=='127.0.0.1:4173')external.push(r.url())}catch{}});page.on('pageerror',e=>errors.push(String(e)));await reset(page);await chooseCompanion(page,'Hamdan');await page.waitForTimeout(250);expect(external).toEqual([]);expect(errors).toEqual([]);});
 
 test('render snapshots have true locale and age state',async({page},testInfo)=>{for(const c of [
-  {name:'phone-en-7',width:375,height:812,lang:'en',age:'7-9',stage:0},
-  {name:'phone-ar-8',width:375,height:812,lang:'ar',age:'7-9',stage:1},
-  {name:'tablet-en-11',width:768,height:1024,lang:'en',age:'10-12',stage:4},
-  {name:'desktop-ar-12',width:1440,height:1000,lang:'ar',age:'10-12',stage:8}
-]){await page.setViewportSize({width:c.width,height:c.height});await page.goto(URL);await page.evaluate(c=>{localStorage.clear();localStorage.setItem('athar.lesson.lang',c.lang);localStorage.setItem('athar.lesson.age',c.age);localStorage.setItem('athar.companion','none');localStorage.setItem('athar.lesson1.v2',JSON.stringify({stage:c.stage,lang:c.lang,age:c.age,companion:'none',done:Array.from({length:c.stage},(_,i)=>i),evidence:{recognition:'independent',patterns:'independent',verification:'independent',privacy:'independent',agency:'not-yet'},hints:{},missionStep:0,completed:false}));},c);await page.reload();await expect(page.locator('html')).toHaveAttribute('lang',c.lang);await expect(page.locator('html')).toHaveAttribute('dir',c.lang==='ar'?'rtl':'ltr');await expect(page.locator('#ageLabel')).toHaveText(c.age==='7-9'?'7–9':'10–12');await page.screenshot({path:testInfo.outputPath(`${c.name}.png`),fullPage:true});}});
+  {name:'phone-en-7',width:375,height:812,lang:'en',age:'7-9',stage:0,companion:'none'},
+  {name:'phone-ar-8-hessa',width:375,height:812,lang:'ar',age:'7-9',stage:1,companion:'hessa'},
+  {name:'tablet-en-11-hamdan',width:768,height:1024,lang:'en',age:'10-12',stage:4,companion:'hamdan'},
+  {name:'desktop-ar-12',width:1440,height:1000,lang:'ar',age:'10-12',stage:8,companion:'none'}
+]){await page.setViewportSize({width:c.width,height:c.height});await page.goto(URL);await page.evaluate(c=>{localStorage.clear();localStorage.setItem('athar.lesson.lang',c.lang);localStorage.setItem('athar.lesson.age',c.age);localStorage.setItem('athar.companion',c.companion);localStorage.setItem('athar.lesson1.v2',JSON.stringify({stage:c.stage,lang:c.lang,age:c.age,companion:c.companion,done:Array.from({length:c.stage},(_,i)=>i),evidence:{recognition:'independent',patterns:'independent',verification:'independent',privacy:'independent',agency:'not-yet'},hints:{},missionStep:0,completed:false}));},c);await page.reload();await expect(page.locator('html')).toHaveAttribute('lang',c.lang);await expect(page.locator('html')).toHaveAttribute('dir',c.lang==='ar'?'rtl':'ltr');await expect(page.locator('#ageLabel')).toHaveText(c.age==='7-9'?'7–9':'10–12');await page.screenshot({path:testInfo.outputPath(`${c.name}.png`),fullPage:true});}});
