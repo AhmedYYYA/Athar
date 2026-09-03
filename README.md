@@ -2,37 +2,52 @@
 
 **Agency · Transformation · Honing · Artificial Intelligence · Readiness**
 
-ATHAR is a UAE-born, child-safe AI literacy and readiness concept for children aged 7–12, families and educators.
+ATHAR is a UAE-born, child-safe AI literacy and readiness experience for children aged 7–12, families and educators.
 
 > The child remains the thinker. AI remains the tool.
 
 ## Live demo
 
-GitHub Pages: https://ahmedyyya.github.io/Athar/
+https://ahmedyyya.github.io/Athar/
 
-## v2.0 demo
+## v2 product demo
 
-The current build is a bilingual Arabic/English interactive concept demonstrating:
+The current build is a complete bilingual front-end product demonstration built around the approved ATHAR brand identity and product baseline. It includes:
 
-- ATHAR fingerprint/trace-inspired visual identity
+- approved `ATHAR | أثر` lockup and symbol assets
+- controlled ATHAR colour system and bilingual typography
 - English/LTR and Arabic/RTL switching
 - responsive desktop, tablet and mobile layouts
 - mobile navigation
+- Explore → Learn → Create → Impact brand journey
 - SUPER learning method
-- interactive Young Explorer, Parent and Educator environments
-- mission progress simulation
-- Safety Passport and Skills Passport concepts
-- age-appropriate supervised learning framing
-- UAE-first product positioning
+- interactive Young Explorer environment
+- Parent supervision view
+- Educator cohort dashboard
+- mission progression and a working verification activity
+- Safety Passport state model
+- Skills progression indicators
+- recent-activity and intervention signals
+- PWA manifest and SVG favicon/app identity
+- safety-first demo boundary
+
+## Structure
+
+- `index.html` — semantic application shell
+- `styles.css` — ATHAR design system and responsive UI
+- `app.js` — bilingual role-based demo state and interactions
+- `manifest.webmanifest` — PWA metadata
+- `assets/athar-lockup.svg` — approved ATHAR identity wrapper
+- `assets/athar-symbol.svg` — approved ATHAR symbol wrapper
 
 ## Safety boundary
 
-This is a front-end concept demo only. It does not connect to a live AI model, collect real child data, implement authentication, perform payments, or provide unrestricted child chat.
+This is a controlled front-end demonstration. It does **not** connect directly to an AI provider, collect real child data, implement production authentication, process payments, expose open-web retrieval, or provide an unrestricted child chatbot.
 
-## Run locally
+A production build must route model use through the approved server-side AI gateway, consent/safeguarding model, provider registry and data-lifecycle controls defined in the programme specifications.
 
-Open `index.html` in a modern browser. No build process is required.
+## Current status
 
-## Status
+**ATHAR v2 — interactive product demonstration.**
 
-Design-validation / interactive product-concept stage. Production implementation should follow the approved product, safety, curriculum, UX, architecture and controlled-pilot specifications.
+The next engineering stage is production architecture: secure authentication, consent and child profiles, server-side mission/content services, Safety/Skills Passport persistence, adult controls, AI gateway integration, telemetry, testing and pilot release controls.
