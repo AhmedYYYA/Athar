@@ -1,6 +1,16 @@
 name: Validate approved ATHAR brand assets
 
 on:
+  pull_request:
+    paths:
+      - 'assets/athar-lockup.png'
+      - 'assets/athar-symbol.svg'
+      - 'assets/athar-app-icon-192.png'
+      - 'assets/athar-apple-touch-icon.png'
+      - 'assets/athar-favicon.ico'
+      - 'assets/athar-brand-assets.sha256'
+      - 'index.html'
+      - '.github/workflows/validate-athar-brand-assets.yml'
   push:
     branches: [main]
     paths:
