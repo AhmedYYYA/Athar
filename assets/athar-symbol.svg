@@ -1,3 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="245" height="250" viewBox="72 0 245 250" role="img" aria-label="ATHAR approved symbol">
-  <image href="athar-approved-logo.jpg" x="0" y="0" width="420" height="308" preserveAspectRatio="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="athar-symbol-title athar-symbol-desc">
+  <title id="athar-symbol-title">ATHAR | أثر</title>
+  <desc id="athar-symbol-desc">The approved ATHAR trace, child and learning-path symbol.</desc>
+  <defs>
+    <linearGradient id="athar-teal-blue" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#0EA7A1"/>
+      <stop offset="1" stop-color="#178DCE"/>
+    </linearGradient>
+    <linearGradient id="athar-blue-purple" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#178DCE"/>
+      <stop offset="1" stop-color="#7457C8"/>
+    </linearGradient>
+    <linearGradient id="athar-yellow-orange" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#F9B719"/>
+      <stop offset="1" stop-color="#F7931E"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M162 197 C102 217 88 284 105 357 C113 392 128 416 147 436" stroke="url(#athar-teal-blue)" stroke-width="58"/>
+    <path d="M164 437 C215 418 223 370 223 318 C223 266 258 234 306 234 C357 234 391 269 391 321 L391 365" stroke="url(#athar-blue-purple)" stroke-width="58"/>
+    <path d="M286 433 L286 331" stroke="url(#athar-blue-purple)" stroke-width="58"/>
+    <path d="M342 215 C392 200 420 161 421 113" stroke="url(#athar-blue-purple)" stroke-width="58"/>
+    <path d="M449 205 L449 365 C449 425 414 458 358 458 L307 458" stroke="url(#athar-yellow-orange)" stroke-width="58"/>
+  </g>
+  <circle cx="325" cy="165" r="38" fill="url(#athar-teal-blue)"/>
+  <circle cx="405" cy="74" r="14" fill="#0EA7A1"/>
+  <circle cx="383" cy="105" r="14" fill="#178DCE"/>
+  <circle cx="365" cy="56" r="14" fill="#F7931E"/>
 </svg>

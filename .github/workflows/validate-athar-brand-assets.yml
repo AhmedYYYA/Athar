@@ -1,0 +1,71 @@
+name: Validate approved ATHAR brand assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/athar-lockup.png'
+      - 'assets/athar-symbol.svg'
+      - 'assets/athar-app-icon-192.png'
+      - 'assets/athar-apple-touch-icon.png'
+      - 'assets/athar-favicon.ico'
+      - 'assets/athar-brand-assets.sha256'
+      - 'index.html'
+      - '.github/workflows/validate-athar-brand-assets.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-brand-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify controlled production files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s assets/athar-lockup.png
+          test -s assets/athar-symbol.svg
+          test -s assets/athar-app-icon-192.png
+          test -s assets/athar-apple-touch-icon.png
+          test -s assets/athar-favicon.ico
+          sha256sum --check assets/athar-brand-assets.sha256
+          file assets/athar-lockup.png | grep -q 'PNG image data, 1024 x 585'
+          file assets/athar-app-icon-192.png | grep -q 'PNG image data, 192 x 192'
+          file assets/athar-apple-touch-icon.png | grep -q 'PNG image data, 180 x 180'
+
+      - name: Validate identity bindings and SVG
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+
+          html = Path('index.html').read_text(encoding='utf-8')
+          required = (
+              'assets/athar-lockup.png',
+              'assets/athar-symbol.svg',
+              'assets/athar-app-icon-192.png',
+              'assets/athar-apple-touch-icon.png',
+              'assets/athar-favicon.ico',
+              'ATHAR | أثر',
+          )
+          missing = [value for value in required if value not in html]
+          if missing:
+              raise SystemExit(f'Missing approved identity bindings: {missing}')
+
+          if 'athar-approved-logo-base64' in html:
+              raise SystemExit('Legacy base64 logo binding remains in index.html')
+
+          ET.parse('assets/athar-symbol.svg')
+          svg = Path('assets/athar-symbol.svg').read_text(encoding='utf-8').upper()
+          colours = ('#0EA7A1', '#178DCE', '#7457C8', '#F7931E', '#F9B719')
+          absent = [colour for colour in colours if colour not in svg]
+          if absent:
+              raise SystemExit(f'Approved symbol colours missing: {absent}')
+          PY
