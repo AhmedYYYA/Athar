@@ -1,1 +1,154 @@
-<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0B2345"><meta name="description" content="ATHAR | أثر — UAE-born child-safe AI literacy and readiness experience for ages 7–12."><title>ATHAR | أثر — AI Readiness for Young Explorers</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/athar-approved-logo.jpg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head><body><header class="topbar"><div class="wrap nav"><a href="#" aria-label="ATHAR home"><img class="brand-lockup" src="assets/athar-approved-logo.jpg" alt="ATHAR | أثر approved brand identity"></a><nav class="navlinks" aria-label="Primary"><a id="navWhy" href="#why">Why ATHAR</a><a id="navMethod" href="#method">Learning model</a><a id="navDemo" href="#experience">Product demo</a></nav><div class="actions"><button class="btn soft" id="langBtn">العربية</button><button class="btn soft mobile-menu" id="menuBtn" aria-label="Menu">☰</button></div></div></header><nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation"><a href="#why" onclick="mobileNav.classList.remove('open')">Why ATHAR / لماذا أثر</a><a href="#method" onclick="mobileNav.classList.remove('open')">Learning model / نموذج التعلم</a><a href="#experience" onclick="mobileNav.classList.remove('open')">Product demo / تجربة المنتج</a></nav><main><section class="wrap hero"><div><span class="eyebrow" id="eyebrow">UAE-born • Child-safe • AI-ready</span><h1 id="heroTitle">Leave a better trace in the age of AI.</h1><p id="heroText">ATHAR helps children aged 7–12 build judgment, creativity and independence to use AI responsibly—without letting AI do the thinking for them.</p><div class="actions"><button class="btn primary" id="enterBtn">Enter the experience</button><button class="btn soft" id="learnBtn">See how learning works</button></div></div><div class="heroart"><img src="assets/athar-approved-logo.jpg" alt="ATHAR approved symbol"><span class="float f1">Explore • نكتشف</span><span class="float f2">Learn • نتعلم</span><span class="float f3">Create • نبتكر</span></div></section><section id="why"><div class="wrap"><div class="section-head"><h2 id="whyTitle">A learning journey built around human capability.</h2><p id="whyText">ATHAR combines curiosity, learning, creation and positive impact with a child-safe AI readiness model.</p></div><div id="ideaGrid" class="idea-grid"></div></div></section><section id="method"><div class="wrap"><div class="section-head"><h2 id="methodTitle">The SUPER learning method</h2><p id="methodText">A repeatable thinking routine that keeps the learner—not the model—in control.</p></div><div id="superGrid" class="super"></div></div></section><section id="experience"><div class="wrap"><div class="product-shell"><div class="shell-head"><div class="shell-title"><img src="assets/athar-approved-logo.jpg" alt="ATHAR symbol"><div><h3 id="demoTitle">ATHAR v2 experience</h3><div id="demoSub">Interactive product demonstration • no live AI or real child data</div></div></div><span class="status">SAFETY-FIRST DEMO</span></div><div class="role-tabs"><button class="role-tab active" data-role="child">Young Explorer</button><button class="role-tab" data-role="parent">Parent</button><button class="role-tab" data-role="educator">Educator</button></div><div class="app"><aside class="sidebar"><img class="sidebar-logo" src="assets/athar-approved-logo.jpg" alt="ATHAR | أثر"><div id="profile" class="profile"></div><div class="side-link active">⌂ <span>Overview</span></div><div class="side-link">◫ <span>Missions</span></div><div class="side-link">◉ <span>Safety Passport</span></div><div class="side-link">◆ <span>Skills Passport</span></div><div class="side-link">⚙ <span>Settings</span></div></aside><section class="workspace"><div id="workspaceHead" class="workspace-head"></div><div id="stats" class="stats"></div><div class="panel-grid"><div id="mainPanel" class="panel"></div><div id="sidePanel" class="panel"></div></div></section></div></div></div></section><section><div class="wrap"><p id="principle" class="principle">The child remains the thinker. AI remains the tool.</p></div></section></main><footer><div class="wrap footer"><img src="assets/athar-approved-logo.jpg" alt="ATHAR | أثر"><small>ATHAR v2 concept demo • UAE-first • Ages 7–12 • Controlled brand identity</small></div></footer><div id="modal" class="modal" role="dialog" aria-modal="true"><div class="modal-card"><h3 id="modalTitle">Verification mission</h3><p id="modalText"></p><div id="question" class="question"></div><div id="answers" class="answers"></div><p id="feedback"></p><div class="modal-actions"><button class="btn soft" onclick="closeModal()">Close / إغلاق</button></div></div></div><script src="app.js" defer></script></body></html>
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0B2345">
+  <meta name="description" content="ATHAR | أثر — UAE-born child-safe AI literacy and readiness experience for ages 7–12.">
+  <title>ATHAR | أثر — AI Readiness for Young Explorers</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand-home" href="#top" aria-label="ATHAR home">
+      <img class="brand-lockup" src="assets/athar-approved-lockup.jpg" alt="ATHAR | أثر approved brand identity">
+    </a>
+    <nav class="navlinks" aria-label="Primary">
+      <a id="navWhy" href="#why">Why ATHAR</a>
+      <a id="navMethod" href="#method">Learning model</a>
+      <a id="navDemo" href="#experience">Product demo</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn soft" id="langBtn" type="button">العربية</button>
+      <button class="btn icon-btn mobile-menu" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+<nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
+  <a href="#why">Why ATHAR / لماذا أثر</a>
+  <a href="#method">Learning model / نموذج التعلم</a>
+  <a href="#experience">Product demo / تجربة المنتج</a>
+</nav>
+
+<main id="top">
+  <section class="wrap hero">
+    <div class="hero-copy">
+      <span class="eyebrow" id="eyebrow">UAE-born • Child-safe • AI-ready</span>
+      <h1 id="heroTitle">Leave a better trace in the age of AI.</h1>
+      <p id="heroText">ATHAR helps children aged 7–12 build judgment, creativity and independence to use AI responsibly—without letting AI do the thinking for them.</p>
+      <div class="hero-actions">
+        <button class="btn primary" id="enterBtn" type="button">Enter the experience</button>
+        <button class="btn soft" id="learnBtn" type="button">See how learning works</button>
+      </div>
+    </div>
+    <div class="heroart" aria-label="ATHAR brand world">
+      <div class="brand-orbit" aria-hidden="true"></div>
+      <img class="hero-symbol" src="assets/athar-approved-symbol.jpg" alt="ATHAR approved symbol">
+      <span class="float f1">Explore • نكتشف</span>
+      <span class="float f2">Learn • نتعلم</span>
+      <span class="float f3">Create • نبتكر</span>
+      <span class="float f4">Impact • نؤثر</span>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-kicker">THE ATHAR JOURNEY</span>
+        <h2 id="whyTitle">A learning journey built around human capability.</h2>
+        <p id="whyText">ATHAR combines curiosity, learning, creation and positive impact with a child-safe AI readiness model.</p>
+      </div>
+      <div id="ideaGrid" class="idea-grid"></div>
+    </div>
+  </section>
+
+  <section id="method" class="soft-section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-kicker">THINKING ROUTINE</span>
+        <h2 id="methodTitle">The SUPER learning method</h2>
+        <p id="methodText">A repeatable thinking routine that keeps the learner—not the model—in control.</p>
+      </div>
+      <div id="superGrid" class="super"></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head compact">
+        <span class="section-kicker">INTERACTIVE DEMO</span>
+        <h2>See ATHAR as a product, not just a concept.</h2>
+      </div>
+      <div class="product-shell">
+        <div class="shell-head">
+          <div class="shell-title">
+            <img src="assets/athar-approved-symbol.jpg" alt="ATHAR symbol">
+            <div>
+              <h3 id="demoTitle">ATHAR v2 experience</h3>
+              <div id="demoSub">Interactive product demonstration • no live AI or real child data</div>
+            </div>
+          </div>
+          <span class="status">SAFETY-FIRST DEMO</span>
+        </div>
+        <div class="role-tabs" role="tablist" aria-label="ATHAR roles">
+          <button class="role-tab active" data-role="child" type="button">Young Explorer</button>
+          <button class="role-tab" data-role="parent" type="button">Parent</button>
+          <button class="role-tab" data-role="educator" type="button">Educator</button>
+        </div>
+        <div class="app">
+          <aside class="sidebar">
+            <img class="sidebar-logo" src="assets/athar-approved-lockup.jpg" alt="ATHAR | أثر">
+            <div id="profile" class="profile"></div>
+            <div class="side-link active"><span class="side-icon">⌂</span><span>Overview</span></div>
+            <div class="side-link"><img src="assets/ui/learn.svg" alt=""><span>Missions</span></div>
+            <div class="side-link"><img src="assets/ui/safety.svg" alt=""><span>Safety Passport</span></div>
+            <div class="side-link"><img src="assets/ui/skills.svg" alt=""><span>Skills Passport</span></div>
+            <div class="side-link"><span class="side-icon">⚙</span><span>Settings</span></div>
+          </aside>
+          <section class="workspace">
+            <div id="workspaceHead" class="workspace-head"></div>
+            <div id="stats" class="stats"></div>
+            <div class="panel-grid">
+              <div id="mainPanel" class="panel"></div>
+              <div id="sidePanel" class="panel"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="principle-section">
+    <div class="wrap principle-wrap">
+      <img src="assets/athar-approved-symbol.jpg" alt="" class="principle-mark">
+      <p id="principle" class="principle">The child remains the thinker. AI remains the tool.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer">
+    <img src="assets/athar-approved-lockup.jpg" alt="ATHAR | أثر">
+    <small>ATHAR v2 concept demo • UAE-first • Ages 7–12 • Controlled brand identity</small>
+  </div>
+</footer>
+
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <h3 id="modalTitle">Verification mission</h3>
+    <p id="modalText"></p>
+    <div id="question" class="question"></div>
+    <div id="answers" class="answers"></div>
+    <p id="feedback" aria-live="polite"></p>
+    <div class="modal-actions"><button class="btn soft" type="button" onclick="closeModal()">Close / إغلاق</button></div>
+  </div>
+</div>
+<script src="app.js" defer></script>
+</body>
+</html>
