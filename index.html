@@ -4,159 +4,185 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#0B2345">
-  <meta name="description" content="ATHAR | أثر — UAE-born child-safe AI literacy and readiness experience for ages 7–12.">
+  <meta name="description" content="ATHAR | أثر — UAE-born child-safe AI literacy and readiness for ages 7–12.">
+  <meta name="color-scheme" content="light">
   <title>ATHAR | أثر — AI Readiness for Young Explorers</title>
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="assets/athar-symbol.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/brand/ATHAR_Symbol_color.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="brand-fix.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="wrap nav">
-    <a class="brand-home" href="#top" aria-label="ATHAR home">
-      <span class="brand-composite" aria-label="ATHAR | أثر approved brand identity">
-        <img class="brand-symbol-small" src="assets/athar-symbol.svg" onerror="this.onerror=null;this.src='assets/athar-approved-symbol.jpg'" alt="">
-        <span class="brand-wordmark"><span class="brand-en">ATHAR</span><span class="brand-sep" aria-hidden="true"></span><span class="brand-ar" lang="ar" dir="rtl">أثر</span></span>
-      </span>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" id="top">
+  <div class="shell nav-shell">
+    <a class="brand" href="#top" aria-label="ATHAR home">
+      <img src="assets/brand/ATHAR_Symbol_color.svg" alt="" class="brand-symbol">
+      <span class="brand-type"><span class="brand-en">ATHAR</span><span class="brand-divider"></span><span class="brand-ar" lang="ar" dir="rtl">أثر</span></span>
     </a>
-    <nav class="navlinks" aria-label="Primary">
-      <a id="navWhy" href="#why">Why ATHAR</a>
-      <a id="navMethod" href="#method">Learning model</a>
-      <a id="navDemo" href="#experience">Product demo</a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#purpose" data-i18n="navPurpose">Why ATHAR</a>
+      <a href="#journey" data-i18n="navJourney">Learning journey</a>
+      <a href="#safety" data-i18n="navSafety">Safety</a>
+      <a href="#product" data-i18n="navProduct">Experience</a>
     </nav>
-    <div class="nav-actions">
-      <button class="btn soft" id="langBtn" type="button">العربية</button>
-      <button class="btn icon-btn mobile-menu" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    <div class="header-actions">
+      <button class="chip-button" id="langBtn" type="button">العربية</button>
+      <button class="menu-button" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <a href="#purpose" data-i18n="navPurpose">Why ATHAR</a>
+    <a href="#journey" data-i18n="navJourney">Learning journey</a>
+    <a href="#safety" data-i18n="navSafety">Safety</a>
+    <a href="#product" data-i18n="navProduct">Experience</a>
+  </nav>
 </header>
-<nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation">
-  <a href="#why">Why ATHAR / لماذا أثر</a>
-  <a href="#method">Learning model / نموذج التعلم</a>
-  <a href="#experience">Product demo / تجربة المنتج</a>
-</nav>
 
-<main id="top">
-  <section class="wrap hero">
+<main id="main">
+  <section class="hero shell">
     <div class="hero-copy">
-      <span class="eyebrow" id="eyebrow">UAE-born • Child-safe • AI-ready</span>
-      <h1 id="heroTitle">Leave a better trace in the age of AI.</h1>
-      <p id="heroText">ATHAR helps children aged 7–12 build judgment, creativity and independence to use AI responsibly—without letting AI do the thinking for them.</p>
+      <div class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">UAE-born • Child-safe • AI-ready</span></div>
+      <h1 data-i18n="heroTitle">Leave a better trace in the age of AI.</h1>
+      <p class="hero-lede" data-i18n="heroText">ATHAR helps children aged 7–12 build judgment, creativity and independence to use AI responsibly—without letting AI do the thinking for them.</p>
       <div class="hero-actions">
-        <button class="btn primary" id="enterBtn" type="button">Enter the experience</button>
-        <button class="btn soft" id="learnBtn" type="button">See how learning works</button>
+        <a class="button primary" href="#product" data-i18n="ctaPrimary">Enter the experience</a>
+        <a class="button secondary" href="#journey" data-i18n="ctaSecondary">See how learning works</a>
+      </div>
+      <div class="trust-row" aria-label="ATHAR product boundaries">
+        <span data-i18n="trust1">No unrestricted child chat</span>
+        <span data-i18n="trust2">Adult-supervised practice</span>
+        <span data-i18n="trust3">No advertising</span>
       </div>
     </div>
-    <div class="heroart" aria-label="ATHAR brand world">
-      <div class="brand-orbit" aria-hidden="true"></div>
-      <img class="hero-symbol" src="assets/athar-symbol.svg" onerror="this.onerror=null;this.src='assets/athar-approved-symbol.jpg'" alt="ATHAR approved symbol">
-      <span class="float f1">Explore • نكتشف</span>
-      <span class="float f2">Learn • نتعلم</span>
-      <span class="float f3">Create • نبتكر</span>
-      <span class="float f4">Impact • نؤثر</span>
+    <div class="hero-stage" aria-label="ATHAR visual identity">
+      <div class="orb orb-a"></div><div class="orb orb-b"></div><div class="orb orb-c"></div>
+      <div class="hero-logo-card">
+        <img src="assets/brand/ATHAR_Symbol_color.svg" alt="ATHAR symbol" class="hero-logo">
+        <div class="trace-line"></div>
+        <div class="journey-pills">
+          <span class="pill teal" data-i18n="explore">Explore</span>
+          <span class="pill blue" data-i18n="learn">Learn</span>
+          <span class="pill orange" data-i18n="create">Create</span>
+          <span class="pill purple" data-i18n="impact">Impact</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="why">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-kicker">THE ATHAR JOURNEY</span>
-        <h2 id="whyTitle">A learning journey built around human capability.</h2>
-        <p id="whyText">ATHAR combines curiosity, learning, creation and positive impact with a child-safe AI readiness model.</p>
+  <section id="purpose" class="section shell">
+    <div class="section-heading">
+      <span class="kicker" data-i18n="purposeKicker">THE IDEA</span>
+      <h2 data-i18n="purposeTitle">AI literacy that strengthens the child, not dependence on the tool.</h2>
+      <p data-i18n="purposeText">ATHAR is designed around one governing principle: the child remains the thinker. AI remains the tool.</p>
+    </div>
+    <div class="principles-grid" id="principlesGrid"></div>
+  </section>
+
+  <section id="journey" class="section journey-section">
+    <div class="shell">
+      <div class="section-heading compact">
+        <span class="kicker" data-i18n="journeyKicker">EXPLORE • LEARN • CREATE • IMPACT</span>
+        <h2 data-i18n="journeyTitle">A visible journey from curiosity to responsible impact.</h2>
       </div>
-      <div id="ideaGrid" class="idea-grid"></div>
+      <div class="journey-grid" id="journeyGrid"></div>
+      <div class="super-panel">
+        <div class="super-copy">
+          <span class="kicker">SUPER</span>
+          <h3 data-i18n="superTitle">A thinking routine children can reuse anywhere.</h3>
+          <p data-i18n="superText">State the goal, use helpful details, pick the output, examine the result and refine the work.</p>
+        </div>
+        <div class="super-steps" id="superSteps"></div>
+      </div>
     </div>
   </section>
 
-  <section id="method" class="soft-section">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-kicker">THINKING ROUTINE</span>
-        <h2 id="methodTitle">The SUPER learning method</h2>
-        <p id="methodText">A repeatable thinking routine that keeps the learner—not the model—in control.</p>
+  <section id="safety" class="section shell">
+    <div class="section-heading">
+      <span class="kicker" data-i18n="safetyKicker">CHILD-SAFE BY DESIGN</span>
+      <h2 data-i18n="safetyTitle">Safety is architecture, not a disclaimer.</h2>
+      <p data-i18n="safetyText">ATHAR separates prevention, detection, response, recovery and assurance so child-facing AI practice remains bounded and supervised.</p>
+    </div>
+    <div class="safety-layout">
+      <div class="passport-card safety-passport">
+        <img src="assets/brand/ATHAR_Symbol_color.svg" alt="" class="passport-logo">
+        <span class="passport-label" data-i18n="safetyPassport">Safety Passport</span>
+        <strong>SP 1–6</strong>
+        <p data-i18n="safetyPassportText">Learners demonstrate core safety habits before guided open practice is available.</p>
       </div>
-      <div id="superGrid" class="super"></div>
+      <div class="passport-card skills-passport">
+        <img src="assets/brand/ATHAR_Symbol_color.svg" alt="" class="passport-logo">
+        <span class="passport-label" data-i18n="skillsPassport">Skills Passport</span>
+        <strong>C 1–12</strong>
+        <p data-i18n="skillsPassportText">Evidence-based progress across judgment, ethics, AI technique and creation.</p>
+      </div>
+      <div class="safety-stack" id="safetyStack"></div>
     </div>
   </section>
 
-  <section id="experience">
-    <div class="wrap">
-      <div class="section-head compact">
-        <span class="section-kicker">INTERACTIVE DEMO</span>
-        <h2>See ATHAR as a product, not just a concept.</h2>
+  <section id="product" class="section product-section">
+    <div class="shell">
+      <div class="section-heading compact inverse">
+        <span class="kicker" data-i18n="productKicker">ATHAR V3 INTERACTIVE DEMO</span>
+        <h2 data-i18n="productTitle">See the product through the eyes of a child, parent and educator.</h2>
+        <p data-i18n="productText">This demonstration is intentionally front-end only: no live AI, no authentication, no payments and no real child data.</p>
       </div>
-      <div class="product-shell">
-        <div class="shell-head">
-          <div class="shell-title">
-            <img src="assets/athar-symbol.svg" onerror="this.onerror=null;this.src='assets/athar-approved-symbol.jpg'" alt="ATHAR symbol">
-            <div>
-              <h3 id="demoTitle">ATHAR v2 experience</h3>
-              <div id="demoSub">Interactive product demonstration • no live AI or real child data</div>
+      <div class="demo-window">
+        <div class="demo-topbar">
+          <div class="demo-brand"><img src="assets/brand/ATHAR_Symbol_color.svg" alt=""><span><b>ATHAR</b><small>v3 demo</small></span></div>
+          <div class="role-switch" role="tablist" aria-label="Demo roles">
+            <button class="role-button active" data-role="child" type="button" data-i18n="roleChild">Young Explorer</button>
+            <button class="role-button" data-role="parent" type="button" data-i18n="roleParent">Parent</button>
+            <button class="role-button" data-role="educator" type="button" data-i18n="roleEducator">Educator</button>
+          </div>
+          <span class="demo-status" data-i18n="demoStatus">Safety-first demo</span>
+        </div>
+        <div class="demo-body">
+          <aside class="demo-sidebar">
+            <div class="mini-brand"><img src="assets/brand/ATHAR_Symbol_color.svg" alt=""><span>ATHAR <b lang="ar" dir="rtl">أثر</b></span></div>
+            <div class="profile-card" id="profileCard"></div>
+            <div class="sidebar-nav" id="sidebarNav"></div>
+          </aside>
+          <div class="demo-main">
+            <div class="demo-heading" id="demoHeading"></div>
+            <div class="metric-grid" id="metricGrid"></div>
+            <div class="content-grid">
+              <div class="workspace-card" id="primaryCard"></div>
+              <div class="workspace-card" id="secondaryCard"></div>
             </div>
           </div>
-          <span class="status">SAFETY-FIRST DEMO</span>
-        </div>
-        <div class="role-tabs" role="tablist" aria-label="ATHAR roles">
-          <button class="role-tab active" data-role="child" type="button">Young Explorer</button>
-          <button class="role-tab" data-role="parent" type="button">Parent</button>
-          <button class="role-tab" data-role="educator" type="button">Educator</button>
-        </div>
-        <div class="app">
-          <aside class="sidebar">
-            <span class="sidebar-brand-composite" aria-label="ATHAR | أثر">
-              <img src="assets/athar-symbol.svg" onerror="this.onerror=null;this.src='assets/athar-approved-symbol.jpg'" alt="">
-              <span><span class="brand-en">ATHAR</span><span class="brand-ar" lang="ar" dir="rtl">أثر</span></span>
-            </span>
-            <div id="profile" class="profile"></div>
-            <div class="side-link active"><span class="side-icon">⌂</span><span>Overview</span></div>
-            <div class="side-link"><img src="assets/ui/learn.svg" alt=""><span>Missions</span></div>
-            <div class="side-link"><img src="assets/ui/safety.svg" alt=""><span>Safety Passport</span></div>
-            <div class="side-link"><img src="assets/ui/skills.svg" alt=""><span>Skills Passport</span></div>
-            <div class="side-link"><span class="side-icon">⚙</span><span>Settings</span></div>
-          </aside>
-          <section class="workspace">
-            <div id="workspaceHead" class="workspace-head"></div>
-            <div id="stats" class="stats"></div>
-            <div class="panel-grid">
-              <div id="mainPanel" class="panel"></div>
-              <div id="sidePanel" class="panel"></div>
-            </div>
-          </section>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="principle-section">
-    <div class="wrap principle-wrap">
-      <img src="assets/athar-symbol.svg" onerror="this.onerror=null;this.src='assets/athar-approved-symbol.jpg'" alt="" class="principle-mark">
-      <p id="principle" class="principle">The child remains the thinker. AI remains the tool.</p>
-    </div>
+  <section class="section shell closing-section">
+    <img src="assets/brand/ATHAR_Symbol_color.svg" alt="" class="closing-mark">
+    <p class="closing-principle" data-i18n="closing">The child remains the thinker. AI remains the tool.</p>
+    <p class="brand-expansion">Agency · Transformation · Honing · Artificial Intelligence · Readiness</p>
   </section>
 </main>
 
-<footer>
-  <div class="wrap footer">
-    <span class="footer-brand-composite" aria-label="ATHAR | أثر">
-      <img src="assets/athar-symbol.svg" onerror="this.onerror=null;this.src='assets/athar-approved-symbol.jpg'" alt="">
-      <span class="brand-wordmark"><span class="brand-en">ATHAR</span><span class="brand-sep" aria-hidden="true"></span><span class="brand-ar" lang="ar" dir="rtl">أثر</span></span>
-    </span>
-    <small>ATHAR v2 concept demo • UAE-first • Ages 7–12 • Controlled brand identity</small>
+<footer class="site-footer">
+  <div class="shell footer-shell">
+    <div class="footer-brand">
+      <img src="assets/brand/ATHAR_Symbol_white.svg" alt="" class="footer-symbol">
+      <div><strong>ATHAR <span lang="ar" dir="rtl">أثر</span></strong><small data-i18n="footerLine">UAE-born • Child-safe • AI-ready</small></div>
+    </div>
+    <small data-i18n="footerDisclaimer">Concept demonstration. Brand identity controlled to ATHAR production standards.</small>
   </div>
 </footer>
 
-<div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-card">
-    <h3 id="modalTitle">Verification mission</h3>
-    <p id="modalText"></p>
-    <div id="question" class="question"></div>
-    <div id="answers" class="answers"></div>
-    <p id="feedback" aria-live="polite"></p>
-    <div class="modal-actions"><button class="btn soft" type="button" onclick="closeModal()">Close / إغلاق</button></div>
+<div class="modal" id="missionModal" role="dialog" aria-modal="true" aria-labelledby="missionTitle">
+  <div class="modal-panel">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close">×</button>
+    <div class="modal-badge">SUPER • E</div>
+    <h3 id="missionTitle"></h3>
+    <p id="missionPrompt"></p>
+    <div class="answer-grid" id="answerGrid"></div>
+    <p id="missionFeedback" class="feedback" aria-live="polite"></p>
   </div>
 </div>
 <script src="app.js" defer></script>
