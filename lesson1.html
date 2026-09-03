@@ -6,9 +6,6 @@
 <meta name="theme-color" content="#0B2345">
 <meta name="description" content="ATHAR Lesson 1 — What Is AI?">
 <title>ATHAR Lesson 1 | What Is AI?</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="lesson1.css">
 </head>
 <body>
@@ -23,9 +20,9 @@
     <div class="progress-track" aria-label="Lesson progress"><span id="progressFill"></span></div>
   </div>
   <div class="header-actions">
-    <button id="listenBtn" class="chip" type="button" aria-pressed="false">🎧 <span data-ui="listen">Listen</span></button>
-    <button id="ageBtn" class="chip" type="button" aria-expanded="false">Age <span id="ageLabel">7–9</span></button>
-    <button id="companionBtn" class="chip" type="button" aria-expanded="false">Companion</button>
+    <button id="listenBtn" class="chip" type="button">🎧 <span data-ui="listen">Listen</span></button>
+    <button id="ageBtn" class="chip" type="button" aria-expanded="false" aria-controls="ageMenu">Age <span id="ageLabel">7–9</span></button>
+    <button id="companionBtn" class="chip" type="button" aria-expanded="false" aria-controls="companionMenu">Companion</button>
     <button id="langBtn" class="chip" type="button">العربية</button>
   </div>
 </header>
@@ -41,5 +38,6 @@
 </aside>
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 <script src="lesson1.js" defer></script>
+<script src="lesson1-hardening.js" defer></script>
 </body>
 </html>
