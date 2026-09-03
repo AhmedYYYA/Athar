@@ -82,9 +82,9 @@ test('health/safety transfer requires trusted adult', async ({ page }) => {
   await page.evaluate(() => localStorage.setItem('athar.lesson1.v2', JSON.stringify({stage:6,lang:'en',age:'10-12',companion:'none',done:[0,1,2,3,4,5],evidence:{recognition:'independent',patterns:'independent',verification:'not-yet',privacy:'not-yet',agency:'not-yet'},hints:{},missionStep:0,completed:false})));
   await page.reload();
   await page.getByRole('button', { name: 'Check it' }).click();
-  await page.getByRole('button', { name: /Check my choice/ }).click();
   await expect(page.getByText(/medicine/i)).toBeVisible();
   await page.getByRole('button', { name: /Ask a trusted adult/ }).click();
+  await page.getByRole('button', { name: /Check my choice/ }).click();
   await expect(page.locator('[data-goto="7"]')).not.toBeDisabled();
   await expect(page.getByRole('heading', { name: /My Three Smart AI Rules/ })).toBeVisible();
 });
