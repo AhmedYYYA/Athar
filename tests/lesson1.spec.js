@@ -1,7 +1,9 @@
 const { test, expect } = require('@playwright/test');
+const BASE = process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:4173';
+const URL = `${BASE}/lesson1.html`;
 
 async function reset(page) {
-  await page.goto('/lesson1.html');
+  await page.goto(URL);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
 }
@@ -105,7 +107,7 @@ test('render snapshots', async ({ page }, testInfo) => {
   ];
   for (const c of cases) {
     await page.setViewportSize({width:c.width,height:c.height});
-    await page.goto('/lesson1.html');
+    await page.goto(URL);
     await page.evaluate(c => localStorage.setItem('athar.lesson1.v2', JSON.stringify({stage:c.stage,lang:c.lang,age:c.age,companion:'none',done:Array.from({length:c.stage},(_,i)=>i),evidence:{recognition:'independent',patterns:'independent',verification:'independent',privacy:'independent',agency:'not-yet'},hints:{},missionStep:0,completed:false})), c);
     await page.reload();
     await page.screenshot({ path: testInfo.outputPath(`${c.name}.png`), fullPage:true });
