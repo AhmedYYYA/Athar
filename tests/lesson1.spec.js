@@ -85,8 +85,8 @@ test('health/safety transfer requires trusted adult', async ({ page }) => {
   await page.getByRole('button', { name: /Check my choice/ }).click();
   await expect(page.getByText(/medicine/i)).toBeVisible();
   await page.getByRole('button', { name: /Ask a trusted adult/ }).click();
-  await page.getByRole('button', { name: /Continue/ }).click();
   await expect(page.locator('[data-goto="7"]')).not.toBeDisabled();
+  await expect(page.getByRole('heading', { name: /My Three Smart AI Rules/ })).toBeVisible();
 });
 
 test('keyboard focus and no horizontal overflow at phone size', async ({ page }) => {
