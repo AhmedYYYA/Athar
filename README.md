@@ -25,6 +25,19 @@ The current build is a bilingual Arabic/English interactive concept demonstratin
 - age-appropriate supervised learning framing
 - UAE-first product positioning
 
+## Approved visual identity
+
+The website uses the controlled ATHAR | أثر production assets supplied with the approved brand system:
+
+- bilingual master lockup: `assets/athar-lockup.png`
+- master symbol: `assets/athar-symbol.svg`
+- application and browser icons: the approved dark-background icon family
+- English interface typography: Rubik
+- Arabic interface typography: Cairo with Tajawal fallback
+- master palette: Navy `#0B2345`, Teal `#0EA7A1`, Blue `#178DCE`, Purple `#7457C8`, Orange `#F7931E`, Yellow `#F9B719`, and Warm Cream `#F7F2E9`
+
+The Arabic wordmark must remain exactly **أثر**. Do not redraw, recolour, distort, crop, substitute or regenerate the approved symbol or lockup. Colour is never the only carrier of meaning, and body text uses approved accessible foreground/background combinations.
+
 ## Safety boundary
 
 This is a front-end concept demo only. It does not connect to a live AI model, collect real child data, implement authentication, perform payments, or provide unrestricted child chat.
