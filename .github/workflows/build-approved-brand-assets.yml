@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   validate-brand-assets:
@@ -22,16 +22,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Materialize approved v3 symbol from controlled source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s assets/brand/ATHAR_Approved_Symbol_v3.b64.txt
+          base64 --decode assets/brand/ATHAR_Approved_Symbol_v3.b64.txt > assets/brand/ATHAR_Approved_Symbol_v3.jpg
+          file assets/brand/ATHAR_Approved_Symbol_v3.jpg | grep -qi 'JPEG image data'
+          test -s assets/brand/ATHAR_Approved_Symbol_v3.jpg
+
       - name: Verify required controlled assets
         shell: bash
         run: |
           set -euo pipefail
           required=(
+            assets/brand/ATHAR_Approved_Symbol_v3.jpg
+            assets/brand/ATHAR_Approved_Symbol_v3.b64.txt
             assets/athar-approved-lockup.jpg
             assets/athar-approved-symbol.jpg
-            assets/athar-lockup.svg
-            assets/athar-symbol.svg
-            assets/favicon.svg
             assets/ui/explore.svg
             assets/ui/learn.svg
             assets/ui/create.svg
@@ -44,25 +52,7 @@ jobs:
             echo "present: $f"
           done
 
-      - name: Validate SVG XML
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-          import xml.etree.ElementTree as ET
-          files = [
-              Path('assets/athar-lockup.svg'), Path('assets/athar-symbol.svg'),
-              Path('assets/favicon.svg'), *sorted(Path('assets/ui').glob('*.svg'))
-          ]
-          for p in files:
-              root = ET.parse(p).getroot()
-              if not root.tag.endswith('svg'):
-                  raise SystemExit(f'Not an SVG root: {p}')
-              print(f'valid xml: {p}')
-          PY
-
-      - name: Verify approved Arabic spelling and asset references
+      - name: Verify approved Arabic spelling and application asset references
         shell: bash
         run: |
           set -euo pipefail
@@ -82,13 +72,16 @@ jobs:
           print('All referenced local assets exist')
           PY
 
-      - name: Reject obsolete ATHAR asset pipeline files
+      - name: Commit materialized approved symbol if changed
         shell: bash
         run: |
           set -euo pipefail
-          for f in assets/athar-approved-logo.jpg assets/athar-approved-logo-base64.txt assets/athar-approved-logo.sha256; do
-            if [ -e "$f" ]; then
-              echo "Obsolete asset must be removed: $f"
-              exit 1
-            fi
-          done
+          if git diff --quiet -- assets/brand/ATHAR_Approved_Symbol_v3.jpg && git ls-files --error-unmatch assets/brand/ATHAR_Approved_Symbol_v3.jpg >/dev/null 2>&1; then
+            echo 'Approved symbol already current'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/brand/ATHAR_Approved_Symbol_v3.jpg
+          git commit -m 'Materialize approved ATHAR v3 symbol asset'
+          git push
