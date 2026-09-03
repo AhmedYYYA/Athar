@@ -6,6 +6,7 @@ on:
       - 'lesson1.html'
       - 'lesson1.css'
       - 'lesson1.js'
+      - 'lesson1-hardening.js'
       - 'tests/lesson1.spec.js'
       - '.github/workflows/lesson1-rendered-qa.yml'
   pull_request:
@@ -14,6 +15,7 @@ on:
       - 'lesson1.html'
       - 'lesson1.css'
       - 'lesson1.js'
+      - 'lesson1-hardening.js'
       - 'tests/lesson1.spec.js'
       - '.github/workflows/lesson1-rendered-qa.yml'
 permissions:
@@ -26,7 +28,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
       - name: Install Playwright
         run: |
           npm init -y >/dev/null 2>&1
@@ -42,7 +44,7 @@ jobs:
         env:
           PLAYWRIGHT_BASE_URL: http://127.0.0.1:4173
       - name: WebKit core smoke
-        run: npx playwright test tests/lesson1.spec.js --browser=webkit --workers=1 --grep 'entry renders|Arabic RTL|optional companions|health/safety|keyboard focus'
+        run: npx playwright test tests/lesson1.spec.js --browser=webkit --workers=1 --grep 'entry renders|Arabic RTL|optional companions|health/safety|keyboard focus|end-to-end acceptance — 11 EN Hamdan'
         env:
           PLAYWRIGHT_BASE_URL: http://127.0.0.1:4173
       - name: Upload rendered QA artifacts
