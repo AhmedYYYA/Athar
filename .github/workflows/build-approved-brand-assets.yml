@@ -1,96 +1,94 @@
-name: Build approved ATHAR brand assets
+name: Validate ATHAR brand assets
 
 on:
   push:
     branches: [main]
     paths:
-      - 'assets/athar-approved-logo-base64.txt'
+      - 'index.html'
+      - 'styles.css'
+      - 'app.js'
+      - 'manifest.webmanifest'
+      - 'assets/**'
       - '.github/workflows/build-approved-brand-assets.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  build-brand-assets:
+  validate-brand-assets:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Decode approved master artwork
+      - name: Verify required controlled assets
         shell: bash
         run: |
           set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-          import base64, re
-          src = Path('assets/athar-approved-logo-base64.txt').read_text(encoding='utf-8', errors='ignore')
-          runs = re.findall(r'[A-Za-z0-9+/=]{1000,}', src)
-          if not runs:
-              raise SystemExit('No valid base64 payload found')
-          payload = max(runs, key=len)
-          data = base64.b64decode(payload + '===', validate=False)
-          Path('assets/athar-approved-logo.jpg').write_bytes(data)
-          print(f'Decoded {len(data)} bytes')
-          PY
+          required=(
+            assets/athar-approved-lockup.jpg
+            assets/athar-approved-symbol.jpg
+            assets/athar-lockup.svg
+            assets/athar-symbol.svg
+            assets/favicon.svg
+            assets/ui/explore.svg
+            assets/ui/learn.svg
+            assets/ui/create.svg
+            assets/ui/impact.svg
+            assets/ui/safety.svg
+            assets/ui/skills.svg
+          )
+          for f in "${required[@]}"; do
+            test -s "$f" || { echo "Missing or empty controlled asset: $f"; exit 1; }
+            echo "present: $f"
+          done
 
-      - name: Verify decoded artwork
-        shell: bash
-        run: |
-          set -euo pipefail
-          test -s assets/athar-approved-logo.jpg
-          file assets/athar-approved-logo.jpg | grep -qi 'JPEG image data'
-          sha256sum assets/athar-approved-logo.jpg > assets/athar-approved-logo.sha256
-
-      - name: Generate Safari-compatible exact-reference SVG assets
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import base64
-          data = Path('assets/athar-approved-logo.jpg').read_bytes()
-          b64 = base64.b64encode(data).decode('ascii')
-          uri = f'data:image/jpeg;base64,{b64}'
-          lockup = f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="420" height="308" viewBox="0 0 420 308" role="img" aria-labelledby="title desc">
-<title id="title">ATHAR | أثر approved master identity</title><desc id="desc">Approved ATHAR bilingual logo artwork.</desc>
-<image href="{uri}" xlink:href="{uri}" x="0" y="0" width="420" height="308" preserveAspectRatio="xMidYMid meet"/>
-</svg>'''
-          symbol = f'''<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="245" height="250" viewBox="72 0 245 250" role="img" aria-labelledby="title desc">
-<title id="title">ATHAR approved symbol</title><desc id="desc">Approved ATHAR trace, child and learning-path symbol.</desc>
-<image href="{uri}" xlink:href="{uri}" x="0" y="0" width="420" height="308" preserveAspectRatio="none"/>
-</svg>'''
-          Path('assets/athar-lockup.svg').write_text(lockup, encoding='utf-8')
-          Path('assets/athar-symbol.svg').write_text(symbol, encoding='utf-8')
-          PY
-
-      - name: Validate SVG files
+      - name: Validate SVG XML
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
           import xml.etree.ElementTree as ET
-          for p in [Path('assets/athar-lockup.svg'), Path('assets/athar-symbol.svg')]:
-              ET.parse(p)
-              text = p.read_text(encoding='utf-8')
-              assert 'data:image/jpeg;base64,' in text
-              assert 'xlink:href=' in text
-              print(f'validated {p}')
+          files = [
+              Path('assets/athar-lockup.svg'), Path('assets/athar-symbol.svg'),
+              Path('assets/favicon.svg'), *sorted(Path('assets/ui').glob('*.svg'))
+          ]
+          for p in files:
+              root = ET.parse(p).getroot()
+              if not root.tag.endswith('svg'):
+                  raise SystemExit(f'Not an SVG root: {p}')
+              print(f'valid xml: {p}')
           PY
 
-      - name: Commit controlled assets
+      - name: Verify approved Arabic spelling and asset references
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/athar-approved-logo.jpg assets/athar-approved-logo.sha256 assets/athar-lockup.svg assets/athar-symbol.svg
-          if git diff --cached --quiet; then
-            echo "No asset changes to commit"
-          else
-            git commit -m "Harden approved ATHAR SVG assets for browser compatibility"
-            git push
-          fi
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          html = Path('index.html').read_text(encoding='utf-8')
+          js = Path('app.js').read_text(encoding='utf-8')
+          if 'أثر' not in html + js:
+              raise SystemExit('Approved Arabic wordmark spelling أثر not found in application text')
+          refs = set(re.findall(r'(?:src|href)=["\'](assets/[^"\']+)["\']', html))
+          manifest = Path('manifest.webmanifest').read_text(encoding='utf-8')
+          refs.update(re.findall(r'"src"\s*:\s*"(assets/[^"]+)"', manifest))
+          missing = sorted(r for r in refs if not Path(r).exists())
+          if missing:
+              raise SystemExit('Missing referenced assets: ' + ', '.join(missing))
+          print('All referenced local assets exist')
+          PY
+
+      - name: Reject obsolete ATHAR asset pipeline files
+        shell: bash
+        run: |
+          set -euo pipefail
+          for f in assets/athar-approved-logo.jpg assets/athar-approved-logo-base64.txt assets/athar-approved-logo.sha256; do
+            if [ -e "$f" ]; then
+              echo "Obsolete asset must be removed: $f"
+              exit 1
+            fi
+          done
