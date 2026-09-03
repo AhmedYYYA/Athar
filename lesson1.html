@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0B2345">
+<meta name="description" content="ATHAR Lesson 1 — What Is AI?">
+<title>ATHAR Lesson 1 | What Is AI?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="lesson1.css">
+</head>
+<body>
+<a class="skip-link" href="#lessonMain">Skip to lesson</a>
+<header class="lesson-header">
+  <a class="brand" href="index.html" aria-label="ATHAR home">
+    <img src="assets/brand/ATHAR_Approved_Symbol_v3.jpg" alt="">
+    <span>ATHAR <b lang="ar" dir="rtl">أثر</b></span>
+  </a>
+  <div class="header-center">
+    <strong id="lessonTitle">Lesson 1 — What Is AI?</strong>
+    <div class="progress-track" aria-label="Lesson progress"><span id="progressFill"></span></div>
+  </div>
+  <div class="header-actions">
+    <button id="listenBtn" class="chip" type="button" aria-pressed="false">🎧 <span data-ui="listen">Listen</span></button>
+    <button id="ageBtn" class="chip" type="button" aria-expanded="false">Age <span id="ageLabel">7–9</span></button>
+    <button id="companionBtn" class="chip" type="button" aria-expanded="false">Companion</button>
+    <button id="langBtn" class="chip" type="button">العربية</button>
+  </div>
+</header>
+<div class="popover" id="ageMenu" hidden><button data-age="7-9">Age 7–9</button><button data-age="10-12">Age 10–12</button></div>
+<div class="popover" id="companionMenu" hidden><button data-companion="hamdan">Hamdan | حمدان</button><button data-companion="hessa">Hessa | حصه</button><button data-companion="none">No companion</button></div>
+<main id="lessonMain" class="lesson-shell" tabindex="-1">
+  <section class="stage-nav" aria-label="Lesson stages"><ol id="stageDots"></ol></section>
+  <section id="stageView" class="stage-view" aria-live="polite"></section>
+</main>
+<aside id="companionPanel" class="companion-panel" hidden>
+  <img id="companionImage" alt="">
+  <div><strong id="companionName"></strong><p id="companionText"></p><button id="hintBtn" class="small-button" type="button">Give me a hint</button></div>
+</aside>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<script src="lesson1.js" defer></script>
+</body>
+</html>
