@@ -1,0 +1,12 @@
+{
+  "name":"ATHAR | أثر",
+  "short_name":"ATHAR",
+  "description":"Child-safe AI literacy and readiness for ages 7–12.",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#F7F2E9",
+  "theme_color":"#0B2345",
+  "lang":"en",
+  "dir":"auto",
+  "icons":[{"src":"assets/athar-symbol.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]
+}
