@@ -8,10 +8,16 @@ async function chooseCompanion(page,name){await page.locator('#companionBtn').cl
 async function seedState(page,data){await page.evaluate(data=>{localStorage.clear();localStorage.setItem('athar.lesson.lang',data.lang||'en');localStorage.setItem('athar.lesson.age',data.age||'7-9');localStorage.setItem('athar.companion',data.companion||'none');localStorage.setItem('athar.lesson1.v2',JSON.stringify(data));},data);await page.reload();}
 async function clickSingle(page,key,i=0){await page.locator(`[data-single="${key}"][data-i="${i}"]`).click();}
 async function mastery(page,action){await page.locator(`[data-action="${action}"]`).click();await expect(page.locator('[data-action="next"]')).toBeVisible();await page.locator('[data-action="next"]').click();}
+async function expectDecodedCompanion(page,selector='#stageCompanion'){
+  const img=page.locator(selector);
+  await expect(img).toBeVisible();
+  await expect.poll(async()=>img.evaluate(el=>({complete:el.complete,w:el.naturalWidth,h:el.naturalHeight})),{timeout:10000}).toEqual({complete:true,w:4096,h:4096});
+  await expect(img).toHaveJSProperty('complete',true);
+}
 
 async function runJourney(page,p){
   await reset(page); await chooseAge(page,p.age);
-  if(p.companion!=='none')await chooseCompanion(page,p.companion);
+  if(p.companion!=='none'){await chooseCompanion(page,p.companion);await expectDecodedCompanion(page);}
   if(p.lang==='ar')await page.getByRole('button',{name:'العربية'}).click();
   await expect(page.locator('html')).toHaveAttribute('lang',p.lang);
   await expect(page.locator('html')).toHaveAttribute('dir',p.lang==='ar'?'rtl':'ltr');
@@ -41,7 +47,7 @@ test('entry renders and blocks forward skipping',async({page})=>{await reset(pag
 
 test('Arabic RTL and age depth persist after reload',async({page})=>{await reset(page);await chooseAge(page,'10-12');await page.getByRole('button',{name:'العربية'}).click();await expect(page.locator('html')).toHaveAttribute('lang','ar');await expect(page.locator('html')).toHaveAttribute('dir','rtl');await page.reload();await expect(page.locator('html')).toHaveAttribute('lang','ar');await expect(page.locator('#ageLabel')).toHaveText('10–12');});
 
-test('optional companions: none, Hamdan, Hessa',async({page})=>{await reset(page);await expect(page.locator('#companionPanel')).toBeHidden();await expect(page.locator('.companion-slot.empty')).toBeHidden();await chooseCompanion(page,'Hamdan');await expect(page.locator('#companionPanel')).toBeVisible();await expect(page.locator('#companionName')).toContainText('Hamdan');await chooseCompanion(page,'Hessa');await expect(page.locator('#companionName')).toContainText('Hessa');await chooseCompanion(page,'No companion');await expect(page.locator('#companionPanel')).toBeHidden();await expect(page.locator('.companion-slot.empty')).toBeHidden();});
+test('optional companions decode from approved 4K masters: none, Hamdan, Hessa',async({page})=>{await reset(page);await expect(page.locator('#companionPanel')).toBeHidden();await expect(page.locator('.companion-slot.empty')).toBeHidden();await chooseCompanion(page,'Hamdan');await expect(page.locator('#companionPanel')).toBeVisible();await expect(page.locator('#companionName')).toContainText('Hamdan');await expectDecodedCompanion(page);await expectDecodedCompanion(page,'#companionImage');await chooseCompanion(page,'Hessa');await expect(page.locator('#companionName')).toContainText('Hessa');await expectDecodedCompanion(page);await expectDecodedCompanion(page,'#companionImage');await chooseCompanion(page,'No companion');await expect(page.locator('#companionPanel')).toBeHidden();await expect(page.locator('.companion-slot.empty')).toBeHidden();});
 
 test('privacy mastery blocks progression until correct',async({page})=>{await reset(page);await seedState(page,{stage:7,lang:'en',age:'7-9',companion:'none',done:[0,1,2,3,4,5,6],evidence:{recognition:'independent',patterns:'independent',verification:'independent',privacy:'not-yet',agency:'not-yet'},hints:{},missionStep:0,completed:false});await page.getByRole('button',{name:/Favourite animal/}).click();await page.getByRole('button',{name:/Check privacy choices/}).click();await expect(page.locator('[data-goto="8"]')).toBeDisabled();for(const name of ['Home address','Password','School or identifying location','Phone number'])await page.getByRole('button',{name:new RegExp(name)}).click();await page.getByRole('button',{name:/Favourite animal/}).click();await page.getByRole('button',{name:/Check privacy choices/}).click();await expect(page.locator('[data-goto="8"]')).not.toBeDisabled();await expect(page.locator('[data-action="next"]')).toBeVisible();});
 
@@ -58,11 +64,11 @@ for(const p of [
   {label:'12 AR Hessa with competency hint',lang:'ar',age:'10-12',companion:'Hessa',hintAt:3}
 ])test(`end-to-end acceptance — ${p.label}`,async({page})=>runJourney(page,p));
 
-test('no external runtime requests and no page errors',async({page})=>{const external=[],errors=[];page.on('request',r=>{try{const u=new URL(r.url());if(u.protocol.startsWith('http')&&u.host!=='127.0.0.1:4173')external.push(r.url())}catch{}});page.on('pageerror',e=>errors.push(String(e)));await reset(page);await chooseCompanion(page,'Hamdan');await page.waitForTimeout(250);expect(external).toEqual([]);expect(errors).toEqual([]);});
+test('no external runtime requests and no page errors',async({page})=>{const external=[],errors=[];page.on('request',r=>{try{const u=new URL(r.url());if(u.protocol.startsWith('http')&&u.host!=='127.0.0.1:4173')external.push(r.url())}catch{}});page.on('pageerror',e=>errors.push(String(e)));await reset(page);await chooseCompanion(page,'Hamdan');await expectDecodedCompanion(page);expect(external).toEqual([]);expect(errors).toEqual([]);});
 
-test('render snapshots have true locale and age state',async({page},testInfo)=>{for(const c of [
+test('render snapshots have true locale, age and decoded companion state',async({page},testInfo)=>{for(const c of [
   {name:'phone-en-7',width:375,height:812,lang:'en',age:'7-9',stage:0,companion:'none'},
   {name:'phone-ar-8-hessa',width:375,height:812,lang:'ar',age:'7-9',stage:1,companion:'hessa'},
   {name:'tablet-en-11-hamdan',width:768,height:1024,lang:'en',age:'10-12',stage:4,companion:'hamdan'},
   {name:'desktop-ar-12',width:1440,height:1000,lang:'ar',age:'10-12',stage:8,companion:'none'}
-]){await page.setViewportSize({width:c.width,height:c.height});await page.goto(URL);await page.evaluate(c=>{localStorage.clear();localStorage.setItem('athar.lesson.lang',c.lang);localStorage.setItem('athar.lesson.age',c.age);localStorage.setItem('athar.companion',c.companion);localStorage.setItem('athar.lesson1.v2',JSON.stringify({stage:c.stage,lang:c.lang,age:c.age,companion:c.companion,done:Array.from({length:c.stage},(_,i)=>i),evidence:{recognition:'independent',patterns:'independent',verification:'independent',privacy:'independent',agency:'not-yet'},hints:{},missionStep:0,completed:false}));},c);await page.reload();await expect(page.locator('html')).toHaveAttribute('lang',c.lang);await expect(page.locator('html')).toHaveAttribute('dir',c.lang==='ar'?'rtl':'ltr');await expect(page.locator('#ageLabel')).toHaveText(c.age==='7-9'?'7–9':'10–12');await page.screenshot({path:testInfo.outputPath(`${c.name}.png`),fullPage:true});}});
+]){await page.setViewportSize({width:c.width,height:c.height});await page.goto(URL);await page.evaluate(c=>{localStorage.clear();localStorage.setItem('athar.lesson.lang',c.lang);localStorage.setItem('athar.lesson.age',c.age);localStorage.setItem('athar.companion',c.companion);localStorage.setItem('athar.lesson1.v2',JSON.stringify({stage:c.stage,lang:c.lang,age:c.age,companion:c.companion,done:Array.from({length:c.stage},(_,i)=>i),evidence:{recognition:'independent',patterns:'independent',verification:'independent',privacy:'independent',agency:'not-yet'},hints:{},missionStep:0,completed:false}));},c);await page.reload();await expect(page.locator('html')).toHaveAttribute('lang',c.lang);await expect(page.locator('html')).toHaveAttribute('dir',c.lang==='ar'?'rtl':'ltr');await expect(page.locator('#ageLabel')).toHaveText(c.age==='7-9'?'7–9':'10–12');if(c.companion!=='none'){await expectDecodedCompanion(page);await expectDecodedCompanion(page,'#companionImage');}await page.screenshot({path:testInfo.outputPath(`${c.name}.png`),fullPage:true});}});
