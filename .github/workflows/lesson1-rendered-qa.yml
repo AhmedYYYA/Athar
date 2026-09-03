@@ -32,7 +32,7 @@ jobs:
       - name: Install Playwright
         run: |
           npm init -y >/dev/null 2>&1
-          npm install --no-save @playwright/test@1.55.0
+          npm install --no-save @playwright/test@1.62.1
           npx playwright install --with-deps chromium webkit
       - name: Start static server
         run: |
@@ -55,6 +55,7 @@ jobs:
           path: |
             test-results/
             playwright-report/
+            qa-artifacts/
             /tmp/athar-http.log
           if-no-files-found: ignore
           retention-days: 7
