@@ -1,0 +1,46 @@
+/* ATHAR Lesson 1 — final viewport fill + colourful child wording override */
+@media (min-width:901px){
+  body{min-height:100dvh}
+  .lesson-shell{height:calc(100dvh - 86px);min-height:0;padding:2px 0 6px;display:flex;flex-direction:column}
+  .stage-nav{flex:0 0 auto}
+  .stage-view{flex:1;min-height:0;display:flex}
+  .stage-card{height:100%;min-height:0;max-height:none;width:100%;display:grid;overflow:hidden}
+  .stage-card>div:first-child{min-height:0}
+  .stage-card>div:first-child:has(.grid){display:flex;flex-direction:column;height:100%}
+  .stage-card>div:first-child:has(.grid) .grid{flex:1;min-height:0;grid-auto-rows:1fr;margin:8px 0}
+  .stage-card>div:first-child:has(.grid) .choice,
+  .stage-card>div:first-child:has(.grid) .world-card,
+  .stage-card>div:first-child:has(.grid) .answer-card{height:100%;min-height:0}
+  .stage-card.dark>div:first-child{display:flex;flex-direction:column;height:100%;justify-content:space-between}
+  .stage-card.dark .journey-map{margin:10px 0}
+  .stage-card.dark .feedback{margin:8px 0}
+}
+
+/* Make key wording visibly playful and multicolour */
+.choice b,.answer-card b,.world-card b{
+  color:transparent!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  text-shadow:none!important;
+}
+.choice:nth-child(6n+1) b,.answer-card:nth-child(6n+1) b,.world-card:nth-child(6n+1) b{background:linear-gradient(90deg,#0B8F83,#168DCE,#7457C8)}
+.choice:nth-child(6n+2) b,.answer-card:nth-child(6n+2) b,.world-card:nth-child(6n+2) b{background:linear-gradient(90deg,#178DCE,#7457C8,#F7931E)}
+.choice:nth-child(6n+3) b,.answer-card:nth-child(6n+3) b,.world-card:nth-child(6n+3) b{background:linear-gradient(90deg,#7457C8,#C84D8D,#F7931E)}
+.choice:nth-child(6n+4) b,.answer-card:nth-child(6n+4) b,.world-card:nth-child(6n+4) b{background:linear-gradient(90deg,#F7931E,#C86B13,#7457C8)}
+.choice:nth-child(6n+5) b,.answer-card:nth-child(6n+5) b,.world-card:nth-child(6n+5) b{background:linear-gradient(90deg,#A57900,#0EA7A1,#178DCE)}
+.choice:nth-child(6n) b,.answer-card:nth-child(6n) b,.world-card:nth-child(6n) b{background:linear-gradient(90deg,#C84D8D,#7457C8,#178DCE)}
+
+h1{
+  background:linear-gradient(90deg,#0EA7A1 0 22%,#178DCE 22% 45%,#7457C8 45% 68%,#F7931E 68% 84%,#D39A00 84% 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;
+}
+.stage-card.dark h1{background:linear-gradient(90deg,#FFFFFF 0 28%,#7EE3D8 28% 48%,#A8D7FF 48% 68%,#D9C5FF 68% 84%,#FFD27E 84% 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+.lede{background:linear-gradient(90deg,#087A6E,#178DCE,#7457C8);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+.stage-card.dark .lede{background:linear-gradient(90deg,#E7FFF9,#D9EEFF,#EEE5FF);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+
+/* Use the empty vertical area rather than making the page scroll */
+@media (min-width:1100px){
+  .choice,.world-card,.answer-card{font-size:2.05rem!important}
+  html[lang=ar] .choice,html[lang=ar] .world-card,html[lang=ar] .answer-card{font-size:2.2rem!important}
+  .choice .icon,.world-card .icon,.answer-card .icon{font-size:2.25rem!important;width:44px!important;height:44px!important}
+}
