@@ -1,0 +1,73 @@
+name: Lesson 1 rendered QA
+on:
+  push:
+    branches: [lesson-1-production-v1]
+    paths:
+      - 'lesson1.html'
+      - 'lesson1.css'
+      - 'lesson1.js'
+      - 'lesson1-character-loader.js'
+      - 'lesson1-hardening.js'
+      - 'assets/hamdan/**'
+      - 'assets/hessa/**'
+      - 'tests/lesson1.spec.js'
+      - '.github/workflows/lesson1-rendered-qa.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'lesson1.html'
+      - 'lesson1.css'
+      - 'lesson1.js'
+      - 'lesson1-character-loader.js'
+      - 'lesson1-hardening.js'
+      - 'assets/hamdan/**'
+      - 'assets/hessa/**'
+      - 'tests/lesson1.spec.js'
+      - '.github/workflows/lesson1-rendered-qa.yml'
+permissions:
+  contents: read
+jobs:
+  rendered-browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save @playwright/test@1.62.1
+          npx playwright install --with-deps chromium webkit
+      - name: Start static server
+        run: |
+          python3 -m http.server 4173 > /tmp/athar-http.log 2>&1 &
+          echo $! > /tmp/athar-http.pid
+          sleep 2
+      - name: Chromium acceptance and rendering
+        run: npx playwright test tests/lesson1.spec.js --browser=chromium --workers=1
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:4173
+      - name: Preserve Chromium render evidence
+        run: |
+          mkdir -p qa-artifacts
+          find test-results -type f -name '*.png' -exec cp {} qa-artifacts/ \; || true
+          find test-results -type f -name 'error-context.md' -exec cp {} qa-artifacts/ \; || true
+          ls -la qa-artifacts
+      - name: WebKit core smoke
+        run: npx playwright test tests/lesson1.spec.js --browser=webkit --workers=1 --grep 'entry renders|Arabic RTL|optional companions|health/safety|keyboard focus|end-to-end acceptance — 11 EN Hamdan'
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:4173
+      - name: Upload rendered QA artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lesson1-rendered-qa
+          path: |
+            test-results/
+            playwright-report/
+            qa-artifacts/
+            /tmp/athar-http.log
+          if-no-files-found: ignore
+          retention-days: 7
