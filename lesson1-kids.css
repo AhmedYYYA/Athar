@@ -1,23 +1,27 @@
-/* ATHAR Lesson 1 — child-first reading scale and type personality */
-body{font-family:"Avenir Next Rounded","Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif;font-size:28px;line-height:1.58;letter-spacing:.002em}
-html[lang=ar] body{font-family:"SF Arabic Rounded","Geeza Pro","Arial Rounded MT Bold",Tahoma,Arial,sans-serif;font-size:30px;line-height:1.7}
-.stage-card{padding:54px 62px;gap:40px}
-h1{font-size:clamp(3.8rem,6vw,6.2rem);line-height:1.08;font-weight:800;max-width:18ch}
-html[lang=ar] h1{font-weight:700;line-height:1.2;max-width:15ch}
-.lede{font-size:1.52rem;line-height:1.68;font-weight:600;max-width:34ch;color:#294E70}
-html[lang=ar] .lede{font-size:1.58rem;line-height:1.8;max-width:31ch}
-.stage-card p:not(.lede){font-size:1.14rem;line-height:1.72;font-weight:600;max-width:46ch}
-html[lang=ar] .stage-card p:not(.lede){font-size:1.18rem;line-height:1.85;max-width:40ch}
-.choice,.world-card,.answer-card{font-size:1.08rem;line-height:1.48;font-weight:700;min-height:190px;padding:32px;border-radius:30px}
-html[lang=ar] .choice,html[lang=ar] .world-card,html[lang=ar] .answer-card{font-size:1.14rem;line-height:1.62;font-weight:700}
-.choice .icon,.world-card .icon,.answer-card .icon{font-size:3.5rem;margin-bottom:16px}
-.pattern-box,.evidence-card{font-size:1.12rem;line-height:1.55;font-weight:700;padding:32px}
-html[lang=ar] .pattern-box,html[lang=ar] .evidence-card{font-size:1.18rem;line-height:1.72}
-.feedback{font-size:1.14rem;line-height:1.65;font-weight:600;padding:28px 32px}
-html[lang=ar] .feedback{font-size:1.18rem;line-height:1.8}
-.primary,.secondary{font-size:1.02rem;min-height:72px;padding:20px 34px;font-weight:800}
-.journey-map span,.rule-row span,.mental-model span{font-size:1rem;padding:16px 21px;font-weight:800}
-.stage-badge,.sim-label{font-size:.72rem;font-weight:800}
-@media(max-width:1100px){body{font-size:26px}html[lang=ar] body{font-size:28px}.stage-card{padding:48px 42px}.lede{font-size:1.44rem}html[lang=ar] .lede{font-size:1.5rem}}
-@media(max-width:900px){body{font-size:24px}html[lang=ar] body{font-size:26px}.stage-card{padding:42px 34px}h1{font-size:clamp(3.3rem,8vw,5rem)}.lede{font-size:1.38rem}html[lang=ar] .lede{font-size:1.44rem}.choice,.world-card,.answer-card{min-height:170px}}
-@media(max-width:640px){body{font-size:21px}html[lang=ar] body{font-size:23px}.stage-card{padding:32px 22px}h1{font-size:clamp(2.8rem,13vw,3.8rem)}.lede{font-size:1.26rem;max-width:none}html[lang=ar] .lede{font-size:1.32rem;max-width:none}.stage-card p:not(.lede){font-size:1.06rem;max-width:none}html[lang=ar] .stage-card p:not(.lede){font-size:1.1rem;max-width:none}.choice,.world-card,.answer-card{font-size:1.02rem;min-height:140px;padding:24px}.choice .icon,.world-card .icon,.answer-card .icon{font-size:3rem}.pattern-box,.evidence-card{font-size:1.04rem}.feedback{font-size:1.06rem}.primary,.secondary{font-size:1rem;min-height:64px}}
+/* ATHAR Lesson 1 — child-first type scale without enlarging lesson containers */
+body{font-family:"Avenir Next Rounded","Arial Rounded MT Bold","Trebuchet MS",Arial,sans-serif;font-size:28px;line-height:1.46;letter-spacing:.002em}
+html[lang=ar] body{font-family:"SF Arabic Rounded","Geeza Pro","Arial Rounded MT Bold",Tahoma,Arial,sans-serif;font-size:30px;line-height:1.58}
+.lesson-shell{width:min(1320px,calc(100% - 30px));padding:14px 0 24px}
+.stage-nav{padding:2px 0 10px}.stage-view{min-height:0}
+.stage-card{padding:30px 34px;gap:24px;border-radius:30px;grid-template-columns:minmax(0,1fr) 300px}
+h1{font-size:clamp(3.5rem,5.4vw,5.7rem);line-height:1.02;font-weight:800;max-width:20ch;margin:.18em 0 .12em}
+html[lang=ar] h1{font-weight:700;line-height:1.12;max-width:17ch}
+.lede{font-size:1.5rem;line-height:1.48;font-weight:600;max-width:42ch;color:#294E70;margin:12px 0 16px}
+html[lang=ar] .lede{font-size:1.58rem;line-height:1.58;max-width:38ch}
+.stage-card p:not(.lede){font-size:1.12rem;line-height:1.5;font-weight:600;max-width:52ch;margin:10px 0}
+html[lang=ar] .stage-card p:not(.lede){font-size:1.18rem;line-height:1.62;max-width:46ch}
+.grid{gap:14px;margin:16px 0}.grid.two{gap:14px}
+.choice,.world-card,.answer-card{font-size:1.08rem;line-height:1.38;font-weight:700;min-height:118px;padding:18px 20px;border-radius:24px}
+html[lang=ar] .choice,html[lang=ar] .world-card,html[lang=ar] .answer-card{font-size:1.14rem;line-height:1.48;font-weight:700}
+.choice .icon,.world-card .icon,.answer-card .icon{font-size:2.65rem;margin-bottom:8px}
+.pattern-machine{padding:16px 18px;margin:14px 0;border-radius:24px}.pattern-row{gap:10px}
+.pattern-box,.evidence-card{font-size:1.1rem;line-height:1.42;font-weight:700;padding:16px 18px;border-radius:20px}
+html[lang=ar] .pattern-box,html[lang=ar] .evidence-card{font-size:1.16rem;line-height:1.5}
+.feedback{font-size:1.12rem;line-height:1.48;font-weight:600;padding:16px 20px;margin:14px 0;border-radius:20px}
+html[lang=ar] .feedback{font-size:1.18rem;line-height:1.56}
+.primary,.secondary{font-size:1.02rem;min-height:54px;padding:13px 24px;font-weight:800}.actions{margin-top:16px}
+.journey-map,.rule-row,.mental-model{margin:16px 0;gap:8px}.journey-map span,.rule-row span,.mental-model span{font-size:.98rem;padding:10px 14px;font-weight:800}
+.stage-badge,.sim-label{font-size:.7rem;font-weight:800;padding:7px 12px}.companion-slot{min-height:300px;padding:12px}.companion-slot img{max-height:280px}
+@media(max-width:1100px){body{font-size:26px}html[lang=ar] body{font-size:28px}.stage-card{padding:26px 28px;grid-template-columns:minmax(0,1fr) 260px}.lede{font-size:1.42rem}html[lang=ar] .lede{font-size:1.5rem}.companion-slot{min-height:250px}.companion-slot img{max-height:235px}}
+@media(max-width:900px){body{font-size:24px}html[lang=ar] body{font-size:26px}.stage-card{padding:24px 26px;grid-template-columns:minmax(0,1fr)}h1{font-size:clamp(3.1rem,8vw,4.8rem)}.lede{font-size:1.34rem}html[lang=ar] .lede{font-size:1.42rem}.choice,.world-card,.answer-card{min-height:106px}.companion-slot{min-height:180px;order:-1}.companion-slot img{max-height:170px}}
+@media(max-width:640px){body{font-size:21px}html[lang=ar] body{font-size:23px}.lesson-shell{width:calc(100% - 12px);padding-top:8px}.stage-card{padding:20px 16px;border-radius:24px}h1{font-size:clamp(2.7rem,13vw,3.7rem)}.lede{font-size:1.24rem;max-width:none;margin:10px 0 12px}html[lang=ar] .lede{font-size:1.3rem;max-width:none}.stage-card p:not(.lede){font-size:1.04rem;max-width:none}html[lang=ar] .stage-card p:not(.lede){font-size:1.08rem;max-width:none}.grid,.grid.two{gap:10px;margin:12px 0}.choice,.world-card,.answer-card{font-size:1.02rem;min-height:94px;padding:14px 16px}.choice .icon,.world-card .icon,.answer-card .icon{font-size:2.45rem}.pattern-machine{padding:12px;margin:10px 0}.pattern-box,.evidence-card{font-size:1.02rem;padding:13px}.feedback{font-size:1.04rem;padding:13px 15px;margin:10px 0}.primary,.secondary{font-size:1rem;min-height:52px}.actions{margin-top:12px}.companion-slot{min-height:150px}.companion-slot img{max-height:140px}}
