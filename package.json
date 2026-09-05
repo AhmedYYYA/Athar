@@ -1,0 +1,13 @@
+{
+  "name": "athar",
+  "version": "0.1.0",
+  "description": "ATHAR — bilingual AI-readiness platform for children aged 7-12",
+  "private": true,
+  "scripts": {
+    "test": "node test/run.js",
+    "serve": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.3"
+  }
+}

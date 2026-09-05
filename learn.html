@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My trail — ATHAR | أثر</title>
+<meta name="description" content="Every ATHAR mission you finish leaves a trace. Follow your trail through the six tracks of AI readiness.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/athar.css">
+<link rel="stylesheet" href="css/trail.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="skip">Skip to main content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="assets/athar-mark.png" alt="">
+    <span class="brand-word">ATHAR<span class="bar">|</span><span class="ar">أثر</span></span>
+  </a>
+  <nav class="mainnav" aria-label="Main">
+    <a href="learn.html" aria-current="page" data-i18n="nav.trail">My trail</a>
+    <a href="index.html#families" data-i18n="nav.families">Families</a>
+    <a href="index.html#schools" data-i18n="nav.schools">Schools</a>
+  </nav>
+  <div class="chrome-right">
+    <div class="langtoggle" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="ar" aria-pressed="false">ع</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="trailhead">
+    <h1 data-i18n="trail.title">Your trail</h1>
+    <p data-i18n="trail.sub">Every mission you finish leaves a trace. This is yours.</p>
+    <div class="statrow" id="stats"></div>
+  </div>
+
+  <div id="tracks"></div>
+
+  <section class="companionpick">
+    <h2 data-i18n="companion.pick">Who explores with you?</h2>
+    <div class="pickrow" id="picker"></div>
+  </section>
+
+</main>
+
+<script src="js/state.js"></script>
+<script src="js/i18n.js"></script>
+<script src="data/curriculum.js"></script>
+<script src="js/trail.js"></script>
+<script>
+(function () {
+  var tracks = document.getElementById('tracks');
+  var stats  = document.getElementById('stats');
+  var picker = document.getElementById('picker');
+
+  function paintAll() {
+    ATHAR.i18n.apply();
+    ATHAR.trail.render(tracks);
+    ATHAR.trail.renderStats(stats);
+    ATHAR.trail.renderCompanionPicker(picker);
+  }
+
+  ATHAR.i18n.setDir();
+  paintAll();
+
+  var toggle = document.querySelectorAll('.langtoggle button');
+  function paintToggle() {
+    Array.prototype.forEach.call(toggle, function (b) {
+      b.setAttribute('aria-pressed', b.dataset.lang === ATHAR.i18n.lang() ? 'true' : 'false');
+    });
+  }
+  Array.prototype.forEach.call(toggle, function (b) {
+    b.addEventListener('click', function () {
+      ATHAR.i18n.set(b.dataset.lang);
+      paintToggle();
+      paintAll();
+    });
+  });
+  paintToggle();
+})();
+</script>
+</body>
+</html>

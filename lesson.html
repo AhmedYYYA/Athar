@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mission — ATHAR | أثر</title>
+<meta name="description" content="An ATHAR mission: short, hands-on, and built so the child stays the thinker.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/athar.css">
+<link rel="stylesheet" href="css/lesson.css">
+</head>
+<body>
+
+<div class="lessonshell">
+
+  <div class="lessonbar">
+    <button type="button" class="exitlink" id="exit" data-i18n="lesson.exit">Leave mission</button>
+
+    <div class="progresswrap">
+      <div class="dots" id="dots" role="progressbar" aria-valuemin="1"></div>
+      <span class="steplabel" id="steplabel"></span>
+    </div>
+
+    <div class="langtoggle" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="ar" aria-pressed="false">ع</button>
+    </div>
+  </div>
+
+  <main class="stagewrap" id="stagewrap" tabindex="-1" aria-labelledby="stageheading">
+    <h1 class="sr-only" id="stageheading"></h1>
+    <div id="stagebody"></div>
+  </main>
+
+  <div class="feedbackslot" id="feedback" aria-live="polite"></div>
+  <div class="sr-only" id="live" role="status" aria-live="polite"></div>
+
+  <div class="actionbar">
+    <button type="button" class="btn-back-quiet" id="back" data-i18n="cta.back">Back</button>
+    <div class="right">
+      <button type="button" class="btn btn-quiet" id="hint" data-i18n="cta.hint" hidden>Give me a hint</button>
+      <button type="button" class="btn btn-primary" id="check" data-i18n="cta.check" hidden>Check my answer</button>
+      <button type="button" class="btn btn-primary" id="next" data-i18n="cta.next">Next</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/state.js"></script>
+<script src="js/i18n.js"></script>
+<script src="data/lesson-what-is-ai.js"></script>
+<script src="js/engine.js"></script>
+<script>
+(function () {
+  ATHAR.i18n.setDir();
+  ATHAR.i18n.apply();
+
+  var toggle = document.querySelectorAll('.langtoggle button');
+  function paintToggle() {
+    Array.prototype.forEach.call(toggle, function (b) {
+      b.setAttribute('aria-pressed', b.dataset.lang === ATHAR.i18n.lang() ? 'true' : 'false');
+    });
+  }
+  Array.prototype.forEach.call(toggle, function (b) {
+    b.addEventListener('click', function () { ATHAR.i18n.set(b.dataset.lang); paintToggle(); });
+  });
+  paintToggle();
+
+  document.getElementById('exit').addEventListener('click', function () {
+    window.location.href = 'learn.html';
+  });
+
+  var params = new URLSearchParams(window.location.search);
+  var id = params.get('m') || 'what-is-ai';
+
+  ATHAR.engine.start(id, {
+    body: document.getElementById('stagebody'),
+    stagewrap: document.getElementById('stagewrap'),
+    heading: document.getElementById('stageheading'),
+    dots: document.getElementById('dots'),
+    step: document.getElementById('steplabel'),
+    bar: document.getElementById('dots'),
+    feedback: document.getElementById('feedback'),
+    live: document.getElementById('live'),
+    next: document.getElementById('next'),
+    back: document.getElementById('back'),
+    check: document.getElementById('check'),
+    hint: document.getElementById('hint')
+  });
+})();
+</script>
+</body>
+</html>

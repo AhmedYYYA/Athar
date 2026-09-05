@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATHAR | أثر — AI readiness for children</title>
+<meta name="description" content="A UAE-born bilingual world where children aged 7-12 learn to understand, question, check and safely use AI. The child stays the thinker.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/athar.css">
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main" data-i18n="skip">Skip to main content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="assets/athar-mark.png" alt="">
+    <span class="brand-word">ATHAR<span class="bar">|</span><span class="ar">أثر</span></span>
+  </a>
+  <nav class="mainnav" aria-label="Main">
+    <a href="learn.html" data-copy="nav.learn">Learn</a>
+    <a href="#tracks" data-copy="nav.tracks">Tracks</a>
+    <a href="#families" data-copy="nav.families">Families</a>
+    <a href="#schools" data-copy="nav.schools">Schools</a>
+  </nav>
+  <div class="chrome-right">
+    <div class="langtoggle" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="ar" aria-pressed="false">ع</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="eyebrow" data-i18n="hero.eyebrow">A UAE-born AI-readiness world for children</span>
+        <h1>
+          <span class="l1" data-i18n="hero.line1">You think.</span>
+          <span class="l2" data-i18n="hero.line2">AI helps.</span>
+        </h1>
+        <p class="hero-sub" data-i18n="hero.sub">Short missions that build real judgement.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="learn.html" data-i18n="cta.start">Start exploring</a>
+          <a class="btn btn-quiet" href="#families" data-i18n="cta.parents">For parents and schools</a>
+        </div>
+        <p class="hero-meta" data-i18n="hero.meta">Ages 7-12 and bilingual.</p>
+      </div>
+      <div class="hero-figure">
+        <img src="assets/hamdan.png" alt="Hamdan, one of the ATHAR learning companions" width="369" height="1000">
+      </div>
+    </div>
+  </section>
+
+  <div class="trust">
+    <p data-copy="trust.lead"></p>
+  </div>
+
+  <div class="scallop scallop-paper" aria-hidden="true"></div>
+
+  <section class="tracks-band" id="tracks">
+    <div class="tracks-head">
+      <h2 data-copy="tracks.title"></h2>
+      <hr class="dash-rule">
+      <p data-copy="tracks.lead"></p>
+    </div>
+    <div class="trackgrid" id="trackgrid"></div>
+  </section>
+
+  <div class="scallop" style="background: var(--olive)" aria-hidden="true"></div>
+
+  <section class="rhythm">
+    <h2 data-copy="rhythm.title"></h2>
+    <p data-copy="rhythm.lead"></p>
+    <div class="steprow" id="steprow"></div>
+  </section>
+
+  <div class="scallop scallop-paper" aria-hidden="true"></div>
+
+  <section class="promises" id="families">
+    <div class="promises-head">
+      <h2 data-copy="promises.title"></h2>
+      <hr class="dash-rule">
+      <p data-copy="promises.lead"></p>
+    </div>
+    <div class="promiselist" id="promises"></div>
+  </section>
+
+  <div class="scallop scallop-deep" aria-hidden="true"></div>
+
+  <section class="schools" id="schools">
+    <div class="schools-inner">
+      <div>
+        <h2 data-copy="schools.title"></h2>
+        <p data-copy="schools.body"></p>
+        <a class="btn btn-primary" href="learn.html" data-copy="schools.cta"></a>
+      </div>
+      <div class="schools-figure">
+        <img src="assets/hessa.png" alt="Hessa, one of the ATHAR learning companions" width="341" height="1000">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <div>
+      <img src="assets/athar-logo.png" alt="ATHAR | أثر">
+      <p data-copy="foot.meaning"></p>
+    </div>
+    <div>
+      <p class="note" data-copy="foot.notice"></p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/state.js"></script>
+<script src="js/i18n.js"></script>
+<script src="data/curriculum.js"></script>
+<script src="data/site-copy.js"></script>
+<script>
+(function () {
+  var grid     = document.getElementById('trackgrid');
+  var steprow  = document.getElementById('steprow');
+  var promises = document.getElementById('promises');
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+
+  function tickMark() {
+    var ns = 'http://www.w3.org/2000/svg';
+    var s = document.createElementNS(ns, 'svg');
+    s.setAttribute('viewBox', '0 0 24 24');
+    s.setAttribute('aria-hidden', 'true');
+    var p = document.createElementNS(ns, 'path');
+    p.setAttribute('d', 'M4 12l6 6L20 6');
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', 'currentColor');
+    p.setAttribute('stroke-width', '3.5');
+    p.setAttribute('stroke-linecap', 'round');
+    p.setAttribute('stroke-linejoin', 'round');
+    s.appendChild(p);
+    return s;
+  }
+
+  function fromPath(path) {
+    return path.split('.').reduce(function (node, key) {
+      return node ? node[key] : undefined;
+    }, ATHAR.copy);
+  }
+
+  function applyCopy() {
+    var pick = ATHAR.i18n.pick;
+    var nodes = document.querySelectorAll('[data-copy]');
+    Array.prototype.forEach.call(nodes, function (n) {
+      var value = fromPath(n.getAttribute('data-copy'));
+      if (value) n.textContent = pick(value);
+    });
+  }
+
+  function paint() {
+    var pick = ATHAR.i18n.pick;
+
+    grid.innerHTML = '';
+    ATHAR.curriculum.tracks.forEach(function (track, i) {
+      var card = el('article', 'trackcard');
+      card.appendChild(el('span', 'num', ATHAR.i18n.num(i + 1)));
+      card.appendChild(el('h3', null, pick(track.name)));
+      card.appendChild(el('p', null, pick(track.blurb)));
+      grid.appendChild(card);
+    });
+
+    steprow.innerHTML = '';
+    ATHAR.copy.rhythm.steps.forEach(function (step, i) {
+      var card = el('div', 'stepcard');
+      card.appendChild(el('span', 'medal', ATHAR.i18n.num(i + 1)));
+      card.appendChild(el('h3', null, pick(step.title)));
+      card.appendChild(el('p', null, pick(step.body)));
+      steprow.appendChild(card);
+    });
+
+    promises.innerHTML = '';
+    ATHAR.copy.promises.items.forEach(function (item) {
+      var box = el('div', 'promise');
+      var mark = el('span', 'mark');
+      mark.appendChild(tickMark());
+      var p = el('p');
+      p.appendChild(el('strong', null, pick(item.title)));
+      p.appendChild(el('span', null, pick(item.body)));
+      box.appendChild(mark);
+      box.appendChild(p);
+      promises.appendChild(box);
+    });
+
+    applyCopy();
+    ATHAR.i18n.apply();
+  }
+
+  ATHAR.i18n.setDir();
+  paint();
+
+  var toggle = document.querySelectorAll('.langtoggle button');
+  function paintToggle() {
+    Array.prototype.forEach.call(toggle, function (b) {
+      b.setAttribute('aria-pressed', b.dataset.lang === ATHAR.i18n.lang() ? 'true' : 'false');
+    });
+  }
+  Array.prototype.forEach.call(toggle, function (b) {
+    b.addEventListener('click', function () {
+      ATHAR.i18n.set(b.dataset.lang);
+      paintToggle();
+      paint();
+    });
+  });
+  paintToggle();
+})();
+</script>
+</body>
+</html>
