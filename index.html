@@ -3,227 +3,432 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ATHAR | أثر — AI readiness for children</title>
-<meta name="description" content="A UAE-born bilingual world where children aged 7-12 learn to understand, question, check and safely use AI. The child stays the thinker.">
+<title>ATHAR | أثر — AI readiness for children aged 7 to 12</title>
+<meta name="description" content="A bilingual world where children aged 7 to 12 learn to understand AI, question it, check it, and stay in charge. Built in the UAE.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ATHAR | أثر">
+<meta property="og:title" content="ATHAR | أثر — AI readiness for children aged 7 to 12">
+<meta property="og:description" content="A bilingual world where children aged 7 to 12 learn to understand AI, question it, check it, and stay in charge. Built in the UAE.">
+<meta property="og:image" content="assets/athar-logo.png">
+<meta property="og:locale" content="en">
+<meta property="og:locale:alternate" content="ar">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ATHAR | أثر — AI readiness for children aged 7 to 12">
+<meta name="twitter:description" content="A bilingual world where children aged 7 to 12 learn to understand AI, question it, check it, and stay in charge. Built in the UAE.">
+<link rel="icon" href="assets/athar-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/athar.css">
+<link rel="stylesheet" href="css/pages.css">
 <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
 
 <a class="skip-link" href="#main" data-i18n="skip">Skip to main content</a>
 
-<header class="topbar">
+<header class="bar">
   <a class="brand" href="index.html">
     <img src="assets/athar-mark.png" alt="">
-    <span class="brand-word">ATHAR<span class="bar">|</span><span class="ar">أثر</span></span>
+    <span>ATHAR&nbsp;|&nbsp;أثر</span>
   </a>
-  <nav class="mainnav" aria-label="Main">
-    <a href="learn.html" data-copy="nav.learn">Learn</a>
-    <a href="#tracks" data-copy="nav.tracks">Tracks</a>
-    <a href="#families" data-copy="nav.families">Families</a>
-    <a href="#schools" data-copy="nav.schools">Schools</a>
+  <nav class="barnav" aria-label="Main">
+    <a href="learn.html" data-copy="nav.learn">Start learning</a>
+    <a href="tracks.html" data-copy="nav.tracks">What they learn</a>
+    <a href="families.html" data-copy="nav.families">Families</a>
+    <a href="schools.html" data-copy="nav.schools">Schools</a>
+    <a href="safety.html" data-copy="nav.safety">Safety</a>
+    <a href="about.html" data-copy="nav.about">About</a>
   </nav>
-  <div class="chrome-right">
-    <div class="langtoggle" role="group" aria-label="Language">
-      <button type="button" data-lang="en" aria-pressed="true">EN</button>
-      <button type="button" data-lang="ar" aria-pressed="false">ع</button>
-    </div>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">English</button>
+    <button type="button" data-lang="ar" aria-pressed="false">العربية</button>
   </div>
 </header>
 
 <main id="main">
 
   <section class="hero">
-    <div class="hero-inner">
+    <div class="herogrid">
       <div>
-        <span class="eyebrow" data-i18n="hero.eyebrow">A UAE-born AI-readiness world for children</span>
-        <h1>
-          <span class="l1" data-i18n="hero.line1">You think.</span>
-          <span class="l2" data-i18n="hero.line2">AI helps.</span>
-        </h1>
-        <p class="hero-sub" data-i18n="hero.sub">Short missions that build real judgement.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="learn.html" data-i18n="cta.start">Start exploring</a>
-          <a class="btn btn-quiet" href="#families" data-i18n="cta.parents">For parents and schools</a>
+        <h1 data-copy="home.head">The child stays the thinker.</h1>
+        <p class="herolede" data-copy="home.lede">AI is already in their day. ATHAR teaches children aged 7 to 12 to recognise it, question what it tells them, check what matters, and decide for themselves.</p>
+        <div class="herodo">
+          <a class="btn btn-go" href="learn.html" data-copy="home.go">Start the first mission</a>
+          <a class="btn btn-line" href="families.html" data-copy="home.adults">For parents and schools</a>
         </div>
-        <p class="hero-meta" data-i18n="hero.meta">Ages 7-12 and bilingual.</p>
+        <ul class="herofacts" data-list="home-facts">
+        <li data-copy="home.facts.0">Twenty minutes a mission, on the devices you already have</li>
+        <li data-copy="home.facts.1">Arabic and English written together, not translated afterwards</li>
+        <li data-copy="home.facts.2">No open chatbot, no advertising, no child data sold</li>
+      </ul>
       </div>
-      <div class="hero-figure">
+      <div class="herofig">
+        <svg viewBox="0 0 420 470" aria-hidden="true" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="heroGrad" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#00A88F"/>
+              <stop offset=".45" stop-color="#1E77C4"/>
+              <stop offset=".75" stop-color="#2F49A8"/>
+              <stop offset="1" stop-color="#F07818"/>
+            </linearGradient>
+          </defs>
+          <path class="trace-draw" style="--len:620" d="M-20 388 C70 356 140 424 214 430 C292 436 350 392 440 350" stroke="url(#heroGrad)"/>
+        </svg>
         <img src="assets/hamdan.png" alt="Hamdan, one of the ATHAR learning companions" width="369" height="1000">
       </div>
     </div>
   </section>
 
-  <div class="trust">
-    <p data-copy="trust.lead"></p>
-  </div>
-
-  <div class="scallop scallop-paper" aria-hidden="true"></div>
-
-  <section class="tracks-band" id="tracks">
-    <div class="tracks-head">
-      <h2 data-copy="tracks.title"></h2>
-      <hr class="dash-rule">
-      <p data-copy="tracks.lead"></p>
+  <section class="run tint" id="tracks">
+    <div class="runintro">
+      <h2 data-copy="home.tracksHead">Six things a child needs, and only one of them is code</h2>
+      <p data-copy="home.tracksLede">Most of what makes someone ready for AI has nothing to do with typing. It is knowing what the machine is, asking it well, doubting it usefully, guarding what is yours, making things honestly, and understanding what runs underneath.</p>
     </div>
-    <div class="trackgrid" id="trackgrid"></div>
-  </section>
-
-  <div class="scallop" style="background: var(--olive)" aria-hidden="true"></div>
-
-  <section class="rhythm">
-    <h2 data-copy="rhythm.title"></h2>
-    <p data-copy="rhythm.lead"></p>
-    <div class="steprow" id="steprow"></div>
-  </section>
-
-  <div class="scallop scallop-paper" aria-hidden="true"></div>
-
-  <section class="promises" id="families">
-    <div class="promises-head">
-      <h2 data-copy="promises.title"></h2>
-      <hr class="dash-rule">
-      <p data-copy="promises.lead"></p>
-    </div>
-    <div class="promiselist" id="promises"></div>
-  </section>
-
-  <div class="scallop scallop-deep" aria-hidden="true"></div>
-
-  <section class="schools" id="schools">
-    <div class="schools-inner">
-      <div>
-        <h2 data-copy="schools.title"></h2>
-        <p data-copy="schools.body"></p>
-        <a class="btn btn-primary" href="learn.html" data-copy="schools.cta"></a>
+    <div class="runline">
+      <svg viewBox="0 0 1000 900" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="runGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2F49A8"/>
+            <stop offset=".5" stop-color="#00A88F"/>
+            <stop offset="1" stop-color="#F07818"/>
+          </linearGradient>
+        </defs>
+        <path class="trace-draw" style="--len:2600" d="M60 40 C60 140 940 150 940 250" stroke="url(#runGrad)" opacity=".45"/>
+      </svg>
+      <div class="stopset" data-list="home-stops">
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a7 7 0 00-4 12.8V18h8v-2.2A7 7 0 0012 3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 21h4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.0.name">Understand it</h3>
+            <p data-copy="__track.0.blurb">What AI actually is, how it learns from examples, and where it already lives in your day.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10h8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.1.name">Ask it well</h3>
+            <p data-copy="__track.1.blurb">Saying what you actually want. Clear goals, useful details, and improving a weak result.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 100 14 7 7 0 000-14z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.2 16.2L21 21" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 8v3.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 14.4v.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.2.name">Check it</h3>
+            <p data-copy="__track.2.blurb">AI sounds sure even when it is wrong. Learning to notice, doubt, and verify.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.4-3.2 8-8 9-4.8-1-8-4.6-8-9V6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.3.name">Protect yourself</h3>
+            <p data-copy="__track.3.blurb">What stays private, what is safe to share, and when to bring in a trusted adult.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6-9 9H5v-6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4l1.6 1.6M8 3l.9.9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.4.name">Create with it</h3>
+            <p data-copy="__track.4.blurb">Making things where your idea leads and the tool assists — and saying who did what.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5L4 12l5 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 5l5 7-5 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.5.name">See inside</h3>
+            <p data-copy="__track.5.blurb">The machinery underneath: steps, rules and logic — the ground floor of coding.</p>
+          </div>
+        </div>
       </div>
-      <div class="schools-figure">
-        <img src="assets/hessa.png" alt="Hessa, one of the ATHAR learning companions" width="341" height="1000">
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10h8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.1.name">Ask it well</h3>
+            <p data-copy="__track.1.blurb">Saying what you actually want. Clear goals, useful details, and improving a weak result.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 100 14 7 7 0 000-14z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.2 16.2L21 21" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 8v3.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 14.4v.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.2.name">Check it</h3>
+            <p data-copy="__track.2.blurb">AI sounds sure even when it is wrong. Learning to notice, doubt, and verify.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.4-3.2 8-8 9-4.8-1-8-4.6-8-9V6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.3.name">Protect yourself</h3>
+            <p data-copy="__track.3.blurb">What stays private, what is safe to share, and when to bring in a trusted adult.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6-9 9H5v-6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4l1.6 1.6M8 3l.9.9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.4.name">Create with it</h3>
+            <p data-copy="__track.4.blurb">Making things where your idea leads and the tool assists — and saying who did what.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5L4 12l5 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 5l5 7-5 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.5.name">See inside</h3>
+            <p data-copy="__track.5.blurb">The machinery underneath: steps, rules and logic — the ground floor of coding.</p>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10h8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.1.name">Ask it well</h3>
+            <p data-copy="__track.1.blurb">Saying what you actually want. Clear goals, useful details, and improving a weak result.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 100 14 7 7 0 000-14z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.2 16.2L21 21" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 8v3.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 14.4v.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.2.name">Check it</h3>
+            <p data-copy="__track.2.blurb">AI sounds sure even when it is wrong. Learning to notice, doubt, and verify.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.4-3.2 8-8 9-4.8-1-8-4.6-8-9V6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.3.name">Protect yourself</h3>
+            <p data-copy="__track.3.blurb">What stays private, what is safe to share, and when to bring in a trusted adult.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6-9 9H5v-6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4l1.6 1.6M8 3l.9.9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.4.name">Create with it</h3>
+            <p data-copy="__track.4.blurb">Making things where your idea leads and the tool assists — and saying who did what.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5L4 12l5 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 5l5 7-5 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.5.name">See inside</h3>
+            <p data-copy="__track.5.blurb">The machinery underneath: steps, rules and logic — the ground floor of coding.</p>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10h8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.1.name">Ask it well</h3>
+            <p data-copy="__track.1.blurb">Saying what you actually want. Clear goals, useful details, and improving a weak result.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 100 14 7 7 0 000-14z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.2 16.2L21 21" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 8v3.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 14.4v.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.2.name">Check it</h3>
+            <p data-copy="__track.2.blurb">AI sounds sure even when it is wrong. Learning to notice, doubt, and verify.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.4-3.2 8-8 9-4.8-1-8-4.6-8-9V6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.3.name">Protect yourself</h3>
+            <p data-copy="__track.3.blurb">What stays private, what is safe to share, and when to bring in a trusted adult.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6-9 9H5v-6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4l1.6 1.6M8 3l.9.9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.4.name">Create with it</h3>
+            <p data-copy="__track.4.blurb">Making things where your idea leads and the tool assists — and saying who did what.</p>
+          </div>
+        </div>
+        <div class="stopitem">
+          <span class="stopdot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5L4 12l5 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 5l5 7-5 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div>
+            <h3 data-copy="__track.5.name">See inside</h3>
+            <p data-copy="__track.5.blurb">The machinery underneath: steps, rules and logic — the ground floor of coding.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="runmore">
+      <a class="btn btn-line" href="tracks.html" data-copy="home.tracksMore">Look at all six tracks</a>
+    </div>
+  </section>
+
+  <section class="beat">
+    <div class="hold">
+      <h2 data-copy="home.beatHead">What twenty minutes looks like</h2>
+      <p class="lede" data-copy="home.beatLede">The same four beats, over and over, so a seven-year-old always knows where they are. Never more than a minute of reading before they do something.</p>
+      <div class="beatline" data-list="home-beats">
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h7v13H4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 6h7v13h-7z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 10h2M15.5 10h2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.0.title">Read a little</h3>
+          <p data-copy="home.beats.0.body">One idea on the screen, never a wall of words.</p>
+        </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l11 7-4.6 1.4L14 18l-2 .8-1.6-5.6L6 16z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.1.title">Do something</h3>
+          <p data-copy="home.beats.1.body">Sort it, spot it, teach it, catch its mistake.</p>
+        </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8.5v3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 13.6v.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.2.title">Find out why</h3>
+          <p data-copy="home.beats.2.body">Told the reason, not just right or wrong.</p>
+        </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 0 5 2.4 5 5.6 0 3-2 4.6-2 6.4H9c0-1.8-2-3.4-2-6.4C7 5.4 9 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 19h5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21.5h3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.3.title">Leave a trace</h3>
+          <p data-copy="home.beats.3.body">Progress that belongs to the child.</p>
+        </div>
+      </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l11 7-4.6 1.4L14 18l-2 .8-1.6-5.6L6 16z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.1.title">Do something</h3>
+          <p data-copy="home.beats.1.body">Sort it, spot it, teach it, catch its mistake.</p>
+        </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8.5v3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 13.6v.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.2.title">Find out why</h3>
+          <p data-copy="home.beats.2.body">Told the reason, not just right or wrong.</p>
+        </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 0 5 2.4 5 5.6 0 3-2 4.6-2 6.4H9c0-1.8-2-3.4-2-6.4C7 5.4 9 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 19h5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21.5h3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.3.title">Leave a trace</h3>
+          <p data-copy="home.beats.3.body">Progress that belongs to the child.</p>
+        </div>
+      </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l11 7-4.6 1.4L14 18l-2 .8-1.6-5.6L6 16z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.1.title">Do something</h3>
+          <p data-copy="home.beats.1.body">Sort it, spot it, teach it, catch its mistake.</p>
+        </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8.5v3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 13.6v.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.2.title">Find out why</h3>
+          <p data-copy="home.beats.2.body">Told the reason, not just right or wrong.</p>
+        </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 0 5 2.4 5 5.6 0 3-2 4.6-2 6.4H9c0-1.8-2-3.4-2-6.4C7 5.4 9 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 19h5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21.5h3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.3.title">Leave a trace</h3>
+          <p data-copy="home.beats.3.body">Progress that belongs to the child.</p>
+        </div>
+      </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l11 7-4.6 1.4L14 18l-2 .8-1.6-5.6L6 16z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.1.title">Do something</h3>
+          <p data-copy="home.beats.1.body">Sort it, spot it, teach it, catch its mistake.</p>
+        </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8.5v3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 13.6v.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.2.title">Find out why</h3>
+          <p data-copy="home.beats.2.body">Told the reason, not just right or wrong.</p>
+        </div>
+        <div class="beatstep">
+          <span class="knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 0 5 2.4 5 5.6 0 3-2 4.6-2 6.4H9c0-1.8-2-3.4-2-6.4C7 5.4 9 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.5 19h5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21.5h3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 data-copy="home.beats.3.title">Leave a trace</h3>
+          <p data-copy="home.beats.3.body">Progress that belongs to the child.</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <section class="sec tint">
+    <div class="hold">
+      <h2 data-copy="home.vowHead">What this will never do</h2>
+      <p class="lede" data-copy="home.vowLede">Most of the work went into what we left out. These are commitments, and you should hold us to them.</p>
+      <ul class="points deny" data-list="vows">
+        <li>
+          <span class="tick"></span>
+          <div>
+            <strong data-copy="vows.0.t">Open a chatbot to a child</strong>
+            <span data-copy="vows.0.b">Children work inside missions that were written and reviewed, never a blank box that answers anything.</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick"></span>
+          <div>
+            <strong data-copy="vows.1.t">Sell them anything</strong>
+            <span data-copy="vows.1.b">No advertising, no sponsored content, no behaviour tracked to target them later.</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick"></span>
+          <div>
+            <strong data-copy="vows.2.t">Pretend to be their friend</strong>
+            <span data-copy="vows.2.b">Hamdan and Hessa point something out and then get out of the way. They never ask for affection or secrecy.</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick"></span>
+          <div>
+            <strong data-copy="vows.3.t">Keep a secret from a trusted adult</strong>
+            <span data-copy="vows.3.b">Nothing here encourages a child to hide what they are doing. The opposite is taught directly.</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick"></span>
+          <div>
+            <strong data-copy="vows.4.t">Score or profile a learner</strong>
+            <span data-copy="vows.4.b">No automated diagnosis, no ranking, no behavioural profile built from how a child plays.</span>
+          </div>
+        </li>
+        <li>
+          <span class="tick"></span>
+          <div>
+            <strong data-copy="vows.5.t">Call a hint mastery</strong>
+            <span data-copy="vows.5.b">Taking help is fine and it is recorded as help. A teacher sees the difference.</span>
+          </div>
+        </li>
+      </ul>
+      <p style="margin-top:34px"><a class="btn btn-line" href="safety.html" data-copy="home.vowMore">Read how safety is built</a></p>
+    </div>
+  </section>
+
+  <section class="cta onink">
+    <div class="hold">
+      <h2 data-copy="home.closeHead">Start with one mission</h2>
+      <p data-copy="home.closeLede">What is AI? takes about twenty minutes. Nothing to install, no account, no email.</p>
+      <div class="ctarow">
+        <a class="btn btn-onink" href="learn.html" data-copy="home.go">Start the first mission</a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="foot">
-  <div class="foot-inner">
+  <div class="footgrid">
     <div>
       <img src="assets/athar-logo.png" alt="ATHAR | أثر">
-      <p data-copy="foot.meaning"></p>
+      <p data-copy="foot.meaning">أثر is the trace a person leaves behind. Children leave one here as they learn, and keep the thinking that made it.</p>
     </div>
-    <div>
-      <p class="note" data-copy="foot.notice"></p>
+    <div class="footcol">
+      <h3 data-copy="foot.learnCol">Learning</h3>
+      <ul>
+        <li><a href="learn.html" data-copy="nav.learn">Start learning</a></li>
+        <li><a href="tracks.html" data-copy="nav.tracks">What they learn</a></li>
+        <li><a href="companions.html" data-copy="nav.companions">Companions</a></li>
+      </ul>
+    </div>
+    <div class="footcol">
+      <h3 data-copy="foot.aboutCol">The project</h3>
+      <ul>
+        <li><a href="about.html" data-copy="nav.about">About</a></li>
+        <li><a href="safety.html" data-copy="nav.safety">Safety</a></li>
+        <li><a href="families.html" data-copy="nav.families">Families</a></li>
+        <li><a href="schools.html" data-copy="nav.schools">Schools</a></li>
+      </ul>
     </div>
   </div>
+  <p class="footfine" data-copy="foot.fine">Pilot build. Trademark screening is not finished and the name is not cleared for public launch. No live AI, no accounts and no payment system are connected. Nothing on this site is transmitted anywhere.</p>
 </footer>
 
 <script src="js/state.js"></script>
 <script src="js/i18n.js"></script>
 <script src="data/curriculum.js"></script>
-<script src="data/site-copy.js"></script>
-<script>
-(function () {
-  var grid     = document.getElementById('trackgrid');
-  var steprow  = document.getElementById('steprow');
-  var promises = document.getElementById('promises');
-
-  function el(tag, cls, text) {
-    var n = document.createElement(tag);
-    if (cls) n.className = cls;
-    if (text !== undefined) n.textContent = text;
-    return n;
-  }
-
-  function tickMark() {
-    var ns = 'http://www.w3.org/2000/svg';
-    var s = document.createElementNS(ns, 'svg');
-    s.setAttribute('viewBox', '0 0 24 24');
-    s.setAttribute('aria-hidden', 'true');
-    var p = document.createElementNS(ns, 'path');
-    p.setAttribute('d', 'M4 12l6 6L20 6');
-    p.setAttribute('fill', 'none');
-    p.setAttribute('stroke', 'currentColor');
-    p.setAttribute('stroke-width', '3.5');
-    p.setAttribute('stroke-linecap', 'round');
-    p.setAttribute('stroke-linejoin', 'round');
-    s.appendChild(p);
-    return s;
-  }
-
-  function fromPath(path) {
-    return path.split('.').reduce(function (node, key) {
-      return node ? node[key] : undefined;
-    }, ATHAR.copy);
-  }
-
-  function applyCopy() {
-    var pick = ATHAR.i18n.pick;
-    var nodes = document.querySelectorAll('[data-copy]');
-    Array.prototype.forEach.call(nodes, function (n) {
-      var value = fromPath(n.getAttribute('data-copy'));
-      if (value) n.textContent = pick(value);
-    });
-  }
-
-  function paint() {
-    var pick = ATHAR.i18n.pick;
-
-    grid.innerHTML = '';
-    ATHAR.curriculum.tracks.forEach(function (track, i) {
-      var card = el('article', 'trackcard');
-      card.appendChild(el('span', 'num', ATHAR.i18n.num(i + 1)));
-      card.appendChild(el('h3', null, pick(track.name)));
-      card.appendChild(el('p', null, pick(track.blurb)));
-      grid.appendChild(card);
-    });
-
-    steprow.innerHTML = '';
-    ATHAR.copy.rhythm.steps.forEach(function (step, i) {
-      var card = el('div', 'stepcard');
-      card.appendChild(el('span', 'medal', ATHAR.i18n.num(i + 1)));
-      card.appendChild(el('h3', null, pick(step.title)));
-      card.appendChild(el('p', null, pick(step.body)));
-      steprow.appendChild(card);
-    });
-
-    promises.innerHTML = '';
-    ATHAR.copy.promises.items.forEach(function (item) {
-      var box = el('div', 'promise');
-      var mark = el('span', 'mark');
-      mark.appendChild(tickMark());
-      var p = el('p');
-      p.appendChild(el('strong', null, pick(item.title)));
-      p.appendChild(el('span', null, pick(item.body)));
-      box.appendChild(mark);
-      box.appendChild(p);
-      promises.appendChild(box);
-    });
-
-    applyCopy();
-    ATHAR.i18n.apply();
-  }
-
-  ATHAR.i18n.setDir();
-  paint();
-
-  var toggle = document.querySelectorAll('.langtoggle button');
-  function paintToggle() {
-    Array.prototype.forEach.call(toggle, function (b) {
-      b.setAttribute('aria-pressed', b.dataset.lang === ATHAR.i18n.lang() ? 'true' : 'false');
-    });
-  }
-  Array.prototype.forEach.call(toggle, function (b) {
-    b.addEventListener('click', function () {
-      ATHAR.i18n.set(b.dataset.lang);
-      paintToggle();
-      paint();
-    });
-  });
-  paintToggle();
-})();
-</script>
+<script src="data/copy.js"></script>
+<script src="js/site.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>
