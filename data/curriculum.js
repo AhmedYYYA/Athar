@@ -77,9 +77,9 @@ ATHAR.curriculum = {
         ar: 'ما تحت الغطاء: خطوات وقواعد ومنطق — الأساس الأول للبرمجة.'
       },
       lessons: [
-        { id: 'steps',  name: { en: 'Thinking in steps', ar: 'التفكير بالخطوات' }, traces: 5, ready: false },
-        { id: 'rules',  name: { en: 'If this, then that', ar: 'إذا حدث هذا، فافعل ذاك' }, traces: 5, ready: false },
-        { id: 'loops',  name: { en: 'Doing it again', ar: 'التكرار' }, traces: 5, ready: false }
+        { id: 'steps',  name: { en: 'Thinking in steps', ar: 'التفكير بالخطوات' }, traces: 5, ready: true },
+        { id: 'rules',  name: { en: 'If this, then that', ar: 'إذا حدث هذا، فافعل ذاك' }, traces: 5, ready: true },
+        { id: 'loops',  name: { en: 'Doing it again', ar: 'التكرار' }, traces: 5, ready: true }
       ]
     }
   ],
