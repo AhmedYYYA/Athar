@@ -72,6 +72,6 @@ function walkthrough(id,lang){
   }
 }
 console.log('\nmission regression v2');
-['what-is-ai','patterns','data','clear-asking'].forEach(id=>['en','ar'].forEach(lang=>walkthrough(id,lang)));
+['what-is-ai','patterns','data','clear-asking','details','refine'].forEach(id=>['en','ar'].forEach(lang=>walkthrough(id,lang)));
 console.log('\nmission regression v2: '+pass+' passed, '+fail+' failed');
 if(fail)process.exit(1);
