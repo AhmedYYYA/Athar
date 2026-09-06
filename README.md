@@ -21,51 +21,25 @@ GitHub Pages: `https://ahmedyyya.github.io/Athar/`
 
 ### Glass Home v1
 
-The fluid glass homepage approved on 6 September 2026 is preserved on:
+`milestone-glass-home-v1` — baseline `562bedac41f2214ca01679c4df33991ad024b8c0`
 
-`milestone-glass-home-v1`
-
-Baseline commit:
-
-`562bedac41f2214ca01679c4df33991ad024b8c0`
-
-Its glass treatment, transparency, animated colour fields, ATHAR motion graphic, colour movement and overall visual language are the reference direction for the rest of the product. Audience-specific pages use different motion intensity: expressive on marketing/journey surfaces and calmer inside learning tasks.
+The approved glass treatment, transparency, animated colour fields, ATHAR motion graphic and movement are the reference direction for the rest of the product.
 
 ### Connected Learning v2
 
-The approved Journey + Mission + Passport learning loop is preserved on:
+`milestone-connected-learning-v2` — baseline `1c716f8c6cfb95217a8f58b42e94d8126e75e689`
 
-`milestone-connected-learning-v2`
-
-Baseline commit:
-
-`1c716f8c6cfb95217a8f58b42e94d8126e75e689`
-
-This milestone includes the connected Journey, Mission 1, Mission 2, local progress, traces, badges, Safety/Skills Passport evidence and companion continuity.
+This preserves the approved Journey + Mission + Passport loop, Missions 1–2, browser-local progress, traces, badges, evidence and companion continuity.
 
 ## Current learning loop
 
-The child experience follows a connected loop:
-
 **Journey → Mission → Feedback → Completion → Traces/Badge → Passport evidence → Journey**
 
-`learn.html` reads the curriculum and browser-local state dynamically. It shows:
+Completion and competency evidence remain separate. Hint use is recorded as **supported**, not independent mastery; a later replay without hints can upgrade the lesson evidence to independent.
 
-- the next unlocked mission;
-- all six learning tracks;
-- completed / locked / in-development mission states;
-- traces and badges earned;
-- Safety Passport foundations;
-- Skills Passport evidence;
-- Hamdan, Hessa or no companion.
+## Available missions
 
-Completion and competency evidence remain separate concepts. If a learner uses a hint, completion is recorded as **supported** rather than independent. A later replay without hints can upgrade that lesson evidence to independent.
-
-## Missions
-
-Mission content is data-driven and rendered by one generic engine.
-
-Currently available:
+All mission content is bilingual, data-driven and rendered by one generic engine.
 
 1. `what-is-ai` — **What is AI? | ما هو الذكاء الاصطناعي؟**
 2. `patterns` — **Spotting patterns | اكتشاف الأنماط**
@@ -73,57 +47,63 @@ Currently available:
 4. `clear-asking` — **Say what you mean | قل ما تقصد**
 5. `details` — **Add the useful bits | أضف التفاصيل المفيدة**
 6. `refine` — **Make it better | اجعلها أفضل**
+7. `can-be-wrong` — **When AI is wrong | حين يخطئ**
+8. `verify` — **Checking a fact | التحقق من معلومة**
+9. `fairness` — **Is it fair to everyone? | هل هو منصف للجميع؟**
 
-Missions 4–6 together complete the child-facing **SUPER** loop:
+Missions 4–6 complete the child-facing **SUPER** loop:
 
 **S — State goal → U — Use helpful details → P — Pick output → E — Examine result → R — Refine**
 
-Mission 5 deepens how children choose relevant, safe details and useful limits. Mission 6 teaches them to compare results with their goal, verify important claims, refine weak results and stop the AI loop when a trusted adult is needed for health or safety.
+Missions 7–9 form the **Check it | تحقّق منه** track. Children learn that confidence is not proof, choose sources that fit the claim, cross-check important information, use evidence to revise a conclusion, notice missing representation and keep responsible people in the loop for important decisions.
 
-Future missions remain visible on the journey as in-development items and are not presented as complete features.
+## Six curriculum tracks
 
-### Six curriculum tracks
+1. Understand it | افهمه — implemented
+2. Ask it well | أحسِن سؤاله — implemented
+3. Check it | تحقّق منه — implemented
+4. Protect yourself | احمِ نفسك — in development
+5. Create with it | أبدع به — in development
+6. See inside | انظر في داخله — in development
 
-1. Understand it | افهمه
-2. Ask it well | أحسِن سؤاله
-3. Check it | تحقّق منه
-4. Protect yourself | احمِ نفسك
-5. Create with it | أبدع به
-6. See inside | انظر في داخله
-
-The first two tracks are now fully implemented in the pilot.
+The curriculum currently contains **16 planned missions**, of which **9 are implemented**.
 
 ## Key files
 
 ```text
-index.html                    approved glass homepage
-learn.html                    live child journey
-lesson.html                   reusable mission player
-families.html                 family experience
-schools.html                  educator experience
-safety.html                   safety information
+index.html                       approved glass homepage
+learn.html                       live child journey
+lesson.html                      reusable mission player
+families.html                    family experience
+schools.html                     educator experience
+safety.html                      glass safety experience
 
-css/home-glass.css            approved homepage visual language
-css/glass-system.css          shared glass foundation
-css/journey-v2.css            child journey, progression and Passports
-css/lesson-glass.css          calmer glass learning surface
+css/home-glass.css               approved homepage visual language
+css/glass-system.css             shared glass foundation
+css/journey-v2.css               journey, progression and Passports
+css/lesson-glass.css             calmer glass learning surface
+css/pages-glass.css              adult/safety glass pages
 
-js/glass-locale.js            bilingual runtime for glass pages
-js/state.js                   browser-local progress, traces, badges and Passports
-js/journey.js                 curriculum progression and journey rendering
-js/i18n.js                    mission language/direction runtime
-js/engine.js                  generic mission engine
+js/glass-locale.js               bilingual runtime for glass pages
+js/state.js                      browser-local progress and evidence
+js/journey.js                    curriculum progression and Passport rendering
+js/i18n.js                       mission language/direction runtime
+js/engine.js                     generic mission engine
 
-data/curriculum.js            six tracks and mission availability
-data/lesson-what-is-ai.js     Mission 1
-data/lesson-patterns.js        Mission 2
-data/lesson-data.js            Mission 3
-data/lesson-clear-asking.js    Mission 4
-data/lesson-details.js         Mission 5
-data/lesson-refine.js          Mission 6
+data/curriculum.js               six tracks and availability
+data/lesson-what-is-ai.js        Mission 1
+data/lesson-patterns.js           Mission 2
+data/lesson-data.js               Mission 3
+data/lesson-clear-asking.js       Mission 4
+data/lesson-details.js            Mission 5
+data/lesson-refine.js             Mission 6
+data/lesson-can-be-wrong.js       Mission 7
+data/lesson-verify.js             Mission 8
+data/lesson-fairness.js           Mission 9
 
-test/run.js                   original regression suite
-test/mission-regression-v2.js multi-mission bilingual regression suite
+test/site-smoke-v2.js             current site smoke tests
+test/mission-regression-v2.js     bilingual mission walkthrough tests
+.github/workflows/athar-regression.yml
 ```
 
 ## Product constraints
@@ -142,17 +122,7 @@ test/mission-regression-v2.js multi-mission bilingual regression suite
 
 ## Local state
 
-`js/state.js` stores only bounded pilot state such as:
-
-- traces;
-- completed mission IDs;
-- evidence mode (`independent` / `supported`);
-- badges;
-- Safety / Skills Passport evidence IDs;
-- companion choice;
-- last mission.
-
-Do not add sensitive child information to localStorage.
+`js/state.js` stores only bounded pilot state: traces, completed mission IDs, evidence mode, badges, Safety/Skills Passport evidence, companion choice and last mission. Do not add sensitive child information to localStorage.
 
 ## Test
 
@@ -161,7 +131,7 @@ npm install
 npm test
 ```
 
-`npm test` runs the original regression suite and the multi-mission bilingual walkthrough for all currently available missions.
+The GitHub Actions regression workflow runs current-site smoke checks and complete bilingual walkthroughs of every available mission on pushes to `main` and pull requests.
 
 ## Run locally
 
@@ -169,24 +139,10 @@ npm test
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
-
-## Development rule
-
-Before changing an approved experience:
-
-1. inspect the current `main` branch;
-2. reproduce the issue or define the intended behaviour;
-3. make the smallest coherent change;
-4. test English and Arabic;
-5. test the complete mission sequence;
-6. verify progression on return to the journey;
-7. verify mobile/laptop layout and accessibility;
-8. only then treat the iteration as ready for milestone approval.
-
 ## Status / cautions
 
 - This remains a pilot/demo rather than a production school deployment.
 - Formal trademark clearance is still required before public commercial launch of the word mark.
 - Character artwork must remain faithful to the approved Hamdan/Hessa references; do not substitute reinterpretations.
+- Fonts currently load from Google and should be self-hosted before a stricter school privacy deployment.
 - Locked milestones must remain recoverable while later sections continue to evolve.
