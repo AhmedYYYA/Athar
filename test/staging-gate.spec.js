@@ -1,7 +1,15 @@
 const {test,expect}=require('@playwright/test');
 
-async function noHorizontalOverflow(page){
-  return page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth+1);
+async function overflowReport(page){
+  return page.evaluate(()=>{
+    const root=document.documentElement;
+    const vw=root.clientWidth;
+    const offenders=[...document.querySelectorAll('body *')].map(el=>{
+      const r=el.getBoundingClientRect();
+      return {tag:el.tagName.toLowerCase(),cls:typeof el.className==='string'?el.className:'',id:el.id||'',left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)};
+    }).filter(x=>x.right>vw+1||x.left<-1).sort((a,b)=>Math.max(b.right-vw,-b.left)-Math.max(a.right-vw,-a.left)).slice(0,8);
+    return {scrollWidth:root.scrollWidth,clientWidth:vw,overflow:root.scrollWidth-vw,offenders};
+  });
 }
 
 const shellPages=['/learn.html','/families.html','/schools.html','/safety.html'];
@@ -14,12 +22,14 @@ test.beforeEach(async({page})=>{
 test('staging keeps the approved 16-mission foundation and both age bands',async({page})=>{
   await page.goto('/learn.html');
   await expect(page.locator('.mission')).toHaveCount(16);
-  await expect(page.locator('[data-age-band="7-9"]')).toBeVisible();
-  await expect(page.locator('[data-age-band="10-12"]')).toBeVisible();
-  await page.locator('[data-age-band="10-12"]').click();
-  await expect(page.locator('[data-age-band="10-12"]')).toHaveAttribute('aria-pressed','true');
+  const young=page.locator('button[data-age-band="7-9"]');
+  const older=page.locator('button[data-age-band="10-12"]');
+  await expect(young).toBeVisible();
+  await expect(older).toBeVisible();
+  await older.click();
+  await expect(older).toHaveAttribute('aria-pressed','true');
   await page.reload();
-  await expect(page.locator('[data-age-band="10-12"]')).toHaveAttribute('aria-pressed','true');
+  await expect(page.locator('button[data-age-band="10-12"]')).toHaveAttribute('aria-pressed','true');
 });
 
 test('companion choice persists and no-companion remains an equal option',async({page})=>{
@@ -72,7 +82,8 @@ test('Arabic staging shell stays RTL and clean on desktop and mobile',async({pag
       const ar=page.locator('button[data-lang="ar"]');
       if(await ar.count()) await ar.first().click();
       await expect(page.locator('html')).toHaveAttribute('dir','rtl');
-      expect(await noHorizontalOverflow(page)).toBeTruthy();
+      const report=await overflowReport(page);
+      expect(report.overflow,`${url} @ ${viewport.width}x${viewport.height} overflow=${report.overflow}px offenders=${JSON.stringify(report.offenders)}`).toBeLessThanOrEqual(1);
     }
   }
 });
