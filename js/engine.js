@@ -11,6 +11,12 @@ ATHAR.engine=(function(){
     'verification':{en:'Check important answers',ar:'أتحقق من الإجابات المهمة'},
     'examples':{en:'Choose useful examples',ar:'أختار أمثلة مفيدة'},
     'uncertainty':{en:'Know when a guess is uncertain',ar:'أعرف متى يكون التخمين غير مؤكد'},
+    'data-sources':{en:'Trace where examples come from',ar:'أتتبع مصدر الأمثلة'},
+    'data-relevance':{en:'Choose examples that fit the task',ar:'أختار أمثلة تناسب المهمة'},
+    'label-quality':{en:'Check labels and example quality',ar:'أتحقق من التسميات وجودة الأمثلة'},
+    'state-goal':{en:'State a clear goal',ar:'أحدد هدفاً واضحاً'},
+    'useful-details':{en:'Use helpful details',ar:'أستخدم تفاصيل مفيدة'},
+    'pick-output':{en:'Pick a useful output',ar:'أختار مخرجاً مفيداً'},
     'ai-is-tool':{en:'AI is a tool, not a person',ar:'الذكاء الاصطناعي أداة وليس شخصاً'},
     'check-important':{en:'Check what matters',ar:'أتحقق مما يهم'},
     'privacy':{en:'Keep private things private',ar:'أحافظ على معلوماتي الخاصة'}
