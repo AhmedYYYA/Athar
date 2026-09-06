@@ -16,7 +16,7 @@ ATHAR.curriculum = {
       lessons: [
         { id: 'what-is-ai', name: { en: 'What is AI?', ar: 'ما هو الذكاء الاصطناعي؟' }, traces: 5, ready: true },
         { id: 'patterns',   name: { en: 'Spotting patterns', ar: 'اكتشاف الأنماط' }, traces: 5, ready: true },
-        { id: 'data',       name: { en: 'Where examples come from', ar: 'من أين تأتي الأمثلة' }, traces: 5, ready: false }
+        { id: 'data',       name: { en: 'Where examples come from', ar: 'من أين تأتي الأمثلة' }, traces: 5, ready: true }
       ]
     },
     {
@@ -27,7 +27,7 @@ ATHAR.curriculum = {
         ar: 'أن تقول ما تريده بوضوح: هدف واضح، وتفاصيل مفيدة، وتحسين النتيجة الضعيفة.'
       },
       lessons: [
-        { id: 'clear-asking', name: { en: 'Say what you mean', ar: 'قل ما تقصد' }, traces: 5, ready: false },
+        { id: 'clear-asking', name: { en: 'Say what you mean', ar: 'قل ما تقصد' }, traces: 5, ready: true },
         { id: 'details',      name: { en: 'Add the useful bits', ar: 'أضف التفاصيل المفيدة' }, traces: 5, ready: false },
         { id: 'refine',       name: { en: 'Make it better', ar: 'اجعلها أفضل' }, traces: 5, ready: false }
       ]
