@@ -1,7 +1,7 @@
 /* ATHAR live child journey: curriculum + local progress + passports. */
 window.ATHAR=window.ATHAR||{};
 ATHAR.journey=(function(){
-  var skillOrder=['recognise-ai','patterns','verification','examples','uncertainty','data-sources','data-relevance','label-quality','state-goal','useful-details','pick-output'];
+  var skillOrder=['recognise-ai','patterns','verification','examples','uncertainty','data-sources','data-relevance','label-quality','state-goal','useful-details','pick-output','relevant-details','safe-details','useful-limits','examine-result','compare-goal','refine-result'];
   var safetyOrder=['ai-is-tool','check-important','privacy'];
   var labels={
     'recognise-ai':{en:'Spot AI',ar:'أتعرف إلى الذكاء الاصطناعي'},
@@ -15,6 +15,12 @@ ATHAR.journey=(function(){
     'state-goal':{en:'State a clear goal',ar:'أحدد هدفاً واضحاً'},
     'useful-details':{en:'Use helpful details',ar:'أستخدم تفاصيل مفيدة'},
     'pick-output':{en:'Pick a useful output',ar:'أختار مخرجاً مفيداً'},
+    'relevant-details':{en:'Pick details that help',ar:'أختار تفاصيل تساعد المهمة'},
+    'safe-details':{en:'Keep private details out',ar:'أبقي التفاصيل الخاصة خارجاً'},
+    'useful-limits':{en:'Set useful limits',ar:'أضع حدوداً مفيدة'},
+    'examine-result':{en:'Examine the result',ar:'أفحص النتيجة'},
+    'compare-goal':{en:'Compare result with the goal',ar:'أقارن النتيجة بالهدف'},
+    'refine-result':{en:'Refine and try again',ar:'أحسّن وأحاول من جديد'},
     'ai-is-tool':{en:'AI is a tool, not a person',ar:'الذكاء الاصطناعي أداة وليس شخصاً'},
     'check-important':{en:'Check what matters',ar:'أتحقق مما يهم'},
     'privacy':{en:'Keep private things private',ar:'أحافظ على معلوماتي الخاصة'}
@@ -31,6 +37,8 @@ ATHAR.journey=(function(){
     if(ATHAR.state.isDone('patterns'))['patterns','examples','uncertainty'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
     if(ATHAR.state.isDone('data'))['data-sources','data-relevance','label-quality'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
     if(ATHAR.state.isDone('clear-asking'))['state-goal','useful-details','pick-output'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
+    if(ATHAR.state.isDone('details'))['relevant-details','safe-details','useful-limits'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
+    if(ATHAR.state.isDone('refine'))['examine-result','compare-goal','refine-result'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
   }
   function readyLessons(){return ATHAR.curriculum.order().filter(function(x){return x.lesson.ready})}
   function isUnlocked(id){
