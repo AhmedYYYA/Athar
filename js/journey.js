@@ -1,8 +1,8 @@
 /* ATHAR live child journey: curriculum + local progress + passports. */
 window.ATHAR=window.ATHAR||{};
 ATHAR.journey=(function(){
-  var skillOrder=['recognise-ai','patterns','verification','examples','uncertainty','data-sources','data-relevance','label-quality','state-goal','useful-details','pick-output','relevant-details','safe-details','useful-limits','examine-result','compare-goal','refine-result','spot-ai-error','confidence-not-proof','pause-before-trust','choose-source','cross-check','use-evidence','spot-unfair-pattern','check-representation','human-review'];
-  var safetyOrder=['ai-is-tool','check-important','privacy'];
+  var skillOrder=['recognise-ai','patterns','verification','examples','uncertainty','data-sources','data-relevance','label-quality','state-goal','useful-details','pick-output','relevant-details','safe-details','useful-limits','examine-result','compare-goal','refine-result','spot-ai-error','confidence-not-proof','pause-before-trust','choose-source','cross-check','use-evidence','spot-unfair-pattern','check-representation','human-review','spot-private-info','share-minimum','ask-before-sharing','tool-not-person','spot-secrecy-pressure','choose-human-help'];
+  var safetyOrder=['ai-is-tool','check-important','privacy','trusted-adult','no-secrets-with-ai'];
   var labels={
     'recognise-ai':{en:'Spot AI',ar:'أتعرف إلى الذكاء الاصطناعي'},
     'patterns':{en:'Find patterns',ar:'أكتشف الأنماط'},
@@ -30,14 +30,22 @@ ATHAR.journey=(function(){
     'spot-unfair-pattern':{en:'Spot a possible unfair pattern',ar:'ألاحظ نمطاً قد يكون غير منصف'},
     'check-representation':{en:'Check who and what was represented',ar:'أتحقق ممن وما تم تمثيله'},
     'human-review':{en:'Keep human review for important decisions',ar:'أبقي المراجعة البشرية للقرارات المهمة'},
+    'spot-private-info':{en:'Spot private information',ar:'أميّز المعلومات الخاصة'},
+    'share-minimum':{en:'Share only what the task needs',ar:'أشارك فقط ما تحتاجه المهمة'},
+    'ask-before-sharing':{en:'Ask before sharing personal things',ar:'أسأل قبل مشاركة الأمور الشخصية'},
+    'tool-not-person':{en:'Keep AI in its place as a tool',ar:'أبقي الذكاء الاصطناعي في مكانه كأداة'},
+    'spot-secrecy-pressure':{en:'Spot secrecy or isolation pressure',ar:'ألاحظ ضغط السرية أو العزلة'},
+    'choose-human-help':{en:'Choose human help when it matters',ar:'أختار المساعدة البشرية عندما يكون الأمر مهماً'},
     'ai-is-tool':{en:'AI is a tool, not a person',ar:'الذكاء الاصطناعي أداة وليس شخصاً'},
     'check-important':{en:'Check what matters',ar:'أتحقق مما يهم'},
-    'privacy':{en:'Keep private things private',ar:'أحافظ على معلوماتي الخاصة'}
+    'privacy':{en:'Keep private things private',ar:'أحافظ على معلوماتي الخاصة'},
+    'trusted-adult':{en:'Bring in a trusted adult when needed',ar:'أستعين بشخص بالغ موثوق عند الحاجة'},
+    'no-secrets-with-ai':{en:'Do not keep secrets with AI',ar:'لا أحتفظ بأسرار مع الذكاء الاصطناعي'}
   };
   function lang(){return document.documentElement.lang==='ar'?'ar':'en'}
   function L(v){if(!v)return'';if(typeof v==='string')return v;return v[lang()]||v.en||''}
   function T(en,ar){return lang()==='ar'?ar:en}
-  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]})}
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
   function migratePassports(){
     if(ATHAR.state.isDone('what-is-ai')){
       ['recognise-ai','patterns','verification'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
@@ -51,6 +59,14 @@ ATHAR.journey=(function(){
     if(ATHAR.state.isDone('can-be-wrong'))['spot-ai-error','confidence-not-proof','pause-before-trust'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
     if(ATHAR.state.isDone('verify'))['choose-source','cross-check','use-evidence'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
     if(ATHAR.state.isDone('fairness'))['spot-unfair-pattern','check-representation','human-review'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
+    if(ATHAR.state.isDone('private')){
+      ['spot-private-info','share-minimum','ask-before-sharing'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
+      ['privacy','trusted-adult'].forEach(function(id){ATHAR.state.awardPassport('safety',id)});
+    }
+    if(ATHAR.state.isDone('not-human')){
+      ['tool-not-person','spot-secrecy-pressure','choose-human-help'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
+      ['ai-is-tool','trusted-adult','no-secrets-with-ai'].forEach(function(id){ATHAR.state.awardPassport('safety',id)});
+    }
   }
   function readyLessons(){return ATHAR.curriculum.order().filter(function(x){return x.lesson.ready})}
   function isUnlocked(id){
@@ -83,7 +99,7 @@ ATHAR.journey=(function(){
     el.innerHTML=ATHAR.curriculum.tracks.map(function(track,ti){var complete=track.lessons.filter(function(l){return ATHAR.state.isDone(l.id)}).length;var available=track.lessons.filter(function(l){return l.ready}).length;var missions=track.lessons.map(function(l,li){var st=missionState(l);return'<div class="mission '+st+'"><div class="mission-index">'+String(li+1).padStart(2,'0')+'</div><div class="mission-copy"><h3>'+esc(L(l.name))+'</h3>'+missionMeta(l,st)+'</div>'+missionButton(l,st)+'</div>'}).join('');return'<article class="journey-track reveal in"><div class="journey-track-head"><div class="track-orb">'+String(ti+1).padStart(2,'0')+'</div><div><span class="track-progress">'+complete+'/'+track.lessons.length+' '+T('complete','مكتمل')+(available?' · '+available+' '+T('available','متاح'):'')+'</span><h2>'+esc(L(track.name))+'</h2><p>'+esc(L(track.blurb))+'</p></div></div><div class="mission-stack">'+missions+'</div></article>'}).join('')
   }
   function passportCard(kind,title,subtitle,order){var earned=ATHAR.state.passport(kind);var chips=order.map(function(id){var got=earned.indexOf(id)>=0;return'<li class="passport-item '+(got?'earned':'waiting')+'"><span class="passport-mark">'+(got?'✓':'○')+'</span><span>'+esc(L(labels[id]))+'</span></li>'}).join('');return'<article class="passport-card '+kind+'"><div class="passport-card-head"><span>'+T('ATHAR PASSPORT','جواز أثر')+'</span><strong>'+title+'</strong><p>'+subtitle+'</p></div><ul>'+chips+'</ul><div class="passport-count">'+earned.filter(function(id){return order.indexOf(id)>=0}).length+' / '+order.length+'</div></article>'}
-  function renderPassports(){var el=document.getElementById('passportGrid');if(!el)return;el.innerHTML=passportCard('safety',T('Safety foundations','أساسيات السلامة'),T('The three rules that keep you in charge around AI.','ثلاث قواعد تبقيك صاحب القرار عند استخدام الذكاء الاصطناعي.'),safetyOrder)+passportCard('skills',T('Skills evidence','أدلة المهارات'),T('Evidence appears when a mission shows what you can do.','يظهر الدليل عندما تُظهر المهمة ما تستطيع فعله.'),skillOrder)}
+  function renderPassports(){var el=document.getElementById('passportGrid');if(!el)return;el.innerHTML=passportCard('safety',T('Safety foundations','أساسيات السلامة'),T('Five habits that keep you in charge around AI.','خمس عادات تبقيك صاحب القرار عند استخدام الذكاء الاصطناعي.'),safetyOrder)+passportCard('skills',T('Skills evidence','أدلة المهارات'),T('Evidence appears when a mission shows what you can do.','يظهر الدليل عندما تُظهر المهمة ما تستطيع فعله.'),skillOrder)}
   function paintCompanion(){var c=ATHAR.state.companion();document.querySelectorAll('[data-companion]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.companion===c))})}
   function render(){migratePassports();renderStats();renderNext();renderTracks();renderPassports();paintCompanion()}
   function bind(){document.addEventListener('click',function(e){var b=e.target.closest('[data-companion]');if(!b)return;ATHAR.state.setCompanion(b.dataset.companion);paintCompanion()});document.addEventListener('athar:glass-language',render);window.addEventListener('pageshow',render)}
