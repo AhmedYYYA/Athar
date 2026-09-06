@@ -56,7 +56,7 @@ console.log('\nsite smoke v2');
   check('Journey renders six track cards',w.document.querySelectorAll('.journey-track').length===6,'got '+w.document.querySelectorAll('.journey-track').length);
   check('Journey renders sixteen planned missions',w.document.querySelectorAll('.mission').length===16,'got '+w.document.querySelectorAll('.mission').length);
   const ready=w.ATHAR.curriculum.order().filter(x=>x.lesson.ready);
-  check('Journey exposes eleven implemented missions',ready.length===11,'got '+ready.length);
+  check('Journey exposes thirteen implemented missions',ready.length===13,'got '+ready.length);
   check('Journey shows Safety and Skills Passports',w.document.querySelectorAll('.passport-card').length===2);
   check('Journey shows five Safety Passport habits',w.document.querySelectorAll('.passport-card.safety .passport-item').length===5,'got '+w.document.querySelectorAll('.passport-card.safety .passport-item').length);
   check('Journey offers Hamdan, Hessa and no companion',w.document.querySelectorAll('[data-companion]').length===3);
@@ -64,10 +64,10 @@ console.log('\nsite smoke v2');
 }
 
 {
-  const w=boot('lesson.html','https://athar.test/lesson.html?m=private');
+  const w=boot('lesson.html','https://athar.test/lesson.html?m=my-idea');
   check('mission player boots without script errors',w.__errors.length===0,w.__errors.join(' | '));
-  check('Mission 10 is registered',!!(w.ATHAR&&w.ATHAR.lessons&&w.ATHAR.lessons.private));
-  check('Mission 11 is registered',!!(w.ATHAR&&w.ATHAR.lessons&&w.ATHAR.lessons['not-human']));
+  check('Mission 12 is registered',!!(w.ATHAR&&w.ATHAR.lessons&&w.ATHAR.lessons['my-idea']));
+  check('Mission 13 is registered',!!(w.ATHAR&&w.ATHAR.lessons&&w.ATHAR.lessons.credit));
   check('mission player renders first stage',!!w.document.querySelector('.stagetitle'));
 }
 
