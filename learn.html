@@ -7,7 +7,7 @@
 <link rel="icon" href="assets/athar-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/home-glass.css"><link rel="stylesheet" href="css/glass-system.css"><link rel="stylesheet" href="css/journey-v2.css"><link rel="stylesheet" href="css/experience-hardening.css">
+<link rel="stylesheet" href="css/home-glass.css"><link rel="stylesheet" href="css/glass-system.css"><link rel="stylesheet" href="css/journey-v2.css"><link rel="stylesheet" href="css/experience-hardening.css"><link rel="stylesheet" href="css/child-staging-v5.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -20,14 +20,24 @@
 <main id="main" class="journey-shell">
   <section class="journey-intro reveal">
     <span class="kicker"><i></i><span data-en="Your learning trail" data-ar="مسار تعلّمك">Your learning trail</span></span>
-    <h1 data-en="Every mission leaves a trace." data-ar="كل مهمة تترك أثراً.">Every mission leaves a trace.</h1>
-    <p data-en="Move through short missions, earn evidence and watch your ATHAR Passports grow. You stay the thinker; AI stays the tool." data-ar="تقدّم عبر مهام قصيرة، واكسب الأدلة، وشاهد جوازي أثر يتطوران. أنت تبقى المفكر، والذكاء الاصطناعي يبقى الأداة.">Move through short missions, earn evidence and watch your ATHAR Passports grow. You stay the thinker; AI stays the tool.</p>
+    <h1 data-en="Choose a mission. Leave a trace." data-ar="اختر مهمة. واترك أثراً.">Choose a mission. Leave a trace.</h1>
+    <p data-en="Learn one small idea at a time. Try it, check it and make it yours." data-ar="تعلّم فكرة صغيرة في كل مرة. جرّبها، تحقّق منها، واجعلها من صنعك.">Learn one small idea at a time. Try it, check it and make it yours.</p>
     <div class="journey-stats" id="journeyStats" aria-live="polite"></div>
   </section>
 
-  <section class="age-zone reveal in" aria-labelledby="ageTitle">
-    <div><h2 id="ageTitle" data-en="Choose your learning level" data-ar="اختر مستوى تجربتك">Choose your learning level</h2><p data-en="Both levels follow the same 16-mission journey. The older level can open optional deeper explanations; the younger level stays shorter and more concrete." data-ar="يتبع المستويان الرحلة نفسها المكونة من 16 مهمة. يمكن للمستوى الأكبر فتح شروحات أعمق اختيارية، بينما يبقى المستوى الأصغر أقصر وأكثر وضوحاً.">Both levels follow the same 16-mission journey.</p><p class="age-note" id="ageNote"></p></div>
-    <div class="age-choices" role="group" aria-label="Age experience"><button type="button" class="age-choice" data-age-band="7-9" aria-pressed="true"><span data-en="Ages 7–9" data-ar="العمر 7–9">Ages 7–9</span></button><button type="button" class="age-choice" data-age-band="10-12" aria-pressed="false"><span data-en="Ages 10–12" data-ar="العمر 10–12">Ages 10–12</span></button></div>
+  <section class="trail-control reveal in" aria-label="Journey controls">
+    <div class="age-zone" aria-labelledby="ageTitle">
+      <div><h2 id="ageTitle" data-en="Pick your level" data-ar="اختر مستواك">Pick your level</h2><p data-en="Same adventure. The 10–12 level can open extra explanations." data-ar="المغامرة نفسها. مستوى 10–12 يمكنه فتح شروحات إضافية.">Same adventure. The 10–12 level can open extra explanations.</p><p class="age-note" id="ageNote"></p></div>
+      <div class="age-choices" role="group" aria-label="Age experience"><button type="button" class="age-choice" data-age-band="7-9" aria-pressed="true"><span data-en="Ages 7–9" data-ar="العمر 7–9">Ages 7–9</span></button><button type="button" class="age-choice" data-age-band="10-12" aria-pressed="false"><span data-en="Ages 10–12" data-ar="العمر 10–12">Ages 10–12</span></button></div>
+    </div>
+    <div class="quick-companion" aria-labelledby="quickCompanionTitle">
+      <div><span class="mini-label" data-en="YOUR GUIDE" data-ar="دليلك">YOUR GUIDE</span><h2 id="quickCompanionTitle" data-en="Who explores with you?" data-ar="من يستكشف معك؟">Who explores with you?</h2></div>
+      <div class="quick-companion-choices">
+        <button type="button" class="companion-choice" data-companion="hamdan" aria-pressed="false"><img src="assets/hamdan-face.png" alt=""><span>Hamdan | حمدان</span></button>
+        <button type="button" class="companion-choice" data-companion="hessa" aria-pressed="false"><img src="assets/hessa-face.png" alt=""><span>Hessa | حصه</span></button>
+        <button type="button" class="companion-choice solo" data-companion="none" aria-pressed="true"><span data-en="Just me" data-ar="بنفسي">Just me</span></button>
+      </div>
+    </div>
   </section>
 
   <section id="progress" aria-labelledby="nextTitle">
@@ -35,30 +45,21 @@
   </section>
 
   <section aria-labelledby="tracksTitle">
-    <div class="journey-section-head reveal in"><h2 id="tracksTitle" data-en="Your six learning tracks" data-ar="مساراتك التعليمية الستة">Your six learning tracks</h2><p data-en="Available missions unlock in order. The six tracks build understanding, good questions, checking, safety, responsible creation and computational thinking." data-ar="تُفتح المهام بالترتيب. وتبني المسارات الستة الفهم، والسؤال الجيد، والتحقق، والسلامة، والإبداع المسؤول، والتفكير الحاسوبي.">Available missions unlock in order.</p></div>
+    <div class="journey-section-head reveal in"><span class="section-eyebrow" data-en="YOUR MAP" data-ar="خريطتك">YOUR MAP</span><h2 id="tracksTitle" data-en="Six worlds to explore" data-ar="ستة عوالم للاستكشاف">Six worlds to explore</h2><p data-en="Finish a mission to open the next one. Each world builds a different AI skill." data-ar="أنهِ مهمة لتفتح التالية. كل عالم يبني مهارة مختلفة مع الذكاء الاصطناعي.">Finish a mission to open the next one. Each world builds a different AI skill.</p></div>
     <div class="track-list" id="trackList"></div>
   </section>
 
   <section aria-labelledby="passportTitle">
-    <div class="journey-section-head reveal in"><h2 id="passportTitle" data-en="Your ATHAR Passports" data-ar="جوازا أثر الخاصان بك">Your ATHAR Passports</h2><p data-en="Completion tells you that you finished. Passport evidence tells you what you demonstrated." data-ar="الإكمال يخبرك أنك أنهيت المهمة. أما دليل الجواز فيخبرك بما أثبت أنك تستطيع فعله.">Completion tells you that you finished. Passport evidence tells you what you demonstrated.</p></div>
+    <div class="journey-section-head reveal in"><span class="section-eyebrow" data-en="WHAT YOU CAN DO" data-ar="ما تستطيع فعله">WHAT YOU CAN DO</span><h2 id="passportTitle" data-en="Your ATHAR Passports" data-ar="جوازا أثر الخاصان بك">Your ATHAR Passports</h2><p data-en="Your Passports grow when you show a skill — not just when you finish a screen." data-ar="ينمو جوازاك عندما تُظهر مهارة، وليس فقط عندما تنهي شاشة.">Your Passports grow when you show a skill — not just when you finish a screen.</p></div>
     <div class="passport-grid" id="passportGrid" aria-live="polite"></div>
   </section>
 
   <section class="companion-zone reveal in" aria-labelledby="companionTitle">
-    <h2 id="companionTitle" data-en="Choose how you explore" data-ar="اختر كيف تستكشف">Choose how you explore</h2>
-    <p data-en="Hamdan and Hessa can offer thinking hints. Working on your own is always an equal choice. A hint is recorded honestly as support, not independent mastery." data-ar="يمكن لحمدان وحصه تقديم تلميحات تساعد على التفكير. والاستكشاف بنفسك خيار متساوٍ دائماً. ويُسجل التلميح بصدق كمساعدة، وليس كإتقان مستقل.">Hamdan and Hessa can offer thinking hints. Working on your own is always an equal choice.</p>
-    <div class="companions">
-      <button type="button" class="companion-choice" data-companion="hamdan" aria-pressed="false"><img src="assets/hamdan-face.png" alt=""><span>Hamdan | حمدان</span></button>
-      <button type="button" class="companion-choice" data-companion="hessa" aria-pressed="false"><img src="assets/hessa-face.png" alt=""><span>Hessa | حصه</span></button>
-      <button type="button" class="companion-choice" data-companion="none" aria-pressed="true"><span data-en="Explore on my own" data-ar="أستكشف بنفسي">Explore on my own</span></button>
-    </div>
+    <div class="companion-copy"><span class="section-eyebrow light" data-en="THINKING HELP" data-ar="مساعدة للتفكير">THINKING HELP</span><h2 id="companionTitle" data-en="A hint can help. Your thinking still leads." data-ar="قد يساعدك التلميح. لكن تفكيرك هو القائد.">A hint can help. Your thinking still leads.</h2><p data-en="Hamdan and Hessa give thinking hints when you choose them. You can always explore on your own." data-ar="يقدم حمدان وحصه تلميحات تساعدك على التفكير عندما تختارهما. ويمكنك دائماً الاستكشاف بنفسك.">Hamdan and Hessa give thinking hints when you choose them. You can always explore on your own.</p></div>
+    <div class="companion-portraits" aria-hidden="true"><img src="assets/hamdan-face.png" alt=""><img src="assets/hessa-face.png" alt=""></div>
   </section>
 </main>
 <footer><span>ATHAR | أثر</span> · <span data-en="The child stays the thinker." data-ar="الطفل يبقى هو المفكر.">The child stays the thinker.</span></footer>
-<script src="js/glass-locale.js"></script>
-<script src="js/state.js"></script>
-<script src="data/curriculum.js"></script>
-<script src="js/journey.js"></script>
-<script src="js/experience-hardening.js"></script>
+<script src="js/glass-locale.js"></script><script src="js/state.js"></script><script src="data/curriculum.js"></script><script src="js/journey.js"></script><script src="js/experience-hardening.js"></script>
 </body>
 </html>
