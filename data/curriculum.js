@@ -40,9 +40,9 @@ ATHAR.curriculum = {
         ar: 'يبدو الذكاء الاصطناعي واثقًا حتى حين يخطئ. تعلّم أن تلاحظ وتشكّ وتتحقق.'
       },
       lessons: [
-        { id: 'can-be-wrong', name: { en: 'When AI is wrong', ar: 'حين يخطئ' }, traces: 5, ready: false },
-        { id: 'verify',       name: { en: 'Checking a fact', ar: 'التحقق من معلومة' }, traces: 5, ready: false },
-        { id: 'fairness',     name: { en: 'Is it fair to everyone?', ar: 'هل هو منصف للجميع؟' }, traces: 5, ready: false }
+        { id: 'can-be-wrong', name: { en: 'When AI is wrong', ar: 'حين يخطئ' }, traces: 5, ready: true },
+        { id: 'verify',       name: { en: 'Checking a fact', ar: 'التحقق من معلومة' }, traces: 5, ready: true },
+        { id: 'fairness',     name: { en: 'Is it fair to everyone?', ar: 'هل هو منصف للجميع؟' }, traces: 5, ready: true }
       ]
     },
     {
