@@ -1,124 +1,150 @@
 # ATHAR | أثر
 
-A bilingual AI-readiness website and learning platform for children aged
-7 to 12. Static site: no build step to deploy, no runtime dependencies.
+ATHAR is a UAE-first bilingual AI-readiness learning experience for children aged 7–12.
 
-## Run
+> **The child stays the thinker. AI stays the tool.**
 
-Open `index.html`, or `python3 -m http.server 8000`. Copy the folder to any
-static host.
+The current repository is a static HTML/CSS/JavaScript pilot deployed through GitHub Pages. Progress, companion choice, traces, badges and Passport evidence remain browser-local. No live AI, account, payment, advertising or analytics system is connected in this build.
 
-## Test
+## Live pages
 
+- Home: `index.html`
+- Child journey: `learn.html`
+- Mission player: `lesson.html?m=<mission-id>`
+- Families: `families.html`
+- Educators / schools: `schools.html`
+- Safety: `safety.html`
+
+GitHub Pages: `https://ahmedyyya.github.io/Athar/`
+
+## Approved visual milestone
+
+The fluid glass homepage approved on 6 September 2026 is preserved on:
+
+`milestone-glass-home-v1`
+
+Baseline commit:
+
+`562bedac41f2214ca01679c4df33991ad024b8c0`
+
+Its glass treatment, transparency, animated colour fields, ATHAR motion graphic, colour movement and overall visual language are the reference direction for the rest of the product. Audience-specific pages use different motion intensity: expressive on marketing/journey surfaces and calmer inside learning tasks.
+
+## Current learning loop
+
+The child experience now follows a connected loop:
+
+**Journey → Mission → Feedback → Completion → Traces/Badge → Passport evidence → Journey**
+
+`learn.html` reads the curriculum and browser-local state dynamically. It shows:
+
+- the next unlocked mission;
+- all six learning tracks;
+- completed / locked / in-development mission states;
+- traces and badges earned;
+- Safety Passport foundations;
+- Skills Passport evidence;
+- Hamdan, Hessa or no companion.
+
+Completion and competency evidence remain separate concepts. If a learner uses a hint, completion is recorded as **supported** rather than independent. A later replay without hints can upgrade that lesson evidence to independent.
+
+## Missions
+
+Mission content is data-driven and rendered by one generic engine.
+
+Currently available:
+
+1. `what-is-ai` — **What is AI? | ما هو الذكاء الاصطناعي؟**
+2. `patterns` — **Spotting patterns | اكتشاف الأنماط**
+
+Future missions remain visible on the journey as in-development items and are not presented as complete features.
+
+### Six curriculum tracks
+
+1. Understand it | افهمه
+2. Ask it well | أحسِن سؤاله
+3. Check it | تحقّق منه
+4. Protect yourself | احمِ نفسك
+5. Create with it | أبدع به
+6. See inside | انظر في داخله
+
+## Key files
+
+```text
+index.html                 approved glass homepage
+learn.html                 live child journey
+lesson.html                reusable mission player
+families.html              family experience
+schools.html               educator experience
+safety.html                safety information
+
+css/home-glass.css         approved homepage visual language
+css/glass-system.css       shared glass foundation
+css/journey-v2.css         child journey, progression and Passports
+css/lesson-glass.css       calmer glass learning surface
+
+js/glass-locale.js         bilingual runtime for glass pages
+js/state.js                browser-local progress, traces, badges and Passports
+js/journey.js              curriculum progression and journey rendering
+js/i18n.js                 mission language/direction runtime
+js/engine.js               generic mission engine
+
+data/curriculum.js         six tracks and mission availability
+data/lesson-what-is-ai.js  Mission 1
+data/lesson-patterns.js     Mission 2
 ```
-npm install jsdom
-node test/run.js
+
+## Product constraints
+
+- Arabic and English are first-class experiences.
+- Ages 7–9 require short, concrete and independently understandable language.
+- The child remains the thinker and decision-maker.
+- Hamdan and Hessa are optional guided companions, not emotional friends or authorities.
+- No unrestricted child chatbot.
+- No advertising or behavioural targeting.
+- No child-data brokerage.
+- No automatic high-stakes grading, diagnosis or behavioural profiling.
+- No open-web retrieval inside child missions in this pilot.
+- No hint is counted as independent mastery.
+- Do not call raster imagery embedded inside an SVG a true vector.
+
+## Local state
+
+`js/state.js` stores only bounded pilot state such as:
+
+- traces;
+- completed mission IDs;
+- evidence mode (`independent` / `supported`);
+- badges;
+- Safety / Skills Passport evidence IDs;
+- companion choice;
+- last mission.
+
+Do not add sensitive child information to localStorage.
+
+## Run locally
+
+```bash
+python3 -m http.server 8000
 ```
 
-155 assertions covering the lesson engine in both languages, bilingual
-parity, hint honesty, trail lock logic, accessibility, asset integrity,
-navigation drift across pages, and whether every page still reads with
-JavaScript disabled. Non-zero exit on failure.
+Then open `http://localhost:8000`.
 
-## Publish
+## Development rule
 
-```
-bash deploy.sh https://github.com/<you>/<repo>.git
-```
+Before changing an approved experience:
 
-Handles an empty repository or one with existing work. Do not use GitHub's
-browser uploader: it mangles folder case and silently drops files.
+1. inspect the current `main` branch;
+2. reproduce the issue or define the intended behaviour;
+3. make the smallest coherent change;
+4. test English and Arabic;
+5. test the complete mission sequence;
+6. verify progression on return to the journey;
+7. verify mobile/laptop layout and accessibility;
+8. only then treat the iteration as ready for milestone approval.
 
----
+## Status / cautions
 
-## Pages
-
-| Page | For |
-|---|---|
-| `index.html` | Everyone. What this is and why. |
-| `tracks.html` | The six-track, seventeen-mission curriculum. |
-| `families.html` | Parents. What a mission is, what is stored, what to ask. |
-| `schools.html` | Teachers. Fitting it in a lesson, what evidence looks like. |
-| `safety.html` | The specific safety decisions, including unsolved ones. |
-| `companions.html` | Hamdan and Hessa, and the rules they follow. |
-| `about.html` | Why the project exists and where it stands. |
-| `learn.html` | The mission trail. |
-| `lesson.html` | The mission player. |
-| `404.html` | Not found. |
-
-## Design
-
-The brand mark is one continuous stroke reading as both a reaching figure and
-the Arabic أ, and أثر means the trace a person leaves. So the stroke is the
-design system: a drawn line runs down the page and content hangs off it.
-Sections are stops on a path, and the same path becomes the child's trail.
-
-Colours are sampled from the mark: indigo `#2F49A8`, blue `#1E77C4`, teal
-`#00A88F`, orange `#F07818` on white, with orange reserved for the one action
-to take next. Type is Readex Pro throughout, a single family covering Arabic
-and Latin, so neither script is a fallback for the other.
-
-## Architecture
-
-```
-tools/prefill.js   fills English text and expands lists into the HTML
-data/copy.js       every site string, both languages
-data/curriculum.js six tracks, seventeen missions
-data/lesson-*.js   mission content
-js/site.js         shared runtime: copy swapping, language toggle
-js/i18n.js         language, direction, Arabic-Indic numerals
-js/state.js        progress, storage with in-memory fallback
-js/engine.js       the lesson engine
-js/trail.js        trail rendering and lock logic
-js/home.js         the homepage stroke
-test/run.js        regression suite
-```
-
-**Content is data.** Pages are authored with `data-copy` paths and
-`data-list` containers. `node tools/prefill.js` fills them from
-`data/copy.js`, so the served HTML reads correctly with no JavaScript and
-cannot drift from the strings the runtime uses. The prefill fails loudly on
-an unknown key rather than emitting a blank element.
-
-**Lessons are data too.** One engine renders every stage type: `teach`,
-`multi`, `choice`, `sort`, `train`, `celebrate`. Adding a mission means
-writing a data file and registering it, not patching the engine.
-
-After editing copy or page structure, run `node tools/prefill.js` and commit
-the result.
-
-## Bilingual
-
-Both languages are authored in the same files. A test fails the build if any
-English string lacks Arabic, or if English survives on screen after switching
-language on any page. Arabic gets more line-height because hamza and shadda
-clip at Latin values, and digits follow the script.
-
-## Safety, as built
-
-No chat surface anywhere. No advertising, analytics or third-party tracking.
-Working alone is offered as an equal option to either companion. Taking a
-hint is recorded as support rather than independent mastery, and that is
-tested. No AI scoring or profiling. Progress stays in the browser and is
-never transmitted.
-
-## Known gaps
-
-- **Fonts load from Google**, which logs visitor addresses and contradicts
-  the third-party claim on the safety page. Self-host Readex Pro before this
-  goes in front of schools. The safety page says so itself.
-- **No read-aloud audio.** For ages 7 to 9 this matters more than almost
-  anything else here, and it needs recorded voice in both languages.
-- **One mission is complete.** `what-is-ai` runs across nine stages; the
-  other sixteen show as being written.
-- **No accounts or backend**, so no classroom reporting yet.
-- **Trademark not cleared.** Treat the name as a working title.
-- **Character art carries a soft white glow** baked into the source render.
-  The white canvas hides it; a clean re-export would remove the constraint.
-
-## Worth porting from the old build
-
-The previous repository's `lesson1-hardening.js` contains a safety exercise
-where an AI tells a child they need not involve an adult, and the child
-learns to involve one anyway. The safety page describes this exercise, but it
-is not yet implemented as a stage. It should be.
+- This remains a pilot/demo rather than a production school deployment.
+- Formal trademark clearance is still required before public commercial launch of the word mark.
+- Character artwork must remain faithful to the approved Hamdan/Hessa references; do not substitute reinterpretations.
+- The approved glass homepage milestone must remain recoverable while later sections continue to evolve.
