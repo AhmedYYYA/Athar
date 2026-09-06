@@ -5,9 +5,11 @@
   "private": true,
   "scripts": {
     "test": "node test/site-smoke-v2.js && node test/mission-regression-v2.js && node test/experience-hardening.js",
+    "test:browser": "playwright test",
     "serve": "python3 -m http.server 8000"
   },
   "devDependencies": {
+    "@playwright/test": "^1.55.0",
     "jsdom": "^24.1.3"
   }
 }
