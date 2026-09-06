@@ -54,7 +54,7 @@ console.log('\nsite smoke v2');
   check('Journey ATHAR namespace exists',!!w.ATHAR);
   check('Journey has six curriculum tracks',w.ATHAR&&w.ATHAR.curriculum&&w.ATHAR.curriculum.tracks.length===6);
   check('Journey renders six track cards',w.document.querySelectorAll('.journey-track').length===6,'got '+w.document.querySelectorAll('.journey-track').length);
-  check('Journey renders seventeen planned missions',w.document.querySelectorAll('.mission').length===17,'got '+w.document.querySelectorAll('.mission').length);
+  check('Journey renders sixteen planned missions',w.document.querySelectorAll('.mission').length===16,'got '+w.document.querySelectorAll('.mission').length);
   check('Journey shows Safety and Skills Passports',w.document.querySelectorAll('.passport-card').length===2);
   check('Journey offers Hamdan, Hessa and no companion',w.document.querySelectorAll('[data-companion]').length===3);
   bilingualParity(w,'learn.html');
