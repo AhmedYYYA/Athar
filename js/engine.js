@@ -17,6 +17,12 @@ ATHAR.engine=(function(){
     'state-goal':{en:'State a clear goal',ar:'أحدد هدفاً واضحاً'},
     'useful-details':{en:'Use helpful details',ar:'أستخدم تفاصيل مفيدة'},
     'pick-output':{en:'Pick a useful output',ar:'أختار مخرجاً مفيداً'},
+    'relevant-details':{en:'Pick details that help',ar:'أختار تفاصيل تساعد المهمة'},
+    'safe-details':{en:'Keep private details out',ar:'أبقي التفاصيل الخاصة خارجاً'},
+    'useful-limits':{en:'Set useful limits',ar:'أضع حدوداً مفيدة'},
+    'examine-result':{en:'Examine the result',ar:'أفحص النتيجة'},
+    'compare-goal':{en:'Compare result with the goal',ar:'أقارن النتيجة بالهدف'},
+    'refine-result':{en:'Refine and try again',ar:'أحسّن وأحاول من جديد'},
     'ai-is-tool':{en:'AI is a tool, not a person',ar:'الذكاء الاصطناعي أداة وليس شخصاً'},
     'check-important':{en:'Check what matters',ar:'أتحقق مما يهم'},
     'privacy':{en:'Keep private things private',ar:'أحافظ على معلوماتي الخاصة'}
