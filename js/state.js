@@ -9,6 +9,7 @@ ATHAR.state=(function(){
     support:{},
     passports:{skills:[],safety:[]},
     companion:localStorage.getItem('athar.companion')||'none',
+    ageBand:localStorage.getItem('athar.ageBand')||'7-9',
     lastMission:null
   }}
   function normalise(raw){
@@ -20,6 +21,7 @@ ATHAR.state=(function(){
     s.passports.skills=Array.isArray(s.passports.skills)?s.passports.skills:[];
     s.passports.safety=Array.isArray(s.passports.safety)?s.passports.safety:[];
     s.traces=Number.isFinite(+s.traces)?+s.traces:0;
+    s.ageBand=s.ageBand==='10-12'?'10-12':'7-9';
     return s;
   }
   function load(){try{return normalise(JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){return base()}}
@@ -57,6 +59,8 @@ ATHAR.state=(function(){
     passport:function(kind){kind=kind==='safety'?'safety':'skills';return s.passports[kind].slice()},
     setCompanion:function(v){s.companion=v||'none';try{localStorage.setItem('athar.companion',s.companion)}catch(e){}save()},
     companion:function(){return s.companion||'none'},
+    setAgeBand:function(v){s.ageBand=v==='10-12'?'10-12':'7-9';try{localStorage.setItem('athar.ageBand',s.ageBand)}catch(e){}save()},
+    ageBand:function(){return s.ageBand==='10-12'?'10-12':'7-9'},
     setLastMission:function(id){s.lastMission=id||null;save()},
     lastMission:function(){return s.lastMission||null}
   };
