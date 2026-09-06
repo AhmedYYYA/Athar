@@ -39,7 +39,7 @@ Completion and competency evidence remain separate. Hint use is recorded as **su
 
 ## Available missions
 
-All mission content is bilingual, data-driven and rendered by one generic engine.
+All 16 foundation missions are bilingual, data-driven and rendered by one generic engine.
 
 1. `what-is-ai` — **What is AI? | ما هو الذكاء الاصطناعي؟**
 2. `patterns` — **Spotting patterns | اكتشاف الأنماط**
@@ -54,6 +54,9 @@ All mission content is bilingual, data-driven and rendered by one generic engine
 11. `not-human` — **A tool, not a friend | أداة، لا صديق**
 12. `my-idea` — **Whose idea was it? | فكرة من كانت؟**
 13. `credit` — **Giving credit | نسب العمل لأصحابه**
+14. `steps` — **Thinking in steps | التفكير بالخطوات**
+15. `rules` — **If this, then that | إذا حدث هذا، فافعل ذاك**
+16. `loops` — **Doing it again | التكرار**
 
 Missions 4–6 complete the child-facing **SUPER** loop:
 
@@ -65,7 +68,11 @@ Missions 10–11 form the **Protect yourself | احمِ نفسك** track. Childr
 
 Missions 12–13 form the **Create with it | أبدع به** track. Children learn to lead with their own purpose and judgement, use AI as assistance rather than a substitute for thinking, describe who contributed what, credit important sources, disclose relevant AI help honestly and avoid presenting copied work as their own.
 
+Missions 14–16 form the **See inside | انظر في داخله** track. Children learn the foundations of computational thinking: breaking a goal into ordered steps, debugging missing instructions, reading IF/THEN conditions, noticing the limits of simple rules, recognising repetition, using loops and understanding clear stopping conditions.
+
 The Safety Passport tracks five foundations: **AI is a tool, check what matters, keep private things private, involve a trusted adult when needed, and do not keep secrets with AI.**
+
+The Skills Passport now contains evidence across AI recognition, patterns/data, prompting, checking, privacy/boundaries, authorship/credit and computational thinking.
 
 ## Six curriculum tracks
 
@@ -74,9 +81,9 @@ The Safety Passport tracks five foundations: **AI is a tool, check what matters,
 3. Check it | تحقّق منه — implemented
 4. Protect yourself | احمِ نفسك — implemented
 5. Create with it | أبدع به — implemented
-6. See inside | انظر في داخله — in development
+6. See inside | انظر في داخله — implemented
 
-The curriculum currently contains **16 planned missions**, of which **13 are implemented**.
+The **16-mission ATHAR foundation journey is fully implemented** in the current pilot.
 
 ## Key files
 
@@ -114,6 +121,9 @@ data/lesson-private.js            Mission 10
 data/lesson-not-human.js          Mission 11
 data/lesson-my-idea.js            Mission 12
 data/lesson-credit.js             Mission 13
+data/lesson-steps.js              Mission 14
+data/lesson-rules.js              Mission 15
+data/lesson-loops.js              Mission 16
 
 test/site-smoke-v2.js             current site smoke tests
 test/mission-regression-v2.js     bilingual mission walkthrough tests
