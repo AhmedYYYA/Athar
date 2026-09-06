@@ -50,6 +50,8 @@ All mission content is bilingual, data-driven and rendered by one generic engine
 7. `can-be-wrong` — **When AI is wrong | حين يخطئ**
 8. `verify` — **Checking a fact | التحقق من معلومة**
 9. `fairness` — **Is it fair to everyone? | هل هو منصف للجميع؟**
+10. `private` — **Private means private | الخاص يبقى خاصًا**
+11. `not-human` — **A tool, not a friend | أداة، لا صديق**
 
 Missions 4–6 complete the child-facing **SUPER** loop:
 
@@ -57,16 +59,20 @@ Missions 4–6 complete the child-facing **SUPER** loop:
 
 Missions 7–9 form the **Check it | تحقّق منه** track. Children learn that confidence is not proof, choose sources that fit the claim, cross-check important information, use evidence to revise a conclusion, notice missing representation and keep responsible people in the loop for important decisions.
 
+Missions 10–11 form the **Protect yourself | احمِ نفسك** track. Children practise recognising private information, sharing only what a task needs, asking a trusted adult before sharing personal material, keeping AI in its role as a tool, spotting secrecy/isolation pressure and choosing real people for trust, care and serious safety help.
+
+The Safety Passport now tracks five foundations: **AI is a tool, check what matters, keep private things private, involve a trusted adult when needed, and do not keep secrets with AI.**
+
 ## Six curriculum tracks
 
 1. Understand it | افهمه — implemented
 2. Ask it well | أحسِن سؤاله — implemented
 3. Check it | تحقّق منه — implemented
-4. Protect yourself | احمِ نفسك — in development
+4. Protect yourself | احمِ نفسك — implemented
 5. Create with it | أبدع به — in development
 6. See inside | انظر في داخله — in development
 
-The curriculum currently contains **16 planned missions**, of which **9 are implemented**.
+The curriculum currently contains **16 planned missions**, of which **11 are implemented**.
 
 ## Key files
 
@@ -100,6 +106,8 @@ data/lesson-refine.js             Mission 6
 data/lesson-can-be-wrong.js       Mission 7
 data/lesson-verify.js             Mission 8
 data/lesson-fairness.js           Mission 9
+data/lesson-private.js            Mission 10
+data/lesson-not-human.js          Mission 11
 
 test/site-smoke-v2.js             current site smoke tests
 test/mission-regression-v2.js     bilingual mission walkthrough tests
