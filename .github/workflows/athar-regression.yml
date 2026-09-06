@@ -12,7 +12,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,3 +24,7 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Run ATHAR regression suite
         run: npm test
+      - name: Install Chromium for browser QA
+        run: npx playwright install --with-deps chromium
+      - name: Run real browser QA
+        run: npm run test:browser
