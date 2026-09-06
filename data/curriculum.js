@@ -53,8 +53,8 @@ ATHAR.curriculum = {
         ar: 'ما يبقى خاصًا، وما يمكن مشاركته بأمان، ومتى تلجأ إلى شخص بالغ تثق به.'
       },
       lessons: [
-        { id: 'private',   name: { en: 'Private means private', ar: 'الخاص يبقى خاصًا' }, traces: 5, ready: false },
-        { id: 'not-human', name: { en: 'A tool, not a friend', ar: 'أداة، لا صديق' }, traces: 5, ready: false }
+        { id: 'private',   name: { en: 'Private means private', ar: 'الخاص يبقى خاصًا' }, traces: 5, ready: true },
+        { id: 'not-human', name: { en: 'A tool, not a friend', ar: 'أداة، لا صديق' }, traces: 5, ready: true }
       ]
     },
     {
