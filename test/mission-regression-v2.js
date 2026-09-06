@@ -1,5 +1,5 @@
 /* ATHAR regression coverage for every currently available mission.
-   Run after test/run.js. Requires jsdom from package.json. */
+   Requires jsdom from package.json. */
 const fs=require('fs');
 const path=require('path');
 const {JSDOM}=require('jsdom');
@@ -72,6 +72,6 @@ function walkthrough(id,lang){
   }
 }
 console.log('\nmission regression v2');
-['what-is-ai','patterns','data','clear-asking','details','refine'].forEach(id=>['en','ar'].forEach(lang=>walkthrough(id,lang)));
+['what-is-ai','patterns','data','clear-asking','details','refine','can-be-wrong','verify','fairness'].forEach(id=>['en','ar'].forEach(lang=>walkthrough(id,lang)));
 console.log('\nmission regression v2: '+pass+' passed, '+fail+' failed');
 if(fail)process.exit(1);
