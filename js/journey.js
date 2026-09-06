@@ -1,7 +1,7 @@
 /* ATHAR live child journey: curriculum + local progress + passports. */
 window.ATHAR=window.ATHAR||{};
 ATHAR.journey=(function(){
-  var skillOrder=['recognise-ai','patterns','verification','examples','uncertainty','data-sources','data-relevance','label-quality','state-goal','useful-details','pick-output','relevant-details','safe-details','useful-limits','examine-result','compare-goal','refine-result','spot-ai-error','confidence-not-proof','pause-before-trust','choose-source','cross-check','use-evidence','spot-unfair-pattern','check-representation','human-review','spot-private-info','share-minimum','ask-before-sharing','tool-not-person','spot-secrecy-pressure','choose-human-help','lead-with-own-idea','direct-the-tool','describe-contribution','credit-sources','disclose-ai-help','avoid-copying'];
+  var skillOrder=['recognise-ai','patterns','verification','examples','uncertainty','data-sources','data-relevance','label-quality','state-goal','useful-details','pick-output','relevant-details','safe-details','useful-limits','examine-result','compare-goal','refine-result','spot-ai-error','confidence-not-proof','pause-before-trust','choose-source','cross-check','use-evidence','spot-unfair-pattern','check-representation','human-review','spot-private-info','share-minimum','ask-before-sharing','tool-not-person','spot-secrecy-pressure','choose-human-help','lead-with-own-idea','direct-the-tool','describe-contribution','credit-sources','disclose-ai-help','avoid-copying','order-steps','break-down-task','debug-steps','spot-condition','choose-action','trace-rule','spot-repeat','use-loop','stop-loop'];
   var safetyOrder=['ai-is-tool','check-important','privacy','trusted-adult','no-secrets-with-ai'];
   var labels={
     'recognise-ai':{en:'Spot AI',ar:'أتعرف إلى الذكاء الاصطناعي'},
@@ -42,6 +42,15 @@ ATHAR.journey=(function(){
     'credit-sources':{en:'Credit important sources',ar:'أنسب المصادر المهمة لأصحابها'},
     'disclose-ai-help':{en:'Describe AI help honestly',ar:'أصف مساعدة الذكاء الاصطناعي بصدق'},
     'avoid-copying':{en:'Do not present copied work as mine',ar:'لا أقدّم العمل المنقول على أنه عملي'},
+    'order-steps':{en:'Put steps in the right order',ar:'أرتب الخطوات بالترتيب الصحيح'},
+    'break-down-task':{en:'Break a goal into doable steps',ar:'أقسم الهدف إلى خطوات قابلة للتنفيذ'},
+    'debug-steps':{en:'Find and fix a broken step',ar:'أجد الخطوة الخاطئة وأصلحها'},
+    'spot-condition':{en:'Spot the condition in a rule',ar:'أميّز الشرط في القاعدة'},
+    'choose-action':{en:'Choose the action that follows',ar:'أختار الإجراء الذي يتبع الشرط'},
+    'trace-rule':{en:'Trace an if-then rule',ar:'أتتبع قاعدة إذا-فإن'},
+    'spot-repeat':{en:'Spot repeated work',ar:'ألاحظ العمل المتكرر'},
+    'use-loop':{en:'Use a loop for repetition',ar:'أستخدم التكرار للعمل المتكرر'},
+    'stop-loop':{en:'Know how a loop stops',ar:'أعرف كيف يتوقف التكرار'},
     'ai-is-tool':{en:'AI is a tool, not a person',ar:'الذكاء الاصطناعي أداة وليس شخصاً'},
     'check-important':{en:'Check what matters',ar:'أتحقق مما يهم'},
     'privacy':{en:'Keep private things private',ar:'أحافظ على معلوماتي الخاصة'},
@@ -75,6 +84,9 @@ ATHAR.journey=(function(){
     }
     if(ATHAR.state.isDone('my-idea'))['lead-with-own-idea','direct-the-tool','describe-contribution'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
     if(ATHAR.state.isDone('credit'))['credit-sources','disclose-ai-help','avoid-copying'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
+    if(ATHAR.state.isDone('steps'))['order-steps','break-down-task','debug-steps'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
+    if(ATHAR.state.isDone('rules'))['spot-condition','choose-action','trace-rule'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
+    if(ATHAR.state.isDone('loops'))['spot-repeat','use-loop','stop-loop'].forEach(function(id){ATHAR.state.awardPassport('skills',id)});
   }
   function readyLessons(){return ATHAR.curriculum.order().filter(function(x){return x.lesson.ready})}
   function isUnlocked(id){
@@ -98,7 +110,7 @@ ATHAR.journey=(function(){
   function renderNext(){
     var el=document.getElementById('nextMission');if(!el)return;var l=nextUp();
     if(l){el.innerHTML='<div class="next-copy"><span class="next-label">'+T('NEXT TRACE','الأثر التالي')+'</span><h2>'+esc(L(l.name))+'</h2><p>'+T('Continue your journey. One short mission, one clear idea at a time.','تابع رحلتك. مهمة قصيرة وفكرة واضحة في كل مرة.')+'</p></div><a class="next-cta" href="lesson.html?m='+encodeURIComponent(l.id)+'">'+T('Start mission','ابدأ المهمة')+' <span aria-hidden="true">→</span></a>';el.classList.remove('all-done')}
-    else{el.innerHTML='<div class="next-copy"><span class="next-label">'+T('YOUR TRAIL','مسارك')+'</span><h2>'+T('You completed every mission currently available.','أكملت كل المهام المتاحة حالياً.')+'</h2><p>'+T('Your traces and passport evidence stay here on this device. More missions are being prepared.','تبقى آثارك وأدلة جوازك هنا على هذا الجهاز. ويجري إعداد مهام إضافية.')+'</p></div>';el.classList.add('all-done')}
+    else{el.innerHTML='<div class="next-copy"><span class="next-label">'+T('FOUNDATION JOURNEY COMPLETE','اكتملت الرحلة التأسيسية')+'</span><h2>'+T('You completed all 16 ATHAR foundation missions.','أكملت مهام أثر التأسيسية الست عشرة.')+'</h2><p>'+T('Your traces, badges and Passport evidence show what you practised. You can replay any mission to strengthen the skill.','تُظهر آثارك وشاراتك وأدلة جوازك ما تدربت عليه. يمكنك إعادة أي مهمة لتقوية المهارة.')+'</p></div>';el.classList.add('all-done')}
   }
   function missionButton(l,state){if(state==='done')return'<a class="mission-action replay" href="lesson.html?m='+encodeURIComponent(l.id)+'">'+T('Replay','أعد المهمة')+'</a>';if(state==='open')return'<a class="mission-action start" href="lesson.html?m='+encodeURIComponent(l.id)+'">'+T('Start','ابدأ')+'</a>';if(state==='locked')return'<span class="mission-action locked">🔒 '+T('Finish the mission before it','أكمل المهمة السابقة')+'</span>';return'<span class="mission-action future">'+T('In development','قيد التطوير')+'</span>'}
   function missionMeta(l,state){if(state==='done')return'<span class="mission-evidence">✓ '+esc(evidenceText(l.id))+'</span>';if(state==='open')return'<span class="mission-evidence hot">'+l.traces+' '+T('traces to earn','آثار يمكنك كسبها')+'</span>';if(state==='locked')return'<span class="mission-evidence">'+T('Unlocks after the previous mission','تُفتح بعد المهمة السابقة')+'</span>';return'<span class="mission-evidence">'+T('Planned mission','مهمة مخططة')+'</span>'}
