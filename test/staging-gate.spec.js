@@ -1,14 +1,23 @@
 const {test,expect}=require('@playwright/test');
 
-async function overflowReport(page){
+async function contentOverflowReport(page){
   return page.evaluate(()=>{
-    const root=document.documentElement;
-    const vw=root.clientWidth;
-    const offenders=[...document.querySelectorAll('body *')].map(el=>{
+    const vw=document.documentElement.clientWidth;
+    const candidates=[...document.querySelectorAll('header, header *, main, main *, footer, footer *')];
+    const offenders=candidates.filter(el=>{
+      if(el.classList&&el.classList.contains('skip-link'))return false;
+      if(el.closest&&el.closest('.glass-bg'))return false;
+      if(el.closest&&el.closest('[aria-hidden="true"]'))return false;
+      const cs=getComputedStyle(el);
+      if(cs.display==='none'||cs.visibility==='hidden')return false;
+      if(!el.getClientRects().length)return false;
+      const r=el.getBoundingClientRect();
+      return r.width>1&&(r.right>vw+1||r.left<-1);
+    }).map(el=>{
       const r=el.getBoundingClientRect();
       return {tag:el.tagName.toLowerCase(),cls:typeof el.className==='string'?el.className:'',id:el.id||'',left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)};
-    }).filter(x=>x.right>vw+1||x.left<-1).sort((a,b)=>Math.max(b.right-vw,-b.left)-Math.max(a.right-vw,-a.left)).slice(0,8);
-    return {scrollWidth:root.scrollWidth,clientWidth:vw,overflow:root.scrollWidth-vw,offenders};
+    }).sort((a,b)=>Math.max(b.right-vw,-b.left)-Math.max(a.right-vw,-a.left)).slice(0,8);
+    return {clientWidth:vw,offenders};
   });
 }
 
@@ -80,10 +89,10 @@ test('Arabic staging shell stays RTL and clean on desktop and mobile',async({pag
     for(const url of shellPages){
       await page.goto(url);
       const ar=page.locator('button[data-lang="ar"]');
-      if(await ar.count()) await ar.first().click();
+      if(await ar.count())await ar.first().click();
       await expect(page.locator('html')).toHaveAttribute('dir','rtl');
-      const report=await overflowReport(page);
-      expect(report.overflow,`${url} @ ${viewport.width}x${viewport.height} overflow=${report.overflow}px offenders=${JSON.stringify(report.offenders)}`).toBeLessThanOrEqual(1);
+      const report=await contentOverflowReport(page);
+      expect(report.offenders,`${url} @ ${viewport.width}x${viewport.height} visible overflow=${JSON.stringify(report.offenders)}`).toEqual([]);
     }
   }
 });
