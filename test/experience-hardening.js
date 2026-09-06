@@ -11,11 +11,11 @@ console.log('\nexperience hardening');
 {
   const w=boot('learn.html');const d=w.document;w.ATHAR.state.reset();w.ATHAR.experience.render();
   check('Journey boots without hardening errors',w.__errors.length===0,w.__errors.join(' | '));
-  check('Journey exposes two age choices',d.querySelectorAll('[data-age-band]').length===2);
+  check('Journey exposes two age choices',d.querySelectorAll('button[data-age-band]').length===2);
   check('default age experience is 7–9',w.ATHAR.state.ageBand()==='7-9');
-  d.querySelector('[data-age-band="10-12"]').dispatchEvent(new w.MouseEvent('click',{bubbles:true}));
+  d.querySelector('button[data-age-band="10-12"]').dispatchEvent(new w.MouseEvent('click',{bubbles:true}));
   check('age choice persists 10–12',w.ATHAR.state.ageBand()==='10-12');
-  check('selected age button reflects state',d.querySelector('[data-age-band="10-12"]').getAttribute('aria-pressed')==='true');
+  check('selected age button reflects state',d.querySelector('button[data-age-band="10-12"]').getAttribute('aria-pressed')==='true');
   w.ATHAR.curriculum.order().forEach(x=>w.ATHAR.state.completeLesson(x.lesson.id,x.lesson.traces,false));w.ATHAR.journey.render();w.ATHAR.experience.render();
   check('16 mission completion gets foundation summary',!!d.querySelector('.foundation-summary'));
   check('foundation summary has four evidence metrics',d.querySelectorAll('.finish-metric').length===4);
