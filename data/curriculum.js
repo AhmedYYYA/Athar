@@ -65,8 +65,8 @@ ATHAR.curriculum = {
         ar: 'أن تصنع أشياء تقودها فكرتك وتساعدك الأداة — وأن توضّح من فعل ماذا.'
       },
       lessons: [
-        { id: 'my-idea',   name: { en: 'Whose idea was it?', ar: 'فكرة من كانت؟' }, traces: 5, ready: false },
-        { id: 'credit',    name: { en: 'Giving credit', ar: 'نسب العمل لأصحابه' }, traces: 5, ready: false }
+        { id: 'my-idea',   name: { en: 'Whose idea was it?', ar: 'فكرة من كانت؟' }, traces: 5, ready: true },
+        { id: 'credit',    name: { en: 'Giving credit', ar: 'نسب العمل لأصحابه' }, traces: 5, ready: true }
       ]
     },
     {
