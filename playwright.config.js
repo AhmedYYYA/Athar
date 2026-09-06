@@ -1,12 +1,12 @@
 const {defineConfig}=require('@playwright/test');
 module.exports=defineConfig({
   testDir:'./test',
-  testMatch:'browser-qa.spec.js',
+  testMatch:['browser-qa.spec.js','staging-gate.spec.js'],
   timeout:30000,
   expect:{timeout:5000},
   fullyParallel:false,
   workers:1,
-  reporter:'line',
+  reporter:[['line'],['html',{outputFolder:'playwright-report',open:'never'}]],
   use:{
     baseURL:'http://127.0.0.1:8000',
     screenshot:'only-on-failure',
