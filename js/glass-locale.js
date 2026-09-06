@@ -1,9 +1,9 @@
 /* ATHAR lightweight bilingual + reveal runtime for glass pages. */
 (function(){
-  var KEY='athar.lang';
-  function current(){return localStorage.getItem(KEY)||'en'}
+  var KEY='athar-lang',LEGACY='athar.lang';
+  function current(){return localStorage.getItem(KEY)||localStorage.getItem(LEGACY)||'en'}
   function apply(lang){
-    lang=lang==='ar'?'ar':'en';localStorage.setItem(KEY,lang);
+    lang=lang==='ar'?'ar':'en';localStorage.setItem(KEY,lang);localStorage.setItem(LEGACY,lang);
     document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';
     document.querySelectorAll('[data-en][data-ar]').forEach(function(el){el.textContent=el.getAttribute('data-'+lang)});
     document.querySelectorAll('[data-lang]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.lang===lang))});
