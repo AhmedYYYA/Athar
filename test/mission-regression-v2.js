@@ -72,6 +72,6 @@ function walkthrough(id,lang){
   }
 }
 console.log('\nmission regression v2');
-['what-is-ai','patterns','data','clear-asking','details','refine','can-be-wrong','verify','fairness','private','not-human'].forEach(id=>['en','ar'].forEach(lang=>walkthrough(id,lang)));
+['what-is-ai','patterns','data','clear-asking','details','refine','can-be-wrong','verify','fairness','private','not-human','my-idea','credit'].forEach(id=>['en','ar'].forEach(lang=>walkthrough(id,lang)));
 console.log('\nmission regression v2: '+pass+' passed, '+fail+' failed');
 if(fail)process.exit(1);
