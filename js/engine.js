@@ -32,9 +32,17 @@ ATHAR.engine=(function(){
     'spot-unfair-pattern':{en:'Spot a possible unfair pattern',ar:'ألاحظ نمطاً قد يكون غير منصف'},
     'check-representation':{en:'Check who and what was represented',ar:'أتحقق ممن وما تم تمثيله'},
     'human-review':{en:'Keep human review for important decisions',ar:'أبقي المراجعة البشرية للقرارات المهمة'},
+    'spot-private-info':{en:'Spot private information',ar:'أميّز المعلومات الخاصة'},
+    'share-minimum':{en:'Share only what the task needs',ar:'أشارك فقط ما تحتاجه المهمة'},
+    'ask-before-sharing':{en:'Ask before sharing personal things',ar:'أسأل قبل مشاركة الأمور الشخصية'},
+    'tool-not-person':{en:'Keep AI in its place as a tool',ar:'أبقي الذكاء الاصطناعي في مكانه كأداة'},
+    'spot-secrecy-pressure':{en:'Spot secrecy or isolation pressure',ar:'ألاحظ ضغط السرية أو العزلة'},
+    'choose-human-help':{en:'Choose human help when it matters',ar:'أختار المساعدة البشرية عندما يكون الأمر مهماً'},
     'ai-is-tool':{en:'AI is a tool, not a person',ar:'الذكاء الاصطناعي أداة وليس شخصاً'},
     'check-important':{en:'Check what matters',ar:'أتحقق مما يهم'},
-    'privacy':{en:'Keep private things private',ar:'أحافظ على معلوماتي الخاصة'}
+    'privacy':{en:'Keep private things private',ar:'أحافظ على معلوماتي الخاصة'},
+    'trusted-adult':{en:'Bring in a trusted adult when needed',ar:'أستعين بشخص بالغ موثوق عند الحاجة'},
+    'no-secrets-with-ai':{en:'Do not keep secrets with AI',ar:'لا أحتفظ بأسرار مع الذكاء الاصطناعي'}
   };
   function L(v){if(v==null)return'';if(typeof v==='string')return v;return v[ATHAR.i18n.lang()]||v.en||''}
   function icon(name){var m={eye:'👁️',pattern:'🧩',guess:'💭',tool:'🛠️',warning:'⚠️',lock:'🔐'};return m[name]||'✦'}
