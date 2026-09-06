@@ -71,6 +71,14 @@ Currently available:
 2. `patterns` — **Spotting patterns | اكتشاف الأنماط**
 3. `data` — **Where examples come from | من أين تأتي الأمثلة**
 4. `clear-asking` — **Say what you mean | قل ما تقصد**
+5. `details` — **Add the useful bits | أضف التفاصيل المفيدة**
+6. `refine` — **Make it better | اجعلها أفضل**
+
+Missions 4–6 together complete the child-facing **SUPER** loop:
+
+**S — State goal → U — Use helpful details → P — Pick output → E — Examine result → R — Refine**
+
+Mission 5 deepens how children choose relevant, safe details and useful limits. Mission 6 teaches them to compare results with their goal, verify important claims, refine weak results and stop the AI loop when a trusted adult is needed for health or safety.
 
 Future missions remain visible on the journey as in-development items and are not presented as complete features.
 
@@ -82,6 +90,8 @@ Future missions remain visible on the journey as in-development items and are no
 4. Protect yourself | احمِ نفسك
 5. Create with it | أبدع به
 6. See inside | انظر في داخله
+
+The first two tracks are now fully implemented in the pilot.
 
 ## Key files
 
@@ -109,6 +119,8 @@ data/lesson-what-is-ai.js     Mission 1
 data/lesson-patterns.js        Mission 2
 data/lesson-data.js            Mission 3
 data/lesson-clear-asking.js    Mission 4
+data/lesson-details.js         Mission 5
+data/lesson-refine.js          Mission 6
 
 test/run.js                   original regression suite
 test/mission-regression-v2.js multi-mission bilingual regression suite
