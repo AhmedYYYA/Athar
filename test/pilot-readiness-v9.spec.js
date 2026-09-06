@@ -10,10 +10,13 @@ for(const width of [390,768,1280]){
   test(`core product surfaces render without horizontal overflow at ${width}px`,async({page})=>{
     await page.setViewportSize({width,height:900});
     for(const path of publicPages){
-      const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+      const errors=[];
+      const onError=e=>errors.push(String(e));
+      page.on('pageerror',onError);
       await page.goto(path);
       expect(await noHorizontalOverflow(page),`${path} overflow at ${width}px`).toBeTruthy();
       expect(errors).toEqual([]);
+      page.off('pageerror',onError);
     }
   });
 }
@@ -22,11 +25,11 @@ test('journey exposes all 16 missions and preserves child controls',async({page}
   await page.setViewportSize({width:1280,height:900});
   await page.goto('/learn.html');
   await expect(page.locator('.mission')).toHaveCount(16);
-  await expect(page.locator('[data-age-band="7-9"]')).toBeVisible();
-  await expect(page.locator('[data-age-band="10-12"]')).toBeVisible();
-  await expect(page.locator('[data-companion="hamdan"]')).toBeVisible();
-  await expect(page.locator('[data-companion="hessa"]')).toBeVisible();
-  await expect(page.locator('[data-companion="none"]')).toBeVisible();
+  await expect(page.locator('button.age-choice[data-age-band="7-9"]')).toBeVisible();
+  await expect(page.locator('button.age-choice[data-age-band="10-12"]')).toBeVisible();
+  await expect(page.locator('button.companion-choice[data-companion="hamdan"]')).toBeVisible();
+  await expect(page.locator('button.companion-choice[data-companion="hessa"]')).toBeVisible();
+  await expect(page.locator('button.companion-choice[data-companion="none"]')).toBeVisible();
 });
 
 test('mission player keeps primary action dock visible on phone and desktop',async({page})=>{
@@ -61,6 +64,7 @@ test('educator view presents complete foundation and future school gates honestl
 });
 
 test('Arabic parity holds across journey family educator and safety surfaces',async({page})=>{
+  await page.setViewportSize({width:390,height:844});
   for(const path of ['/learn.html','/families.html','/schools.html','/safety.html']){
     await page.goto(path);
     const ar=page.locator('button[data-lang="ar"]');
@@ -68,7 +72,7 @@ test('Arabic parity holds across journey family educator and safety surfaces',as
     await ar.click();
     await expect(page.locator('html')).toHaveAttribute('dir','rtl');
     await expect(page.locator('html')).toHaveAttribute('lang','ar');
-    expect(await noHorizontalOverflow(page)).toBeTruthy();
+    expect(await noHorizontalOverflow(page),`${path} overflows in Arabic at phone width`).toBeTruthy();
   }
 });
 
