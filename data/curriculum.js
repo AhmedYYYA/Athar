@@ -28,8 +28,8 @@ ATHAR.curriculum = {
       },
       lessons: [
         { id: 'clear-asking', name: { en: 'Say what you mean', ar: 'قل ما تقصد' }, traces: 5, ready: true },
-        { id: 'details',      name: { en: 'Add the useful bits', ar: 'أضف التفاصيل المفيدة' }, traces: 5, ready: false },
-        { id: 'refine',       name: { en: 'Make it better', ar: 'اجعلها أفضل' }, traces: 5, ready: false }
+        { id: 'details',      name: { en: 'Add the useful bits', ar: 'أضف التفاصيل المفيدة' }, traces: 5, ready: true },
+        { id: 'refine',       name: { en: 'Make it better', ar: 'اجعلها أفضل' }, traces: 5, ready: true }
       ]
     },
     {
