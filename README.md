@@ -4,7 +4,7 @@ ATHAR is a UAE-first bilingual AI-readiness learning experience for children age
 
 > **The child stays the thinker. AI stays the tool.**
 
-The current repository is a static HTML/CSS/JavaScript pilot deployed through GitHub Pages. Progress, companion choice, traces, badges and Passport evidence remain browser-local. No live AI, account, payment, advertising or analytics system is connected in this build.
+The current repository is a static HTML/CSS/JavaScript pilot deployed through GitHub Pages. Progress, age experience, companion choice, traces, badges and Passport evidence remain browser-local. No live AI, account, payment, advertising or analytics system is connected in this build.
 
 ## Live pages
 
@@ -31,11 +31,26 @@ The approved glass treatment, transparency, animated colour fields, ATHAR motion
 
 This preserves the approved Journey + Mission + Passport loop, Missions 1–2, browser-local progress, traces, badges, evidence and companion continuity.
 
+### Foundation Journey v3
+
+`milestone-foundation-journey-v3` — baseline `a02b6837cb21c4f012b7ab229ff5489a8eac3f2f`
+
+This preserves the completed six-track, 16-mission bilingual foundation journey before the current experience-hardening work.
+
 ## Current learning loop
 
 **Journey → Mission → Feedback → Completion → Traces/Badge → Passport evidence → Journey**
 
 Completion and competency evidence remain separate. Hint use is recorded as **supported**, not independent mastery; a later replay without hints can upgrade the lesson evidence to independent.
+
+## Age-differentiated experience
+
+The Journey now lets the learner choose an age experience and stores only that preference locally:
+
+- **Ages 7–9** — shorter, more concrete presentation with fewer optional explanations.
+- **Ages 10–12** — the same 16-mission curriculum plus optional **Tell me more | أخبرني أكثر** explanations that introduce deeper terminology such as dataset, prompt, iteration, hallucination, bias, authorship, algorithm, condition and loop where appropriate.
+
+The curriculum spine, evidence rules and safety expectations remain the same for both age bands.
 
 ## Available missions
 
@@ -72,7 +87,7 @@ Missions 14–16 form the **See inside | انظر في داخله** track. Child
 
 The Safety Passport tracks five foundations: **AI is a tool, check what matters, keep private things private, involve a trusted adult when needed, and do not keep secrets with AI.**
 
-The Skills Passport now contains evidence across AI recognition, patterns/data, prompting, checking, privacy/boundaries, authorship/credit and computational thinking.
+The Skills Passport contains **47 evidence items** across AI recognition, patterns/data, prompting, checking, privacy/boundaries, authorship/credit and computational thinking.
 
 ## Six curriculum tracks
 
@@ -83,16 +98,29 @@ The Skills Passport now contains evidence across AI recognition, patterns/data, 
 5. Create with it | أبدع به — implemented
 6. See inside | انظر في داخله — implemented
 
-The **16-mission ATHAR foundation journey is fully implemented** in the current pilot.
+The **16-mission ATHAR foundation journey is fully implemented** in the current pilot. Completing all 16 now produces a richer Foundation Trail completion state showing traces, badges, Passport evidence and the number of missions demonstrated independently.
+
+## Family and educator evidence views
+
+`families.html` and `schools.html` now include browser-local evidence summaries. They demonstrate how ATHAR can surface:
+
+- mission completion;
+- independent vs supported completion;
+- traces and badges;
+- completion by learning track;
+- Safety Passport and Skills Passport evidence;
+- selected age experience.
+
+These views deliberately do **not** expose raw child answers, conversations or identifying information. The educator view is a pilot evidence concept, not yet an LMS or official school record.
 
 ## Key files
 
 ```text
 index.html                       approved glass homepage
-learn.html                       live child journey
-lesson.html                      reusable mission player
-families.html                    family experience
-schools.html                     educator experience
+learn.html                       live child journey + age experience selector
+lesson.html                      reusable age-aware mission player
+families.html                    family experience + local evidence view
+schools.html                     educator experience + local evidence view
 safety.html                      glass safety experience
 
 css/home-glass.css               approved homepage visual language
@@ -100,10 +128,14 @@ css/glass-system.css             shared glass foundation
 css/journey-v2.css               journey, progression and Passports
 css/lesson-glass.css             calmer glass learning surface
 css/pages-glass.css              adult/safety glass pages
+css/experience-hardening.css     age, completion and evidence hardening
 
 js/glass-locale.js               bilingual runtime for glass pages
-js/state.js                      browser-local progress and evidence
+js/state.js                      browser-local progress, evidence and age band
 js/journey.js                    curriculum progression and Passport rendering
+js/experience-hardening.js       Journey age and completion enhancements
+js/lesson-age.js                 optional 10–12 deeper explanations
+js/adult-progress.js             browser-local family/educator evidence summary
 js/i18n.js                       mission language/direction runtime
 js/engine.js                     generic mission engine
 
@@ -127,6 +159,9 @@ data/lesson-loops.js              Mission 16
 
 test/site-smoke-v2.js             current site smoke tests
 test/mission-regression-v2.js     bilingual mission walkthrough tests
+test/experience-hardening.js      age/completion/adult-view regression tests
+test/browser-qa.spec.js           real Chromium desktop/mobile QA
+playwright.config.js              browser QA configuration
 .github/workflows/athar-regression.yml
 ```
 
@@ -134,6 +169,7 @@ test/mission-regression-v2.js     bilingual mission walkthrough tests
 
 - Arabic and English are first-class experiences.
 - Ages 7–9 require short, concrete and independently understandable language.
+- Ages 10–12 may receive optional deeper explanations without changing the core mission sequence.
 - The child remains the thinker and decision-maker.
 - Hamdan and Hessa are optional guided companions, not emotional friends or authorities.
 - No unrestricted child chatbot.
@@ -146,16 +182,27 @@ test/mission-regression-v2.js     bilingual mission walkthrough tests
 
 ## Local state
 
-`js/state.js` stores only bounded pilot state: traces, completed mission IDs, evidence mode, badges, Safety/Skills Passport evidence, companion choice and last mission. Do not add sensitive child information to localStorage.
+`js/state.js` stores only bounded pilot state: traces, completed mission IDs, evidence mode, badges, Safety/Skills Passport evidence, companion choice, selected age experience and last mission. Do not add sensitive child information to localStorage.
 
-## Test
+## QA
 
 ```bash
 npm install
 npm test
+npx playwright install chromium
+npm run test:browser
 ```
 
-The GitHub Actions regression workflow runs current-site smoke checks and complete bilingual walkthroughs of every available mission on pushes to `main` and pull requests.
+The GitHub Actions regression workflow runs:
+
+- current-site smoke checks;
+- complete bilingual walkthroughs of all 16 missions;
+- experience-hardening checks;
+- real Chromium desktop checks for every mission in English and Arabic;
+- mobile horizontal-overflow checks across the Journey and all missions;
+- browser checks for age differentiation and Family/Educator evidence views.
+
+The first hardened Chromium gate completed GREEN with **32/32 smoke checks, 836/836 mission-regression checks, 16/16 hardening checks and 19/19 real-browser tests**.
 
 ## Run locally
 
@@ -166,6 +213,7 @@ python3 -m http.server 8000
 ## Status / cautions
 
 - This remains a pilot/demo rather than a production school deployment.
+- Automated Chromium QA verifies rendering, key viewport constraints, bilingual direction and functional surfaces; it does not replace human child-UX review on representative devices.
 - Formal trademark clearance is still required before public commercial launch of the word mark.
 - Character artwork must remain faithful to the approved Hamdan/Hessa references; do not substitute reinterpretations.
 - Fonts currently load from Google and should be self-hosted before a stricter school privacy deployment.
