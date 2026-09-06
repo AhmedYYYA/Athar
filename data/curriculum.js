@@ -15,7 +15,7 @@ ATHAR.curriculum = {
       },
       lessons: [
         { id: 'what-is-ai', name: { en: 'What is AI?', ar: 'ما هو الذكاء الاصطناعي؟' }, traces: 5, ready: true },
-        { id: 'patterns',   name: { en: 'Spotting patterns', ar: 'اكتشاف الأنماط' }, traces: 5, ready: false },
+        { id: 'patterns',   name: { en: 'Spotting patterns', ar: 'اكتشاف الأنماط' }, traces: 5, ready: true },
         { id: 'data',       name: { en: 'Where examples come from', ar: 'من أين تأتي الأمثلة' }, traces: 5, ready: false }
       ]
     },
@@ -84,7 +84,7 @@ ATHAR.curriculum = {
     }
   ],
 
-  /* Flattened order used by the trail for lock/unlock logic. */
+  /* Flattened order used by the journey for lock/unlock logic. */
   order: function () {
     var out = [];
     this.tracks.forEach(function (track) {
