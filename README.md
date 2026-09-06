@@ -17,7 +17,9 @@ The current repository is a static HTML/CSS/JavaScript pilot deployed through Gi
 
 GitHub Pages: `https://ahmedyyya.github.io/Athar/`
 
-## Approved visual milestone
+## Locked milestones
+
+### Glass Home v1
 
 The fluid glass homepage approved on 6 September 2026 is preserved on:
 
@@ -29,9 +31,21 @@ Baseline commit:
 
 Its glass treatment, transparency, animated colour fields, ATHAR motion graphic, colour movement and overall visual language are the reference direction for the rest of the product. Audience-specific pages use different motion intensity: expressive on marketing/journey surfaces and calmer inside learning tasks.
 
+### Connected Learning v2
+
+The approved Journey + Mission + Passport learning loop is preserved on:
+
+`milestone-connected-learning-v2`
+
+Baseline commit:
+
+`1c716f8c6cfb95217a8f58b42e94d8126e75e689`
+
+This milestone includes the connected Journey, Mission 1, Mission 2, local progress, traces, badges, Safety/Skills Passport evidence and companion continuity.
+
 ## Current learning loop
 
-The child experience now follows a connected loop:
+The child experience follows a connected loop:
 
 **Journey → Mission → Feedback → Completion → Traces/Badge → Passport evidence → Journey**
 
@@ -55,6 +69,8 @@ Currently available:
 
 1. `what-is-ai` — **What is AI? | ما هو الذكاء الاصطناعي؟**
 2. `patterns` — **Spotting patterns | اكتشاف الأنماط**
+3. `data` — **Where examples come from | من أين تأتي الأمثلة**
+4. `clear-asking` — **Say what you mean | قل ما تقصد**
 
 Future missions remain visible on the journey as in-development items and are not presented as complete features.
 
@@ -70,27 +86,32 @@ Future missions remain visible on the journey as in-development items and are no
 ## Key files
 
 ```text
-index.html                 approved glass homepage
-learn.html                 live child journey
-lesson.html                reusable mission player
-families.html              family experience
-schools.html               educator experience
-safety.html                safety information
+index.html                    approved glass homepage
+learn.html                    live child journey
+lesson.html                   reusable mission player
+families.html                 family experience
+schools.html                  educator experience
+safety.html                   safety information
 
-css/home-glass.css         approved homepage visual language
-css/glass-system.css       shared glass foundation
-css/journey-v2.css         child journey, progression and Passports
-css/lesson-glass.css       calmer glass learning surface
+css/home-glass.css            approved homepage visual language
+css/glass-system.css          shared glass foundation
+css/journey-v2.css            child journey, progression and Passports
+css/lesson-glass.css          calmer glass learning surface
 
-js/glass-locale.js         bilingual runtime for glass pages
-js/state.js                browser-local progress, traces, badges and Passports
-js/journey.js              curriculum progression and journey rendering
-js/i18n.js                 mission language/direction runtime
-js/engine.js               generic mission engine
+js/glass-locale.js            bilingual runtime for glass pages
+js/state.js                   browser-local progress, traces, badges and Passports
+js/journey.js                 curriculum progression and journey rendering
+js/i18n.js                    mission language/direction runtime
+js/engine.js                  generic mission engine
 
-data/curriculum.js         six tracks and mission availability
-data/lesson-what-is-ai.js  Mission 1
-data/lesson-patterns.js     Mission 2
+data/curriculum.js            six tracks and mission availability
+data/lesson-what-is-ai.js     Mission 1
+data/lesson-patterns.js        Mission 2
+data/lesson-data.js            Mission 3
+data/lesson-clear-asking.js    Mission 4
+
+test/run.js                   original regression suite
+test/mission-regression-v2.js multi-mission bilingual regression suite
 ```
 
 ## Product constraints
@@ -121,6 +142,15 @@ data/lesson-patterns.js     Mission 2
 
 Do not add sensitive child information to localStorage.
 
+## Test
+
+```bash
+npm install
+npm test
+```
+
+`npm test` runs the original regression suite and the multi-mission bilingual walkthrough for all currently available missions.
+
 ## Run locally
 
 ```bash
@@ -147,4 +177,4 @@ Before changing an approved experience:
 - This remains a pilot/demo rather than a production school deployment.
 - Formal trademark clearance is still required before public commercial launch of the word mark.
 - Character artwork must remain faithful to the approved Hamdan/Hessa references; do not substitute reinterpretations.
-- The approved glass homepage milestone must remain recoverable while later sections continue to evolve.
+- Locked milestones must remain recoverable while later sections continue to evolve.
