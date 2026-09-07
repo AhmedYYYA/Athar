@@ -1,0 +1,8 @@
+risk_id,category,risk_statement,likelihood,impact,rating,mitigation,owner,status,trigger_or_evidence
+R-001,safeguarding,"Approved supervision or escalation conditions cannot be maintained",,,Critical,"Pause affected session/pilot and follow approved safeguarding procedure",,Open,
+R-002,privacy,"Pilot records collect unnecessary identifying or private child content",,,Critical,"Use participant codes and minimal structured fields; stop unnecessary capture",,Open,
+R-003,technical,"Critical defect prevents safe or meaningful mission use",,,High,"Pause affected flow; controlled fix; rerun regression/browser QA",,Open,
+R-004,localization,"Arabic experience is materially weaker or misleading compared with English",,,High,"Separate Arabic findings; fix and verify bilingual parity",,Open,
+R-005,accessibility,"Interface blocks meaningful participation for intended pilot users",,,High,"Record ACC issue; mitigate or pause affected use; verify fix",,Open,
+R-006,evidence,"Adults misinterpret supported evidence as failure or ranking",,,High,"Re-brief adults; revise interpretation guidance before scale",,Open,
+R-007,baseline,"Uncontrolled product/curriculum change invalidates comparability",,,High,"Lock commit baseline and log any authorized change point",,Open,

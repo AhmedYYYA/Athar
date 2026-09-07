@@ -1,0 +1,1 @@
+Candidate package prepared. Authoritative release candidate is the final PR head after CI; no further feature or website changes belong in Stage 7.
