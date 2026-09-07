@@ -1,7 +1,7 @@
 const {defineConfig}=require('@playwright/test');
 module.exports=defineConfig({
   testDir:'./test',
-  testMatch:'browser-qa.spec.js',
+  testMatch:['browser-qa.spec.js','pilot-readiness-v9.spec.js'],
   timeout:30000,
   expect:{timeout:5000},
   fullyParallel:false,
