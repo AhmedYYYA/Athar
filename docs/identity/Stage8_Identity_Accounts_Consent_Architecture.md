@@ -1,7 +1,7 @@
 # ATHAR | أثر — Stage 8: Identity, Accounts & Consent Architecture v12
 
 ## Status
-Architecture stage. This document defines the production identity foundation before authentication is connected to the child experience.
+**IN IMPLEMENTATION — draft PR #11.** Architecture is established and the first bilingual account-entry prototype is staged. Production authentication is not yet connected.
 
 ## Governing principle
 **The adult owns the account relationship; the child receives a bounded learning profile.** A child profile is not an independent consumer account.
@@ -23,33 +23,22 @@ Log in → select authorized child profile → continue learning → cloud-backe
 Institutional invitation/provisioning → verify educator/admin → accept institutional terms/policies → receive role-scoped access → later create/assign cohorts under approved governance.
 
 ## Authentication surface
-Stage 8 UX must support:
-- Sign up / Register
-- Log in
-- Email verification for adults
-- Password reset / account recovery
-- Secure logout
-- Session expiry/re-authentication for sensitive actions
-- Account settings
-- Role-aware navigation
-- Child-profile switcher for authorized adults
-- Consent/privacy status
-- Account deletion/privacy-request entry point
+Stage 8 UX must support Sign up/Register, Log in, adult email verification, password reset/account recovery, secure logout, session expiry/re-authentication for sensitive actions, account settings, role-aware navigation, child-profile switching, consent/privacy status, and account deletion/privacy-request entry.
+
+### Prototype pages now staged
+- `login.html`
+- `register.html`
+- `account-help.html`
+- `child-profile.html`
+- `css/account-v12.css`
+- `js/account-v12.js`
+
+These pages are deliberately labeled **prototype only** and do not transmit/store credentials or create accounts.
 
 ## Identity/data model
-Minimum conceptual entities:
-- `adult_user`
-- `role_assignment`
-- `household_or_institution_membership`
-- `child_profile`
-- `adult_child_authorization`
-- `consent_record`
-- `assent_record`
-- `policy_version`
-- `session`
-- `security_event`
+Core entities: `adult_user`, `role_assignment`, `household_or_institution_membership`, `child_profile`, `adult_child_authorization`, `consent_record`, `assent_record`, `policy_version`, `session`, and `security_event`.
 
-Child profile fields should be minimized. Do not require child email, phone, exact birth date, home address, school name or government identifier merely to learn. Prefer age band or appropriately minimized age/eligibility data where the legal/product requirement permits.
+Child profile fields should be minimized. Do not require child email, phone, exact birth date, home address, school name or government identifier merely to learn. Prefer age band or appropriately minimized age/eligibility data where sufficient.
 
 ## Authorization policy
 Default deny. Server-side authorization must enforce ownership/membership and role scope. Hiding a button in the browser is not authorization.
@@ -60,42 +49,25 @@ Default deny. Server-side authorization must enforce ownership/membership and ro
 - School Admin: institutional administration scope; no blanket access to private child content.
 
 ## Consent architecture
-Consent must be versioned and auditable, recording at minimum the responsible adult, applicable child/profile, policy/purpose version, decision, timestamp and withdrawal/status history. Child assent must be age-appropriate and distinct from adult consent.
-
-Do not use a pre-checked box or bundle optional purposes into required participation. Production legal wording and exact consent requirements require UAE legal/privacy review before release.
+Consent must be versioned and auditable. Child assent must be age-appropriate and distinct from adult consent. Do not use pre-checked consent or bundle optional purposes into required participation. Production wording and exact consent requirements require UAE legal/privacy review.
 
 ## Security baseline
-- Never store plaintext passwords.
-- Prefer a mature managed identity provider rather than implementing password cryptography in ATHAR client code.
-- Server-managed authorization and protected APIs.
-- Secure session cookies/token handling appropriate to selected architecture.
-- Rate limiting and abuse controls for authentication endpoints.
-- MFA capability for privileged institutional/admin roles; determine production requirement during threat modelling.
-- Verification before sensitive account changes.
-- Audit security-sensitive events without recording child learning conversations.
-- CSRF/XSS/session fixation and account-enumeration controls appropriate to implementation.
-- Secrets remain server-side and outside the public repository.
+Never store plaintext passwords; prefer a mature managed identity provider; use protected server-side APIs and default-deny authorization; secure sessions; rate limiting; privileged-role MFA capability; verification for sensitive changes; minimal security audit events; CSRF/XSS/session-fixation/account-enumeration controls; and server-side secret management.
 
 ## Privacy baseline
-- Data minimisation by role and purpose.
-- Separation between authentication identity and child learning evidence.
-- No advertising/behavioural targeting/data brokerage.
-- No public profiles/social discovery.
-- No child-facing account recovery through personal email/phone by default.
-- Defined retention/deletion and export/request processes before production.
+Data minimisation, separation of adult authentication identity from child learning evidence, no advertising/behavioural targeting/data brokerage, no public profiles/social discovery, no child-facing recovery through personal email/phone by default, and defined retention/deletion/export processes before production.
 
 ## Migration from current static pilot
-Current browser-local progress must not automatically be attached to a newly authenticated child identity. Stage 9 will define explicit migration/synchronization rules and conflict handling for cloud progress/Passports.
+Current browser-local progress must not automatically be attached to a newly authenticated child identity. Stage 9 will define explicit migration/synchronization and conflict rules.
 
-## Stage 8 deliverables
-1. Identity/role/authorization specification.
-2. Consent/assent and privacy-state specification.
-3. Authentication threat model and security requirements.
-4. Account UX wireflow specification in Arabic/English.
-5. Backend/identity-provider architecture decision record.
-6. Database/API contract draft.
-7. Static website account-entry prototype that makes no false claim of working authentication until backend exists.
-8. Automated checks preventing accidental production claims or child independent-account patterns.
+## Supporting implementation documents
+- `Stage8_Backend_Identity_ADR.md`
+- `Stage8_Data_API_Contract_Draft.md`
+
+The ADR proposes a mature managed identity provider for adult authentication while ATHAR retains role, child-profile, consent/assent and authorization logic server-side.
+
+## Automated guardrails
+`test/identity-consent-v12.js` verifies adult-first registration, bilingual UX, explicit prototype labeling, no child email/phone request, separate consent/assent representation, and no credential processing in client-side prototype JavaScript. It is included in `npm test`.
 
 ## Stage 8 release gate
 Do not call Stage 8 production-ready until authentication is backed by a real server-side identity system, authorization tests pass, consent/privacy flows have formal review, security review is complete, and bilingual/mobile/accessibility QA is GREEN.
