@@ -1,0 +1,1 @@
+Stage 7 final head is the pull-request head that passes GREEN CI. Do not manually treat this text file as authoritative; GitHub PR/CI metadata controls the release candidate.
