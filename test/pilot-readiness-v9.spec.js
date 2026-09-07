@@ -21,6 +21,46 @@ for(const width of [390,768,1280]){
   });
 }
 
+test('homepage keeps all trust-critical navigation reachable on phone',async({page})=>{
+  await page.setViewportSize({width:390,height:844});
+  await page.goto('/index.html');
+  await expect(page.locator('.nav a')).toHaveCount(5);
+  await expect(page.locator('.nav a[href="families.html"]')).toBeVisible();
+  await expect(page.locator('.nav a[href="schools.html"]')).toBeVisible();
+  await expect(page.locator('.nav a[href="safety.html"]')).toBeVisible();
+});
+
+test('homepage exposes role-aware learner family and educator entry',async({page})=>{
+  await page.goto('/index.html');
+  await expect(page.locator('#roles .role-card')).toHaveCount(3);
+  await expect(page.locator('#roles .role-card[href="learn.html"]')).toBeVisible();
+  await expect(page.locator('#roles .role-card[href="families.html"]')).toBeVisible();
+  await expect(page.locator('#roles .role-card[href="schools.html"]')).toBeVisible();
+});
+
+test('homepage restores Arabic before visible content and fully localizes safety pills',async({page})=>{
+  await page.addInitScript(()=>localStorage.setItem('athar-lang','ar'));
+  await page.setViewportSize({width:390,height:844});
+  await page.goto('/index.html');
+  await expect(page.locator('html')).toHaveAttribute('dir','rtl');
+  await expect(page.locator('html')).toHaveAttribute('lang','ar');
+  await expect(page.locator('.safe-pills')).toContainText('الوقاية');
+  await expect(page.locator('.safe-pills')).toContainText('الكشف');
+  await expect(page.locator('.safe-pills')).toContainText('الاستجابة');
+  await expect(page.locator('.safe-pills')).toContainText('التعافي');
+  await expect(page.locator('.safe-pills')).toContainText('التحقق');
+  await expect(page.locator('.safe-pills')).toContainText('جواز السلامة');
+  await expect(page.locator('.safe-pills')).not.toContainText('Prevent');
+});
+
+test('mobile homepage journey is vertical rather than horizontally scrollable',async({page})=>{
+  await page.setViewportSize({width:390,height:844});
+  await page.goto('/index.html');
+  const layout=await page.locator('.trace').evaluate(el=>({cols:getComputedStyle(el).gridTemplateColumns,overflow:getComputedStyle(el).overflowX,sw:el.scrollWidth,cw:el.clientWidth}));
+  expect(layout.sw).toBeLessThanOrEqual(layout.cw+1);
+  expect(layout.cols.split(' ').length).toBe(1);
+});
+
 test('journey exposes all 16 missions and preserves child controls',async({page})=>{
   await page.setViewportSize({width:1280,height:900});
   await page.goto('/learn.html');
