@@ -1,0 +1,1 @@
+window.ATHAR_SUPABASE=Object.freeze({url:'https://avapmyyboavhjhawzwtz.supabase.co',publishableKey:'sb_publishable_sl6J0Ptoxk0b8n7u_Q-uTQ_pD4jCRAp'});
