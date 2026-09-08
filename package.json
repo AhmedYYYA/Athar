@@ -4,7 +4,7 @@
   "description": "ATHAR — bilingual AI-readiness platform for children aged 7-12",
   "private": true,
   "scripts": {
-    "test": "node test/site-smoke-v2.js && node test/mission-regression-v2.js && node test/experience-hardening.js && node test/pilot-execution-v11.js && node test/identity-consent-v12.js",
+    "test": "node test/site-smoke-v2.js && node test/mission-regression-v2.js && node test/experience-hardening.js && node test/pilot-execution-v11.js && node test/identity-consent-v12.js && node test/cloud-passport-v13.js",
     "test:browser": "playwright test",
     "serve": "python3 -m http.server 8000"
   },

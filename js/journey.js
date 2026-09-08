@@ -122,7 +122,9 @@ ATHAR.journey=(function(){
   function renderPassports(){var el=document.getElementById('passportGrid');if(!el)return;el.innerHTML=passportCard('safety',T('Safety foundations','أساسيات السلامة'),T('Five habits that keep you in charge around AI.','خمس عادات تبقيك صاحب القرار عند استخدام الذكاء الاصطناعي.'),safetyOrder)+passportCard('skills',T('Skills evidence','أدلة المهارات'),T('Evidence appears when a mission shows what you can do.','يظهر الدليل عندما تُظهر المهمة ما تستطيع فعله.'),skillOrder)}
   function paintCompanion(){var c=ATHAR.state.companion();document.querySelectorAll('[data-companion]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.companion===c))})}
   function render(){migratePassports();renderStats();renderNext();renderTracks();renderPassports();paintCompanion()}
-  function bind(){document.addEventListener('click',function(e){var b=e.target.closest('[data-companion]');if(!b)return;ATHAR.state.setCompanion(b.dataset.companion);paintCompanion()});document.addEventListener('athar:glass-language',render);window.addEventListener('pageshow',render)}
+  var renderQueued=false;
+  function scheduleRender(){if(renderQueued)return;renderQueued=true;Promise.resolve().then(function(){renderQueued=false;render()})}
+  function bind(){document.addEventListener('click',function(e){var b=e.target.closest('[data-companion]');if(!b)return;ATHAR.state.setCompanion(b.dataset.companion);paintCompanion()});document.addEventListener('athar:glass-language',render);document.addEventListener('athar:state-change',scheduleRender);window.addEventListener('pageshow',render)}
   function init(){bind();render()}
   return{init:init,render:render};
 })();
