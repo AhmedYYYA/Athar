@@ -36,12 +36,13 @@ test('mobile journey and every mission avoid horizontal overflow',async({page})=
   }
 });
 
-test('controlled pilot is fixed to ages 10–12 with deeper explanation available',async({page})=>{
+test('controlled pilot is fixed to ages 10–12 across journey and mission',async({page})=>{
   await page.goto('/learn.html');
   await expect(page.locator('button[data-age-band]')).toHaveCount(0);
   await page.goto('/lesson.html?m=what-is-ai');
   await expect(page.locator('#agePill')).toContainText('10');
-  await expect(page.locator('.deep-dive-toggle')).toBeVisible();
+  await expect(page.locator('.stagetitle')).toBeVisible();
+  await expect(page.locator('#deepDive')).toBeHidden();
 });
 
 test('family and educator evidence panels render browser-local summaries',async({page})=>{
