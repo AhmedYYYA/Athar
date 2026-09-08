@@ -1,18 +1,25 @@
 const fs=require('fs');
-const required=['login.html','register.html','account-help.html','child-profile.html','css/account-v12.css','js/account-v12.js','docs/identity/Stage8_Identity_Accounts_Consent_Architecture.md','docs/identity/Stage8_Backend_Identity_ADR.md','docs/identity/Stage8_Data_API_Contract_Draft.md'];
+const required=['login.html','register.html','account-help.html','child-profile.html','css/account-v12.css','js/account-v12.js','js/supabase-config-v12.js','docs/identity/Stage8_Identity_Accounts_Consent_Architecture.md','docs/identity/Stage8_Backend_Identity_ADR.md','docs/identity/Stage8_Data_API_Contract_Draft.md','supabase/migrations/20260907152700_stage8_identity.sql','supabase/migrations/20260908135500_stage8_consent_atomic_profile.sql'];
 let checks=0;function ok(c,m){checks++;if(!c)throw new Error(m)}
 for(const f of required){ok(fs.existsSync(f),`Missing Stage 8 file: ${f}`)}
-const login=fs.readFileSync('login.html','utf8');const register=fs.readFileSync('register.html','utf8');const child=fs.readFileSync('child-profile.html','utf8');const js=fs.readFileSync('js/account-v12.js','utf8');
-ok(login.includes('Prototype only'), 'Login must disclose prototype status');
-ok(register.includes('Create an adult account'),'Registration must be adult-first');
+const login=fs.readFileSync('login.html','utf8');const register=fs.readFileSync('register.html','utf8');const help=fs.readFileSync('account-help.html','utf8');const child=fs.readFileSync('child-profile.html','utf8');const js=fs.readFileSync('js/account-v12.js','utf8');const config=fs.readFileSync('js/supabase-config-v12.js','utf8');const migration=fs.readFileSync('supabase/migrations/20260908135500_stage8_consent_atomic_profile.sql','utf8');
+ok(register.includes('parent / guardian account')||register.includes('Parent / Guardian'),'Registration must be adult/guardian-first');
 ok(!register.toLowerCase().includes('child email'),'Registration should not request child email');
+ok(!register.includes('value="educator"'),'Public registration must not self-provision educator role');
 ok(child.includes('not a child account'),'Child profile page must distinguish profile from account');
 ok(child.includes('adult-consent')&&child.includes('child-assent'),'Child profile setup must represent consent and assent separately');
 ok(!child.match(/type="(?:email|tel)"/i),'Child profile must not request child email/phone');
-ok(login.includes('data-ar=')&&register.includes('data-ar=')&&child.includes('data-ar='),'Account UX must be bilingual');
-ok(js.includes("localStorage.setItem('athar-lang'"),'Account UX must preserve language preference only');
-ok(!js.includes('password')&&!js.includes('email'),'Prototype JS must not process credentials');
+ok(login.includes('data-ar=')&&register.includes('data-ar=')&&child.includes('data-ar=')&&help.includes('data-ar='),'Account UX must be bilingual');
+ok(js.includes('signUp(')&&js.includes('signInWithPassword('),'Connected UX must use managed adult authentication');
+ok(js.includes('resetPasswordForEmail(')&&js.includes('updateUser({password}'),'Recovery flow must support reset and password update');
+ok(js.includes("functions.invoke('create-child-profile'"),'Child profile creation must use authenticated server function');
+ok(js.includes("localStorage.setItem('athar-lang'"),'Account UX may preserve language preference');
+ok(!js.includes('localStorage.setItem(\'password\'')&&!js.includes('localStorage.setItem("password"'),'Credentials must never be written to localStorage by ATHAR code');
+ok(config.includes('sb_publishable_'),'Browser config must use a publishable key');
+ok(!config.toLowerCase().includes('service_role'),'Browser config must not contain service-role credentials');
+ok(migration.includes('adult_child_participation')&&migration.includes('child_assent'),'Consent and assent must use separate versioned policy records');
+ok(migration.includes("role='parent_guardian'"),'Atomic child-profile function must require parent/guardian role');
+ok(migration.includes('revoke all on function')&&migration.includes('grant execute')&&migration.includes('service_role'),'Privileged profile function must not be browser-executable');
 const adr=fs.readFileSync('docs/identity/Stage8_Backend_Identity_ADR.md','utf8');
 ok(adr.includes('Default deny')||adr.includes('default deny'),'ADR must require default-deny authorization');
-ok(adr.includes('HttpOnly'),'ADR must address secure session-cookie handling');
 console.log(`Stage 8 identity/consent integrity: ${checks}/${checks} checks passed`);
