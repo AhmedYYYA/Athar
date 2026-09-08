@@ -29,7 +29,7 @@ ATHAR.cloudPassport=(function(){
     'rules':{skills:['spot-condition','choose-action','trace-rule'],safety:[]},
     'loops':{skills:['spot-repeat','use-loop','stop-loop'],safety:[]}
   };
-  var clientInstance=null,profileId=null,revision=null,bound=false,guarding=false,timer=null,lastBundle=null;
+  var clientInstance=null,profileId=null,revision=null,bound=false,guarding=false,timer=null,lastBundle=null,lastStatus=null;
 
   function lang(){return document.documentElement.lang==='ar'?'ar':'en'}
   function copy(v){return JSON.parse(JSON.stringify(v))}
@@ -78,6 +78,7 @@ ATHAR.cloudPassport=(function(){
     action:document.getElementById('cloudPassportAction')
   }}
   function setStatus(kind,en,ar,action){
+    lastStatus={kind:kind,en:en,ar:ar,action:action||null};
     var n=ui();if(!n.root)return;
     n.root.dataset.cloudState=kind;
     n.status.textContent=lang()==='ar'?ar:en;
@@ -214,7 +215,7 @@ ATHAR.cloudPassport=(function(){
   }
   function bind(){
     document.addEventListener('athar:state-change',queueSync);
-    document.addEventListener('athar:glass-language',function(){if(bound)connectedCopy(false);else if(lastBundle)needsBindingCopy()});
+    document.addEventListener('athar:glass-language',function(){if(lastStatus)setStatus(lastStatus.kind,lastStatus.en,lastStatus.ar,lastStatus.action)});
     document.addEventListener('click',function(e){var button=e.target.closest('#cloudPassportAction');if(!button)return;if(button.dataset.mode==='connect')connectExplicitly();else if(button.dataset.mode==='retry')syncNow(false).catch(function(){});else if(button.dataset.mode==='retry-load')readyPromise=init()});
   }
   bind();
