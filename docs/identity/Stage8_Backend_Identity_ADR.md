@@ -1,10 +1,10 @@
 # ATHAR | أثر — Stage 8 Backend Identity ADR
 
 ## Decision status
-**Proposed for Stage 8 implementation review.**
+**Accepted as the connected development baseline.** Production and real-child-data use remain subject to the Stage 8 governance-exception gate register.
 
 ## Decision
-Use a mature managed identity provider for adult authentication and build ATHAR authorization, child-profile relationships, consent/assent records, learning entitlements and audit controls in ATHAR's own server-side application layer.
+Use Supabase Auth for adult authentication. Keep ATHAR authorization, child-profile relationships, consent/assent records, learning entitlements and audit controls in Postgres RLS, reviewed database functions and JWT-protected Edge Functions.
 
 The static GitHub Pages site is not sufficient for production authentication.
 
@@ -21,8 +21,8 @@ ATHAR needs more than sign-in. It must enforce:
 
 These controls must not depend on browser-local state or hidden UI elements.
 
-## Target logical architecture
-Browser/PWA → ATHAR application/API → Identity Provider + ATHAR database.
+## Implemented development architecture
+Browser/PWA → Supabase Auth + RLS-protected Data API + JWT-protected ATHAR Edge Functions → ATHAR Postgres database.
 
 ### Identity provider responsibilities
 - adult registration/authentication;
@@ -42,8 +42,8 @@ Browser/PWA → ATHAR application/API → Identity Provider + ATHAR database.
 - audit events relevant to account/security administration;
 - later: cloud Passport/progress records.
 
-## Candidate provider criteria
-Selection should prioritize:
+## Provider acceptance criteria
+Continued use of Supabase should be assessed against:
 - strong security track record;
 - server-side SDK/API support;
 - MFA/passkey support;
@@ -54,7 +54,7 @@ Selection should prioritize:
 - predictable cost at pilot and institutional scale;
 - ability to keep child profiles out of the identity-provider consumer-account model.
 
-Do not choose a provider solely because it has the fastest client-side login widget.
+The development selection does not settle UAE transfer/residency suitability or production processor approval.
 
 ## Data separation
 The identity-provider subject ID is an authentication key, not the child-learning identifier. Child profiles use ATHAR-generated identifiers and are linked through explicit authorization records.
@@ -66,4 +66,4 @@ Prefer secure, server-managed sessions for the web application, using `HttpOnly`
 Every protected API operation must evaluate authenticated subject + role + relationship/membership + resource scope. Default deny.
 
 ## Stage boundary
-Stage 8 can create the static UX prototype and API/database contracts before a provider is selected. It must continue to label these pages as prototypes until real backend authentication exists.
+Stage 8 provides a real connected development implementation and is accepted as the dependency for Stage 9. It does not authorize production, pilot activity or real child data. Production Auth configuration, UAE legal/privacy and data-transfer review, controlled real-email E2E, bilingual RTL/accessibility QA and the privacy-operations workflow remain separate gates.

@@ -33,7 +33,11 @@ After the Stage 8 schema/privacy changes, the Supabase security advisor returned
 
 ## Repository regression gate
 
-GitHub Actions ATHAR Regression run #123 completed successfully on Stage 8 head `b87aca44597b60de8d54bda33af153718b58f354`.
+GitHub Actions ATHAR Regression run #124 completed successfully on final Stage 8 head `85b1ddac1360efc04b01039849976c38e4c92a3f`. PR #11 was merged as `6ed7df84236dd78a61ee43067b31cfe021fee1f0`.
+
+## Governance exception
+
+PR #11 was merged before the remaining production gates were closed. `docs/governance/Stage8_Governance_Exception_Closure.md` records the exception and approves this implementation only as the Stage 9 technical dependency. It does not authorize production, a child pilot or real child data.
 
 ## Remaining gates before Stage 8 can be called production-ready
 

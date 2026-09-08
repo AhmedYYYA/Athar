@@ -1,7 +1,7 @@
 # ATHAR | أثر — Stage 8: Identity, Accounts & Consent Architecture v12
 
 ## Status
-**IN IMPLEMENTATION — draft PR #11.** Architecture is established and the first bilingual account-entry prototype is staged. Production authentication is not yet connected.
+**MERGED TECHNICAL BASELINE — APPROVED FOR STAGE 9 DEPENDENCY ONLY.** PR #11 was merged at `6ed7df84236dd78a61ee43067b31cfe021fee1f0`. Supabase Auth, RLS-backed identity records and Edge Functions are connected in the development environment. Production/pilot authorization remains withheld under `docs/governance/Stage8_Governance_Exception_Closure.md`.
 
 ## Governing principle
 **The adult owns the account relationship; the child receives a bounded learning profile.** A child profile is not an independent consumer account.
@@ -25,7 +25,7 @@ Institutional invitation/provisioning → verify educator/admin → accept insti
 ## Authentication surface
 Stage 8 UX must support Sign up/Register, Log in, adult email verification, password reset/account recovery, secure logout, session expiry/re-authentication for sensitive actions, account settings, role-aware navigation, child-profile switching, consent/privacy status, and account deletion/privacy-request entry.
 
-### Prototype pages now staged
+### Connected development pages
 - `login.html`
 - `register.html`
 - `account-help.html`
@@ -33,7 +33,7 @@ Stage 8 UX must support Sign up/Register, Log in, adult email verification, pass
 - `css/account-v12.css`
 - `js/account-v12.js`
 
-These pages are deliberately labeled **prototype only** and do not transmit/store credentials or create accounts.
+These pages connect to the development Supabase project and can create adult Auth accounts and bounded child-profile records. They remain development-only and must use controlled adult test accounts and non-identifying child profiles until the carried-forward gates are approved.
 
 ## Identity/data model
 Core entities: `adult_user`, `role_assignment`, `household_or_institution_membership`, `child_profile`, `adult_child_authorization`, `consent_record`, `assent_record`, `policy_version`, `session`, and `security_event`.
@@ -64,10 +64,10 @@ Current browser-local progress must not automatically be attached to a newly aut
 - `Stage8_Backend_Identity_ADR.md`
 - `Stage8_Data_API_Contract_Draft.md`
 
-The ADR proposes a mature managed identity provider for adult authentication while ATHAR retains role, child-profile, consent/assent and authorization logic server-side.
+The ADR records Supabase as the managed development foundation for adult authentication while ATHAR retains role, child-profile, consent/assent and authorization logic in RLS, reviewed database functions and JWT-protected Edge Functions.
 
 ## Automated guardrails
-`test/identity-consent-v12.js` verifies adult-first registration, bilingual UX, explicit prototype labeling, no child email/phone request, separate consent/assent representation, and no credential processing in client-side prototype JavaScript. It is included in `npm test`.
+`test/identity-consent-v12.js` verifies adult-first registration, bilingual UX, development-only warnings, no child email/phone request, separate consent/assent representation, publishable-key-only browser configuration, protected privacy controls and the expected RLS/function sources. It is included in `npm test`.
 
 ## Stage 8 release gate
 Do not call Stage 8 production-ready until authentication is backed by a real server-side identity system, authorization tests pass, consent/privacy flows have formal review, security review is complete, and bilingual/mobile/accessibility QA is GREEN.
