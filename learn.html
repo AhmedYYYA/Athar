@@ -7,7 +7,7 @@
 <link rel="icon" href="assets/athar-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/home-glass.css"><link rel="stylesheet" href="css/glass-system.css"><link rel="stylesheet" href="css/journey-v2.css"><link rel="stylesheet" href="css/experience-hardening.css"><link rel="stylesheet" href="css/child-staging-v5.css">
+<link rel="stylesheet" href="css/home-glass.css"><link rel="stylesheet" href="css/glass-system.css"><link rel="stylesheet" href="css/journey-v2.css"><link rel="stylesheet" href="css/experience-hardening.css"><link rel="stylesheet" href="css/child-staging-v5.css"><link rel="stylesheet" href="css/cloud-passport-v13.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -23,6 +23,19 @@
     <h1 data-en="Choose a mission. Leave a trace." data-ar="اختر مهمة. واترك أثراً.">Choose a mission. Leave a trace.</h1>
     <p data-en="Learn one small idea at a time. Try it, check it and make it yours." data-ar="تعلّم فكرة صغيرة في كل مرة. جرّبها، تحقّق منها، واجعلها من صنعك.">Learn one small idea at a time. Try it, check it and make it yours.</p>
     <div class="journey-stats" id="journeyStats" aria-live="polite"></div>
+  </section>
+
+  <section id="cloudPassport" class="cloud-passport-panel reveal in" data-cloud-state="checking" aria-labelledby="cloudPassportTitle">
+    <div class="cloud-passport-copy">
+      <span class="cloud-passport-kicker" data-en="CLOUD PASSPORT · DEVELOPMENT" data-ar="جواز أثر السحابي · تطوير">CLOUD PASSPORT · DEVELOPMENT</span>
+      <h2 id="cloudPassportTitle" data-en="Keep bounded progress with the right profile" data-ar="احفظ التقدم المحدود مع الملف الصحيح">Keep bounded progress with the right profile</h2>
+      <p id="cloudPassportStatus" class="cloud-passport-status" role="status" aria-live="polite">Checking this device and account…</p>
+      <p data-en="Only mission completion, evidence level, traces, badges and approved preferences can sync. Answers and conversations are never uploaded." data-ar="تتم مزامنة إكمال المهام ومستوى الدليل والآثار والشارات والتفضيلات المعتمدة فقط. لا تُرفع الإجابات أو المحادثات أبداً.">Only mission completion, evidence level, traces, badges and approved preferences can sync. Answers and conversations are never uploaded.</p>
+    </div>
+    <div class="cloud-passport-actions">
+      <button id="cloudPassportAction" class="cloud-passport-action" type="button" hidden></button>
+      <a class="cloud-passport-link" href="account.html" data-en="Choose profile" data-ar="اختر الملف">Choose profile</a>
+    </div>
   </section>
 
   <section class="trail-control reveal in" aria-label="Journey controls">
@@ -60,6 +73,6 @@
   </section>
 </main>
 <footer><span>ATHAR | أثر</span> · <span data-en="The child stays the thinker." data-ar="الطفل يبقى هو المفكر.">The child stays the thinker.</span></footer>
-<script src="js/glass-locale.js"></script><script src="js/state.js"></script><script src="data/curriculum.js"></script><script src="js/journey.js"></script><script src="js/experience-hardening.js"></script>
+<script src="js/glass-locale.js"></script><script src="js/supabase-config-v12.js"></script><script src="js/state.js"></script><script src="data/curriculum.js"></script><script src="js/journey.js"></script><script src="js/cloud-passport-v13.js"></script><script src="js/experience-hardening.js"></script>
 </body>
 </html>
