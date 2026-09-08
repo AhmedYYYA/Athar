@@ -3,63 +3,30 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Your journey — ATHAR | أثر</title>
-<meta name="description" content="The ATHAR child journey: complete missions, earn traces and build Safety and Skills Passport evidence.">
+<meta name="description" content="ATHAR pilot cohort: ages 10–12. Ages 7–9 in development. Explore six AI-literacy worlds and earn Passport stamps by showing skills.">
 <link rel="icon" href="assets/athar-mark.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/home-glass.css"><link rel="stylesheet" href="css/glass-system.css"><link rel="stylesheet" href="css/journey-v2.css"><link rel="stylesheet" href="css/experience-hardening.css"><link rel="stylesheet" href="css/child-staging-v5.css">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
 <div class="glass-bg" aria-hidden="true"><span class="blob a"></span><span class="blob b"></span><span class="blob c"></span></div>
-<header class="sitebar">
-  <a class="brand" href="index.html" aria-label="ATHAR home"><img src="assets/athar-mark.png" alt=""><span>ATHAR | أثر</span></a>
-  <nav class="nav" aria-label="Main navigation"><a href="learn.html" aria-current="page" data-en="Journey" data-ar="الرحلة">Journey</a><a href="families.html" data-en="Families" data-ar="العائلات">Families</a><a href="schools.html" data-en="Educators" data-ar="المعلمون">Educators</a><a href="safety.html" data-en="Safety" data-ar="السلامة">Safety</a></nav>
-  <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">English</button><button type="button" data-lang="ar" aria-pressed="false">العربية</button></div>
-</header>
+<header class="sitebar"><a class="brand" href="index.html" aria-label="ATHAR home"><img src="assets/athar-mark.png" alt=""><span>ATHAR | أثر</span></a><nav class="nav" aria-label="Main navigation"><a href="learn.html" aria-current="page">Journey</a><a href="families.html">Families</a><a href="schools.html">Educators</a><a href="safety.html">Safety</a></nav><div class="lang" role="group" aria-label="Language"><a href="learn.html" aria-current="page">English</a><a href="ar/learn.html">العربية</a></div></header>
 <main id="main" class="journey-shell">
-  <section class="journey-intro reveal">
-    <span class="kicker"><i></i><span data-en="Your learning trail" data-ar="مسار تعلّمك">Your learning trail</span></span>
-    <h1 data-en="Choose a mission. Leave a trace." data-ar="اختر مهمة. واترك أثراً.">Choose a mission. Leave a trace.</h1>
-    <p data-en="Learn one small idea at a time. Try it, check it and make it yours." data-ar="تعلّم فكرة صغيرة في كل مرة. جرّبها، تحقّق منها، واجعلها من صنعك.">Learn one small idea at a time. Try it, check it and make it yours.</p>
-    <div class="journey-stats" id="journeyStats" aria-live="polite"></div>
-  </section>
-
-  <section class="trail-control reveal in" aria-label="Journey controls">
-    <div class="age-zone" aria-labelledby="ageTitle">
-      <div><h2 id="ageTitle" data-en="Pick your level" data-ar="اختر مستواك">Pick your level</h2><p data-en="Same adventure. The 10–12 level can open extra explanations." data-ar="المغامرة نفسها. مستوى 10–12 يمكنه فتح شروحات إضافية.">Same adventure. The 10–12 level can open extra explanations.</p><p class="age-note" id="ageNote"></p></div>
-      <div class="age-choices" role="group" aria-label="Age experience"><button type="button" class="age-choice" data-age-band="7-9" aria-pressed="true"><span data-en="Ages 7–9" data-ar="العمر 7–9">Ages 7–9</span></button><button type="button" class="age-choice" data-age-band="10-12" aria-pressed="false"><span data-en="Ages 10–12" data-ar="العمر 10–12">Ages 10–12</span></button></div>
-    </div>
-    <div class="quick-companion" aria-labelledby="quickCompanionTitle">
-      <div><span class="mini-label" data-en="YOUR GUIDE" data-ar="دليلك">YOUR GUIDE</span><h2 id="quickCompanionTitle" data-en="Who explores with you?" data-ar="من يستكشف معك؟">Who explores with you?</h2></div>
-      <div class="quick-companion-choices">
-        <button type="button" class="companion-choice" data-companion="hamdan" aria-pressed="false"><img src="assets/hamdan-face.png" alt=""><span>Hamdan | حمدان</span></button>
-        <button type="button" class="companion-choice" data-companion="hessa" aria-pressed="false"><img src="assets/hessa-face.png" alt=""><span>Hessa | حصه</span></button>
-        <button type="button" class="companion-choice solo" data-companion="none" aria-pressed="true"><span data-en="Just me" data-ar="بنفسي">Just me</span></button>
-      </div>
-    </div>
-  </section>
-
-  <section id="progress" aria-labelledby="nextTitle">
-    <div class="next-mission reveal in" id="nextMission"><div class="next-copy"><span class="next-label">NEXT TRACE</span><h2 id="nextTitle">Loading your trail…</h2></div></div>
-  </section>
-
-  <section aria-labelledby="tracksTitle">
-    <div class="journey-section-head reveal in"><span class="section-eyebrow" data-en="YOUR MAP" data-ar="خريطتك">YOUR MAP</span><h2 id="tracksTitle" data-en="Six worlds to explore" data-ar="ستة عوالم للاستكشاف">Six worlds to explore</h2><p data-en="Finish a mission to open the next one. Each world builds a different AI skill." data-ar="أنهِ مهمة لتفتح التالية. كل عالم يبني مهارة مختلفة مع الذكاء الاصطناعي.">Finish a mission to open the next one. Each world builds a different AI skill.</p></div>
-    <div class="track-list" id="trackList"></div>
-  </section>
-
-  <section aria-labelledby="passportTitle">
-    <div class="journey-section-head reveal in"><span class="section-eyebrow" data-en="WHAT YOU CAN DO" data-ar="ما تستطيع فعله">WHAT YOU CAN DO</span><h2 id="passportTitle" data-en="Your ATHAR Passports" data-ar="جوازا أثر الخاصان بك">Your ATHAR Passports</h2><p data-en="Your Passports grow when you show a skill — not just when you finish a screen." data-ar="ينمو جوازاك عندما تُظهر مهارة، وليس فقط عندما تنهي شاشة.">Your Passports grow when you show a skill — not just when you finish a screen.</p></div>
-    <div class="passport-grid" id="passportGrid" aria-live="polite"></div>
-  </section>
-
-  <section class="companion-zone reveal in" aria-labelledby="companionTitle">
-    <div class="companion-copy"><span class="section-eyebrow light" data-en="THINKING HELP" data-ar="مساعدة للتفكير">THINKING HELP</span><h2 id="companionTitle" data-en="A hint can help. Your thinking still leads." data-ar="قد يساعدك التلميح. لكن تفكيرك هو القائد.">A hint can help. Your thinking still leads.</h2><p data-en="Hamdan and Hessa give thinking hints when you choose them. You can always explore on your own." data-ar="يقدم حمدان وحصه تلميحات تساعدك على التفكير عندما تختارهما. ويمكنك دائماً الاستكشاف بنفسك.">Hamdan and Hessa give thinking hints when you choose them. You can always explore on your own.</p></div>
-    <div class="companion-portraits" aria-hidden="true"><img src="assets/hamdan-face.png" alt=""><img src="assets/hessa-face.png" alt=""></div>
-  </section>
-</main>
-<footer><span>ATHAR | أثر</span> · <span data-en="The child stays the thinker." data-ar="الطفل يبقى هو المفكر.">The child stays the thinker.</span></footer>
+<section class="journey-intro reveal in"><span class="kicker"><i></i><span>Your learning trail</span></span><h1>Choose a mission. Leave a trace.</h1><p>Try one idea at a time. You earn a stamp when you actually show the skill.</p><p class="age-note"><strong>Pilot cohort: ages 10–12.</strong> Ages 7–9 in development.</p><div class="journey-stats" id="journeyStats" aria-live="polite"><span>16 missions</span> · <span>6 worlds</span> · <span>2 Passports</span></div></section>
+<section class="trail-control reveal in" aria-label="Journey controls"><div class="quick-companion"><div><span class="mini-label">YOUR GUIDE</span><h2>Who explores with you?</h2><p>A guide can point to a clue. You still make the choice.</p></div><div class="quick-companion-choices"><button type="button" class="companion-choice" data-companion="hamdan" aria-pressed="false"><img src="assets/hamdan-face.png" alt=""><span>Hamdan | حمدان</span></button><button type="button" class="companion-choice" data-companion="hessa" aria-pressed="false"><img src="assets/hessa-face.png" alt=""><span>Hessa | حصه</span></button><button type="button" class="companion-choice solo" data-companion="none" aria-pressed="true"><span>Just me</span></button></div></div></section>
+<section id="progress" aria-labelledby="nextTitle"><div class="next-mission reveal in" id="nextMission"><div class="next-copy"><span class="next-label">START HERE</span><h2 id="nextTitle">What is AI?</h2><p>Find the difference between AI and a tool that follows fixed rules.</p></div><a class="primary-btn" href="lesson.html?m=what-is-ai">Start your first mission</a></div></section>
+<section aria-labelledby="tracksTitle"><div class="journey-section-head reveal in"><span class="section-eyebrow">YOUR MAP</span><h2 id="tracksTitle">Six worlds to explore</h2><p>Each world gives you a different skill to practise.</p></div>
+<div class="track-list" id="trackList">
+<article class="track-card"><h3>1 · Understand it</h3><p>Find where AI is hiding and how examples help it spot patterns.</p><ol><li><a href="lesson.html?m=what-is-ai">What is AI?</a></li><li>Spotting patterns</li><li>Where examples come from</li></ol></article>
+<article class="track-card"><h3>2 · Ask it well</h3><p>Say what you want, add useful details and improve a weak result.</p><ol><li>Say what you mean</li><li>Add the useful bits</li><li>Make it better</li></ol></article>
+<article class="track-card"><h3>3 · Check it</h3><p>AI can sound sure and still be wrong. Learn how to check.</p><ol><li>When AI is wrong</li><li>Checking a fact</li><li>Is it fair to everyone?</li></ol></article>
+<article class="track-card"><h3>4 · Protect yourself</h3><p>Keep private things private and know when to ask a trusted adult.</p><ol><li>Private means private</li><li>A tool, not a friend</li></ol></article>
+<article class="track-card"><h3>5 · Create with it</h3><p>Keep your idea in charge and be clear about who did what.</p><ol><li>Whose idea was it?</li><li>Giving credit</li></ol></article>
+<article class="track-card"><h3>6 · See inside</h3><p>Use steps, rules and repetition to see how instructions work.</p><ol><li>Thinking in steps</li><li>If this, then that</li><li>Doing it again</li></ol></article>
+</div></section>
+<section aria-labelledby="passportTitle"><div class="journey-section-head reveal in"><span class="section-eyebrow">WHAT YOU CAN DO</span><h2 id="passportTitle">Your ATHAR Passports</h2><p>You earn a stamp when you actually do the thing. Finishing a screen is not enough.</p></div><div class="passport-grid" id="passportGrid" aria-live="polite"><article class="passport-card"><h3>Safety Passport</h3><p>5 safety skills to show.</p><p>Not started yet.</p></article><article class="passport-card"><h3>Skills Passport</h3><p>Your growing record of skills you can actually show.</p><p>Start Mission 1 to earn your first stamp.</p></article></div></section>
+<section class="companion-zone reveal in" aria-labelledby="companionTitle"><div class="companion-copy"><span class="section-eyebrow light">THINKING HELP</span><h2 id="companionTitle">Need a clue?</h2><p>Hamdan and Hessa can point you toward one. They never give you the answer.</p></div><div class="companion-portraits" aria-hidden="true"><img src="assets/hamdan-face.png" alt=""><img src="assets/hessa-face.png" alt=""></div></section>
+<noscript><section class="journey-section-head"><h2>Your trail still works</h2><p>You can read the map and start Mission 1 without JavaScript. Progress stamps need JavaScript on this device.</p><a class="primary-btn" href="lesson.html?m=what-is-ai">Start Mission 1</a></section></noscript>
+</main><footer><span>ATHAR | أثر</span> · <span>You think. AI helps.</span></footer>
 <script src="js/glass-locale.js"></script><script src="js/state.js"></script><script src="data/curriculum.js"></script><script src="js/journey.js"></script><script src="js/experience-hardening.js"></script>
-</body>
-</html>
+</body></html>

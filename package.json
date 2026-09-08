@@ -1,15 +1,5 @@
 {
-  "name": "athar",
-  "version": "0.1.0",
-  "description": "ATHAR — bilingual AI-readiness platform for children aged 7-12",
-  "private": true,
-  "scripts": {
-    "test": "node test/site-smoke-v2.js && node test/mission-regression-v2.js && node test/experience-hardening.js && node test/pilot-execution-v11.js && node test/identity-consent-v12.js",
-    "test:browser": "playwright test",
-    "serve": "python3 -m http.server 8000"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.55.0",
-    "jsdom": "^24.1.3"
-  }
+  "name":"athar","version":"0.1.0","description":"ATHAR — UAE-first bilingual AI-literacy pilot for ages 10–12; ages 7–9 in development.","private":true,
+  "scripts":{"test":"node test/site-smoke-v2.js && node test/mission-regression-v2.js && node test/experience-hardening.js && node test/pilot-execution-v11.js && node test/identity-consent-v12.js && node test/cloud-passport-v13.js && node test/pilot-correction-v14.js","test:browser":"playwright test","serve":"python3 -m http.server 8000"},
+  "devDependencies":{"@playwright/test":"^1.55.0","jsdom":"^24.1.3"}
 }
